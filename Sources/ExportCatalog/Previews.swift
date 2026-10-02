@@ -14,7 +14,11 @@ enum Previews {
     static let ink = NSColor(red: 0.11, green: 0.11, blue: 0.12, alpha: 1)
     static let muted = NSColor(red: 0.43, green: 0.43, blue: 0.45, alpha: 1)
 
-    static let badgeSteps = Array(stride(from: 25, through: 100, by: 5))
+    /// The Vercel preview server (og/) that draws the exact % badge, e.g. "https://hobbymaxer.vercel.app".
+    /// When set, per-% pages use its images and the rounded badge JPEGs aren't generated.
+    static let imageServer: String? = nil
+
+    static let badgeSteps = imageServer == nil ? Array(stride(from: 25, through: 100, by: 5)) : []
 
     /// The badge an exact percentage shows, rounded to the nearest 5; nil below 25%.
     static func badge(for percent: Int) -> Int? {
@@ -32,6 +36,18 @@ enum Previews {
         try? FileManager.default.removeItem(at: images)
         try? FileManager.default.removeItem(at: folder.appendingPathComponent("h"))
         try FileManager.default.createDirectory(at: images, withIntermediateDirectories: true)
+
+        let badges = images.appendingPathComponent("badges")
+        try FileManager.default.createDirectory(at: badges, withIntermediateDirectories: true)
+        for percent in 0...100 {
+            try badgeImage(percent).write(to: badges.appendingPathComponent("\(percent).png"))
+        }
+        // The preview server only draws images for hobbies it knows.
+        let og = folder.deletingLastPathComponent().appendingPathComponent("og")
+        if FileManager.default.fileExists(atPath: og.path) {
+            let slugs = try JSONSerialization.data(withJSONObject: Catalog.all.map { ResultLink.slug($0.name) }, options: [.prettyPrinted])
+            try slugs.write(to: og.appendingPathComponent("slugs.json"))
+        }
 
         try image(emoji: "🎯", title: "Hobby Maxer",
                   subtitle: "Find hobbies that fit you — and a 3-step plan to start one.",
@@ -63,9 +79,16 @@ enum Previews {
         let here = "\(site)h/\(slug)/" + (percent.map { "\($0)/" } ?? "")
         let root = percent == nil ? "../../" : "../../../"
         let title = esc(percent.map { "\(hobby.name) — \(article($0)) \($0)% match for me" } ?? "\(hobby.name) — a Hobby Maxer match")
-        let image = percent.flatMap(badge(for:)).map { "\(slug)-\($0).jpg" } ?? "\(slug).jpg"
-        let alt = esc("\(hobby.emoji) \(hobby.name): \(hobby.tagline)"
-            + (percent.flatMap(badge(for:)).map { " About \(article($0)) \($0)% match." } ?? ""))
+        let imageURL: String
+        if let server = imageServer, let percent {
+            imageURL = "\(server)/\(slug)/\(percent).png"
+        } else {
+            imageURL = site + "previews/" + (percent.flatMap(badge(for:)).map { "\(slug)-\($0).jpg" } ?? "\(slug).jpg")
+        }
+        let matchNote = imageServer != nil
+            ? percent.map { " \(article($0).capitalized) \($0)% match." }
+            : percent.flatMap(badge(for:)).map { " About \(article($0)) \($0)% match." }
+        let alt = esc("\(hobby.emoji) \(hobby.name): \(hobby.tagline)" + (matchNote ?? ""))
         let description = esc(percent == nil
             ? "\(hobby.tagline) See the 3-step plan to get started."
             : "Hobby Maxer matched me with \(hobby.name). \(hobby.tagline) Here's the 3-step plan to start.")
@@ -83,7 +106,7 @@ enum Previews {
           <meta property="og:title" content="\(title)">
           <meta property="og:description" content="\(description)">
           <meta property="og:url" content="\(here)">
-          <meta property="og:image" content="\(site)previews/\(image)">
+          <meta property="og:image" content="\(imageURL)">
           <meta property="og:image:width" content="1200">
           <meta property="og:image:height" content="630">
           <meta property="og:image:alt" content="\(alt)">
@@ -137,19 +160,7 @@ enum Previews {
 
         // Match badge on the tile's bottom-right corner
         if let badge {
-            let disc = NSRect(x: tile.maxX - 128, y: tile.maxY - 112, width: 150, height: 150)
-            NSColor(red: 0.984, green: 0.980, blue: 0.973, alpha: 1).setFill()
-            NSBezierPath(ovalIn: disc.insetBy(dx: -9, dy: -9)).fill()
-            ink.setFill()
-            NSBezierPath(ovalIn: disc).fill()
-            let number = NSAttributedString(string: "~\(badge)%", attributes: [
-                .font: rounded(badge == 100 ? 40 : 46, .heavy), .foregroundColor: NSColor.white])
-            let label = NSAttributedString(string: "MATCH", attributes: [
-                .font: rounded(19, .heavy), .foregroundColor: NSColor(red: 1.0, green: 0.62, blue: 0.42, alpha: 1), .kern: 2])
-            let n = number.size(), l = label.size()
-            let top = disc.midY - (n.height + l.height - 6) / 2
-            number.draw(at: NSPoint(x: disc.midX - n.width / 2, y: top))
-            label.draw(at: NSPoint(x: disc.midX - l.width / 2 + 1, y: top + n.height - 6))
+            drawBadge("~\(badge)%", in: NSRect(x: badgeOrigin.x + 9, y: badgeOrigin.y + 9, width: 150, height: 150))
         }
 
         // Text column, measured first so it can be centered vertically.
@@ -182,6 +193,41 @@ enum Previews {
 
         NSGraphicsContext.restoreGraphicsState()
         return rep.representation(using: .jpeg, properties: [.compressionFactor: 0.8])!
+    }
+
+    /// Where the badge (with its 9 px ring) sits on the 1200×630 card: on the emoji tile's bottom-right corner.
+    /// og/api/og.js places the server-drawn badge at the same spot.
+    static let badgeOrigin = NSPoint(x: 235, y: 344)
+    static let badgeSize = 168
+
+    static func drawBadge(_ text: String, in disc: NSRect) {
+        NSColor(red: 0.984, green: 0.980, blue: 0.973, alpha: 1).setFill()
+        NSBezierPath(ovalIn: disc.insetBy(dx: -9, dy: -9)).fill()
+        ink.setFill()
+        NSBezierPath(ovalIn: disc).fill()
+        let number = NSAttributedString(string: text, attributes: [
+            .font: rounded(text.count >= 5 ? 40 : 46, .heavy), .foregroundColor: NSColor.white])
+        let label = NSAttributedString(string: "MATCH", attributes: [
+            .font: rounded(19, .heavy), .foregroundColor: NSColor(red: 1.0, green: 0.62, blue: 0.42, alpha: 1), .kern: 2])
+        let n = number.size(), l = label.size()
+        let top = disc.midY - (n.height + l.height - 6) / 2
+        number.draw(at: NSPoint(x: disc.midX - n.width / 2, y: top))
+        label.draw(at: NSPoint(x: disc.midX - l.width / 2 + 1, y: top + n.height - 6))
+    }
+
+    /// A transparent badge on its own, for the preview server to lay over a hobby card.
+    static func badgeImage(_ percent: Int) -> Data {
+        let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: badgeSize, pixelsHigh: badgeSize,
+                                   bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
+                                   colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0)!
+        let cg = NSGraphicsContext(bitmapImageRep: rep)!.cgContext
+        cg.translateBy(x: 0, y: CGFloat(badgeSize))
+        cg.scaleBy(x: 1, y: -1)
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = NSGraphicsContext(cgContext: cg, flipped: true)
+        drawBadge("\(percent)%", in: NSRect(x: 9, y: 9, width: 150, height: 150))
+        NSGraphicsContext.restoreGraphicsState()
+        return rep.representation(using: .png, properties: [:])!
     }
 
     static func rounded(_ size: CGFloat, _ weight: NSFont.Weight) -> NSFont {
