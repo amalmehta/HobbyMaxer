@@ -120,18 +120,26 @@ Per-result previews with match % (asked and answered 2026-10-02):
 - Shared links are now …/h/<slug>/<percent>/?r=…&x=…; earlier link formats still work.
   The % is computed from the answers the same way in Swift and JavaScript (tested).
 
+% badge on preview images (asked and answered 2026-10-02):
+- Pre-drawn badges in 5% steps: "~80%" on the emoji tile, previews/<slug>-<25…100>.jpg
+  (64 × 16 + plain = 1,089 images, ~92 MB, JPEG quality 0.8). Below 25% the plain card is used.
+- Title keeps the exact % ("Knitting — a 79% match for me"); badge shows the rounded one.
+- Decided without asking: "a"/"an" chosen by the number ("an 80%", "an 8%").
+- Checked: in-app scores fall between 28% and 98% (98% of them between 45% and 83%).
+
 Proposals (not done — say the word):
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
 - Optional Claude API mode for free-text, more personal suggestions.
 - Notarized, signed release build / DMG on GitHub Releases.
 - Open plain https:// links straight in the app (needs notarization + a custom domain).
-- % badge on the preview image too (needs a small server, e.g. a Cloudflare Worker, or ~110 MB of pre-drawn images).
+- Exact (unrounded) % on preview images via a small server (e.g. a Cloudflare Worker), which would also let the repo drop the ~92 MB of badge images.
 
 CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-02 — preview images get a "~80%" match badge (rounded to 5%)
 - 2026-10-02 — link previews show the sharer's match % in the title (per-percentage preview pages)
 - 2026-10-02 — rich link previews: per-hobby preview pages and images, default site preview
 - 2026-10-02 — Mac app opens result links (hobbymaxer:// links, File ▸ Open Result Link…); website gets "Open in the Mac app"

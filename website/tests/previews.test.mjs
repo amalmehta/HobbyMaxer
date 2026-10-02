@@ -27,8 +27,13 @@ for (const hobby of data.hobbies) {
   assert.ok(html.includes(`params.set("h", "${s}")`), `${hobby.name} page doesn't forward to the app`);
   for (let pct = 0; pct <= 100; pct++) {
     const sub = readFileSync(new URL(`h/${s}/${pct}/index.html`, root), "utf8");
-    assert.equal(unesc(tag(sub, "og:title")), `${hobby.name} — a ${pct}% match for me`);
-    assert.equal(tag(sub, "og:image"), `${site}previews/${s}.jpg`);
+    const article = [8, 11, 18].includes(pct) || (pct >= 80 && pct <= 89) ? "an" : "a";
+    assert.equal(unesc(tag(sub, "og:title")), `${hobby.name} — ${article} ${pct}% match for me`);
+    // Badge rounded to the nearest 5%; plain image below 25%.
+    const badge = Math.round(pct / 5) * 5;
+    const file = badge >= 25 ? `${s}-${badge}.jpg` : `${s}.jpg`;
+    assert.equal(tag(sub, "og:image"), `${site}previews/${file}`, `${s}/${pct}`);
+    assert.ok(existsSync(new URL(`previews/${file}`, root)), `missing ${file}`);
     assert.equal(tag(sub, "og:url"), `${site}h/${s}/${pct}/`);
     assert.ok(sub.includes(`location.replace("../../../?"`), `${s}/${pct} forwards to the wrong place`);
   }
@@ -36,4 +41,4 @@ for (const hobby of data.hobbies) {
   assert.equal(image.readUInt16BE(0), 0xffd8, `${s}.jpg isn't a JPEG`);
   assert.ok(image.length < 300_000, `${s}.jpg is too big for chat apps`);
 }
-console.log(`${data.hobbies.length * 102} preview pages and ${data.hobbies.length} images checked`);
+console.log(`${data.hobbies.length * 102} preview pages and their images checked`);
