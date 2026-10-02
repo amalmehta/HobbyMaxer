@@ -13,6 +13,7 @@ struct ContentView: View {
             }
         }
         .overlay(alignment: .bottomTrailing) { FeedbackTab() }
+        .sheet(isPresented: $model.isOpeningLink) { OpenLinkSheet() }
         .animation(.easeInOut(duration: 0.2), value: model.stage)
     }
 }

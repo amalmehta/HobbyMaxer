@@ -30,6 +30,8 @@ function applyShareLink() {
 }
 
 const shareURL = () => `${location.origin}${location.pathname}?${encode(state, data)}`;
+// iPads also report "Macintosh"; touch support tells them apart.
+const onMac = /Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints === 0;
 
 // Keep the address bar in step: a result link on the results screen, a clean URL elsewhere.
 function syncURL() {
@@ -130,6 +132,8 @@ function renderResults() {
         <div class="sidebar-actions">
           <button class="btn primary" data-action="share" aria-live="polite">🔗 Share these results</button>
           <button class="btn" data-action="retake">${state.shared ? "Take the quiz yourself" : "Retake quiz"}</button>
+          ${onMac ? `<a class="app-link" href="hobbymaxer://results?${encode(state, data)}"
+              title="Needs the Hobby Maxer Mac app">Open in the Mac app</a>` : ""}
         </div>
       </nav>
       ${match ? detailHTML(match) : `<p class="detail muted">No more matches — retake the quiz.</p>`}

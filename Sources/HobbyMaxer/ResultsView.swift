@@ -8,18 +8,29 @@ struct ResultsView: View {
     var body: some View {
         let matches = model.matches
         NavigationSplitView {
-            List(matches, selection: $model.selectedID) { match in
-                HStack(spacing: 10) {
-                    Text(match.hobby.emoji).font(.title2)
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(match.hobby.name).font(.headline)
-                        MatchBar(percent: match.percent)
-                    }
+            List(selection: $model.selectedID) {
+                if model.shared {
+                    Label("Shared with you", systemImage: "person.2")
+                        .font(.callout)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(10)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.accent.opacity(0.16)))
+                        .selectionDisabled()
+                        .listRowSeparator(.hidden)
                 }
-                .padding(.vertical, 4)
-                .tag(match.id)
+                ForEach(matches) { match in
+                    HStack(spacing: 10) {
+                        Text(match.hobby.emoji).font(.title2)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(match.hobby.name).font(.headline)
+                            MatchBar(percent: match.percent)
+                        }
+                    }
+                    .padding(.vertical, 4)
+                    .tag(match.id)
+                }
             }
-            .navigationTitle("Your matches")
+            .navigationTitle(model.shared ? "Shared matches" : "Your matches")
             .navigationSplitViewColumnWidth(min: 230, ideal: 250)
             .safeAreaInset(edge: .bottom) { SidebarActions() }
         } detail: {
@@ -57,7 +68,7 @@ struct SidebarActions: View {
                     .frame(maxWidth: .infinity)
             }
 
-            Button("Retake quiz") { model.retake() }
+            Button(model.shared ? "Take the quiz yourself" : "Retake quiz") { model.retake() }
                 .buttonStyle(.plain)
                 .foregroundStyle(.secondary)
                 .padding(.top, 2)

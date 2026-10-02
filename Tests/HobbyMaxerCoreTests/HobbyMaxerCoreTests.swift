@@ -103,6 +103,37 @@ final class MatcherTests: XCTestCase {
         XCTAssertEqual(Set(Catalog.all.map { ResultLink.slug($0.name) }).count, Catalog.all.count)
     }
 
+    /// Links made by the website (and the Swift exporter) open the same results in the app.
+    func testDecodingWebsiteLinksReproducesResults() throws {
+        let fixtures = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
+            .appendingPathComponent("website/tests/parity.json")
+        let json = try JSONSerialization.jsonObject(with: Data(contentsOf: fixtures)) as! [[String: Any]]
+        XCTAssertEqual(json.count, 300)
+        for fixture in json {
+            let link = fixture["link"] as! String
+            let want = (fixture["matches"] as! [[String: Any]]).map { $0["name"] as! String }
+            for form in ["https://amalmehta.github.io/HobbyMaxer/?\(link)", "hobbymaxer://results?\(link)", "?\(link)"] {
+                let opened = try XCTUnwrap(ResultLink.decode(form), form)
+                XCTAssertEqual(Matcher.rank(opened.profile, excluding: opened.dismissed).map(\.hobby.name), want, form)
+                XCTAssertEqual(opened.selected, want.last)
+                XCTAssertEqual(ResultLink.query(for: opened.profile, selected: opened.selected, dismissed: opened.dismissed), link)
+            }
+        }
+    }
+
+    func testBadLinksAreRejected() {
+        for bad in ["", "hello", "https://amalmehta.github.io/HobbyMaxer/", "?r=", "?r=2-134322-012-3-1c",
+                    "?r=1-934322-012-3-1c", "?r=1-13432-012-3-1c", "?r=1-134322-412-3-1c", "?r=1-134322-012-$-1c"] {
+            XCTAssertNil(ResultLink.decode(bad), bad)
+        }
+        let opened = ResultLink.decode("  hobbymaxer://results?r=1-222222-111-zz-zzzz&h=nope&x=bonsai,nope  ")
+        XCTAssertEqual(opened?.profile.goals.count, 2)
+        XCTAssertEqual(opened?.profile.interests.count, 3)
+        XCTAssertNil(opened?.selected)
+        XCTAssertEqual(opened?.dismissed, ["Bonsai"])
+    }
+
     /// Different people should see different hobbies: most of the catalog should be reachable.
     func testMostHobbiesShowUpForSomeone() {
         var rng = SystemRandomNumberGenerator()

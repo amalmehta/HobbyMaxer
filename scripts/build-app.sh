@@ -33,9 +33,18 @@ cat > "$APP/Contents/Info.plist" <<PLIST
     <key>LSMinimumSystemVersion</key><string>14.0</string>
     <key>LSApplicationCategoryType</key><string>public.app-category.lifestyle</string>
     <key>NSHighResolutionCapable</key><true/>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key><string>com.amalmehta.hobbymaxer.results</string>
+            <key>CFBundleURLSchemes</key><array><string>hobbymaxer</string></array>
+        </dict>
+    </array>
 </dict>
 </plist>
 PLIST
 
 codesign --force --sign - "$APP"
+# Register the hobbymaxer:// link scheme with this copy of the app.
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$APP" || true
 echo "Built $APP"

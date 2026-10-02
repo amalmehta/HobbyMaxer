@@ -11,12 +11,15 @@ struct HobbyMaxerApp: App {
         Window("Hobby Maxer", id: "main") {
             ContentView()
                 .environmentObject(model)
+                .onOpenURL { model.open(link: $0.absoluteString) }
                 .frame(minWidth: 860, minHeight: 620)
                 .tint(.accent)
         }
         .windowResizability(.contentMinSize)
         .commands {
             CommandGroup(replacing: .newItem) {
+                Button("Open Result Link…") { model.isOpeningLink = true }
+                    .keyboardShortcut("l")
                 Button("Retake Quiz") { model.retake() }
                     .keyboardShortcut("r", modifiers: [.command, .shift])
             }
@@ -47,6 +50,9 @@ final class AppModel: ObservableObject {
     @Published var profile = Profile()
     @Published var dismissed: Set<String> = []
     @Published var selectedID: String?
+    /// True when showing results opened from someone's link.
+    @Published var shared = false
+    @Published var isOpeningLink = false
 
     init() {
         // Developer hook for screenshots: HOBBY_MAXER_DEMO=quiz:<n> or HOBBY_MAXER_DEMO=results
@@ -93,10 +99,25 @@ final class AppModel: ObservableObject {
         if selectedID == id { selectedID = matches.first?.id }
     }
 
+    /// Opens a website link, a hobbymaxer:// link, or a pasted "?r=…" query. Returns false if it isn't a result link.
+    @discardableResult
+    func open(link: String) -> Bool {
+        guard let opened = ResultLink.decode(link) else { return false }
+        profile = opened.profile
+        dismissed = opened.dismissed
+        let current = matches
+        selectedID = current.contains { $0.id == opened.selected } ? opened.selected : current.first?.id
+        shared = true
+        isOpeningLink = false
+        stage = .results
+        return true
+    }
+
     func retake() {
         profile = Profile()
         dismissed = []
         selectedID = nil
+        shared = false
         questionIndex = 0
         stage = .welcome
     }

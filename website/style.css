@@ -96,6 +96,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .bar .fill { display: block; height: 100%; background: var(--accent); }
 .sidebar-actions { margin-top: auto; display: grid; gap: 8px; padding: 12px 8px 0; }
 .share-link { width: 100%; font: inherit; font-size: 0.8rem; color: inherit; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; }
+.app-link { text-align: center; font-size: 0.8rem; color: var(--muted); }
+.app-link:hover { color: var(--accent); }
 .shared-note { margin: 0 8px 12px; padding: 8px 10px; border-radius: 10px; background: var(--accent-soft); font-size: 0.85rem; }
 
 .detail { padding: 32px 32px 80px; max-width: 760px; }
