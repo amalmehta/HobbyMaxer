@@ -6,7 +6,7 @@ Hobby Maxer
 ├── hobby maxer.md                Project brief, decisions and changelog
 ├── Package.swift                 Swift package: core library, app, tests
 ├── scripts/
-│   ├── build-app.sh              Builds "build/Hobby Maxer.app"
+│   ├── build-app.sh              Builds "build/Hobby Maxer.app" and registers hobbymaxer:// links
 │   └── make-icon.swift           Draws the app icon
 ├── Sources/
 │   ├── HobbyMaxerCore/           Logic (no UI) — tested
@@ -14,13 +14,14 @@ Hobby Maxer
 │   │   ├── Catalog.swift         The 64 hobbies and their 3-step plans
 │   │   ├── Quiz.swift            The 11 questions
 │   │   ├── Matcher.swift         Scoring, reasons/caveats, varied top-6 ranking
-│   │   └── ResultLink.swift      Website links to a set of results (shared format with share.js)
+│   │   └── ResultLink.swift      Builds and reads result links (website + hobbymaxer://; same format as share.js)
 │   ├── ExportCatalog/            Exports the catalog + parity fixtures to the website
 │   └── HobbyMaxer/               The Mac app (SwiftUI)
 │       ├── HobbyMaxerApp.swift   App entry, window, app state
 │       ├── ContentView.swift     Screen switcher + welcome screen
 │       ├── QuizView.swift        Question screens (scale, chips, options)
 │       ├── ResultsView.swift     Match list, share/copy-link buttons, hobby detail and plan
+│       ├── OpenLinkSheet.swift   File ▸ Open Result Link… sheet
 │       └── FeedbackTab.swift     Corner feedback tab (opens an email)
 ├── Tests/HobbyMaxerCoreTests/    Catalog and matcher tests
 ├── website/                      The website (static, served by GitHub Pages)

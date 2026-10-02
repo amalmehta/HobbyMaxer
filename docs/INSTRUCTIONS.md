@@ -39,8 +39,10 @@ The tests check the catalog (every hobby has a 3-step plan, unique names, valid 
 2. Your top 6 matches appear on the left with a match score. Click one to see **why it fits you** and your **3-step entry plan** (this week → weeks 2–4 → by month 3).
 3. Not feeling one? **Not for me — show another** swaps in the next best match.
 4. **Share these results** (Messages, Mail, AirDrop…) or **Copy link** gives a website link that opens exactly these matches — anyone can open it in a browser, no app needed.
-5. **Retake quiz** (or ⇧⌘R) starts over.
-6. The small **Feedback** tab in the corner opens a pre-filled email.
+5. **Opening links in the app:** click a `hobbymaxer://` link (the website shows **Open in the Mac app** on Macs), or choose **File ▸ Open Result Link…** (⌘L) and paste any Hobby Maxer website link — it pre-fills if one is on your clipboard. Shared results show **Shared with you** and **Take the quiz yourself**.
+   The `hobbymaxer://` link type is registered when `build-app.sh` runs (and whenever macOS first sees the app). Ordinary `https://` website links still open in the browser — making them open the app directly would need a notarized app and a domain the app is verified with, which a GitHub project site can't provide.
+6. **Retake quiz** (or ⇧⌘R) starts over.
+7. The small **Feedback** tab in the corner opens a pre-filled email.
 
 Nothing leaves your Mac — matching runs offline against the built-in catalog.
 

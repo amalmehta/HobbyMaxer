@@ -92,18 +92,31 @@ Mac app share button (2026-10-02, decided without asking):
 - Links are built by ResultLink.swift in the shared core; the website test checks the Swift
   and JavaScript code produce identical links for 300 answer sets.
 
+Mac app opens result links (2026-10-02, decided without asking):
+- The app registers a hobbymaxer://results?… link type and opens it on those results
+  (from cold launch or while running, in the same window), marked "Shared with you".
+- File ▸ Open Result Link… (⌘L) accepts any pasted website link (pre-filled from the clipboard).
+- The website shows a small "Open in the Mac app" link on results, Macs only (not iPhone/iPad).
+  If the app isn't installed, the browser shows its own "can't open" message.
+- Plain https:// website links still open in the browser: opening them straight in the app
+  needs a notarized app plus a verified domain (apple-app-site-association at the domain root),
+  which a GitHub project site at amalmehta.github.io/HobbyMaxer can't serve.
+- Swift tests decode all 300 website test links (as https, hobbymaxer:// and bare query)
+  and get the same matches.
+
 Proposals (not done — say the word):
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
 - Optional Claude API mode for free-text, more personal suggestions.
 - Notarized, signed release build / DMG on GitHub Releases.
-- Let the Mac app open result links itself (a hobbymaxer:// link or "Open in app" on the website).
+- Open plain https:// links straight in the app (needs notarization + a custom domain).
 - Rich link previews (per-result image/title) when pasted into chat apps.
 
 CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-02 — Mac app opens result links (hobbymaxer:// links, File ▸ Open Result Link…); website gets "Open in the Mac app"
 - 2026-10-02 — added share button and copy-link to the Mac app (same links as the website)
 - 2026-10-02 — added shareable result links to the website
 - 2026-10-02 — built the website (website/), shared catalog export + JS/Swift parity test, GitHub Pages deploy; repo made public
