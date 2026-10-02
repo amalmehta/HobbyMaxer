@@ -16,6 +16,10 @@ A Mac app and website that figure out which hobbies fit you — and give you a 3
 |---|---|
 | ![Website results](docs/images/website-results.png) | <img src="docs/images/website-phone.jpg" alt="Website on a phone" width="260"> |
 
+Shared links preview like this in Messages, Slack and WhatsApp:
+
+<img src="website/previews/knitting.jpg" alt="Link preview for Knitting" width="480">
+
 ## How it matches
 
 ```mermaid

@@ -1,5 +1,5 @@
 import { emptyProfile, rank } from "./matcher.js";
-import { decode, encode } from "./share.js";
+import { decode, encode, sharePath } from "./share.js";
 
 const ISSUE_URL = "https://github.com/amalmehta/HobbyMaxer/issues/new";
 const app = document.getElementById("app");
@@ -29,7 +29,7 @@ function applyShareLink() {
   return Boolean(shared);
 }
 
-const shareURL = () => `${location.origin}${location.pathname}?${encode(state, data)}`;
+const shareURL = () => `${location.origin}${location.pathname}${sharePath(state, data)}`;
 // iPads also report "Macintosh"; touch support tells them apart.
 const onMac = /Macintosh/.test(navigator.userAgent) && navigator.maxTouchPoints === 0;
 

@@ -97,7 +97,7 @@ final class MatcherTests: XCTestCase {
         p.space = .desk
         let url = ResultLink.url(for: p, selected: "Knitting", dismissed: ["Bonsai"])
         // Same link the website produces for these answers (checked in website/tests/share.test.mjs).
-        XCTAssertEqual(url.absoluteString, "https://amalmehta.github.io/HobbyMaxer/?r=1-131432-010-9-j&h=knitting&x=bonsai")
+        XCTAssertEqual(url.absoluteString, "https://amalmehta.github.io/HobbyMaxer/h/knitting/?r=1-131432-010-9-j&x=bonsai")
         XCTAssertEqual(ResultLink.slug("Electronics & Arduino"), "electronics-and-arduino")
         XCTAssertEqual(ResultLink.slug("3D Printing"), "3d-printing")
         XCTAssertEqual(Set(Catalog.all.map { ResultLink.slug($0.name) }).count, Catalog.all.count)
@@ -112,8 +112,9 @@ final class MatcherTests: XCTestCase {
         XCTAssertEqual(json.count, 300)
         for fixture in json {
             let link = fixture["link"] as! String
+            let shareURL = fixture["url"] as! String
             let want = (fixture["matches"] as! [[String: Any]]).map { $0["name"] as! String }
-            for form in ["https://amalmehta.github.io/HobbyMaxer/?\(link)", "hobbymaxer://results?\(link)", "?\(link)"] {
+            for form in [shareURL, "https://amalmehta.github.io/HobbyMaxer/?\(link)", "hobbymaxer://results?\(link)", "?\(link)"] {
                 let opened = try XCTUnwrap(ResultLink.decode(form), form)
                 XCTAssertEqual(Matcher.rank(opened.profile, excluding: opened.dismissed).map(\.hobby.name), want, form)
                 XCTAssertEqual(opened.selected, want.last)

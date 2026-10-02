@@ -30,6 +30,8 @@ jobs:
         run: node website/tests/parity.test.mjs
       - name: Check result links
         run: node website/tests/share.test.mjs
+      - name: Check link previews
+        run: node website/tests/previews.test.mjs
       - name: Collect site files
         run: rsync -a --exclude tests website/ _site/
       - uses: actions/configure-pages@v5

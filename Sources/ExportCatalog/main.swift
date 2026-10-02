@@ -78,10 +78,11 @@ for _ in 0..<300 {
     ]
     let ranked = Matcher.rank(p, excluding: excluded)
     let link = ResultLink.query(for: p, selected: ranked.last?.hobby.name, dismissed: excluded)
+    let url = ResultLink.url(for: p, selected: ranked.last?.hobby.name, dismissed: excluded).absoluteString
     let matches = ranked.map {
         ["name": $0.hobby.name, "score": $0.score, "percent": $0.percent, "reasons": $0.reasons, "caveats": $0.caveats] as [String: Any]
     }
-    fixtures.append(["profile": profileJSON, "excluding": Array(excluded), "matches": matches, "link": link])
+    fixtures.append(["profile": profileJSON, "excluding": Array(excluded), "matches": matches, "link": link, "url": url])
 }
 
 func write(_ object: Any, to path: String) throws {
@@ -94,3 +95,4 @@ func write(_ object: Any, to path: String) throws {
 
 try write(catalog, to: "catalog.json")
 try write(fixtures, to: "tests/parity.json")
+try Previews.write(to: folder)

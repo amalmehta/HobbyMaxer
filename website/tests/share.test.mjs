@@ -2,7 +2,7 @@
 // Run with: node website/tests/share.test.mjs
 import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
-import { decode, encode, slug } from "../share.js";
+import { decode, encode, sharePath, slug } from "../share.js";
 import { rank } from "../matcher.js";
 
 const data = JSON.parse(readFileSync(new URL("../catalog.json", import.meta.url)));
@@ -21,8 +21,9 @@ for (const f of fixtures) {
   assert.deepEqual(rank(back.profile, data, back.dismissed).map(m => m.hobby.name), first.map(m => m.hobby.name));
   assert.equal(back.selected, state.selected);
   assert.deepEqual(back.dismissed, f.excluding);
-  // The Mac app builds the exact same link.
+  // The Mac app builds the exact same links.
   assert.equal(encode(state, data), f.link);
+  assert.equal("https://amalmehta.github.io/HobbyMaxer/" + sharePath(state, data), f.url);
   checks++;
 }
 

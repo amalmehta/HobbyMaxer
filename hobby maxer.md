@@ -104,18 +104,29 @@ Mac app opens result links (2026-10-02, decided without asking):
 - Swift tests decode all 300 website test links (as https, hobbymaxer:// and bare query)
   and get the same matches.
 
+Rich link previews (2026-10-02, decided without asking):
+- Chat apps don't run JavaScript, so each hobby gets a static page h/<slug>/ with Open Graph +
+  Twitter tags and a 1200×630 image (emoji tile, name, tagline, its 3 steps); the page forwards
+  to the results. Shared links now look like …/HobbyMaxer/h/knitting/?r=…&x=…; older ?r=…&h=…
+  links still work. The main site has a default preview.
+- Previews show the hobby, not the sharer's match % — that would need a server (proposal below).
+- Pages/images are generated locally by ExportCatalog (AppKit) and committed (~6 MB of JPEGs);
+  a CI test checks every hobby has a valid page and image before deploying.
+- Mac app Share/Copy link use the same new format; it reads both formats when opening links.
+
 Proposals (not done — say the word):
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
 - Optional Claude API mode for free-text, more personal suggestions.
 - Notarized, signed release build / DMG on GitHub Releases.
 - Open plain https:// links straight in the app (needs notarization + a custom domain).
-- Rich link previews (per-result image/title) when pasted into chat apps.
+- Per-result previews showing the sharer's match % (needs a small server, e.g. a Cloudflare Worker).
 
 CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-02 — rich link previews: per-hobby preview pages and images, default site preview
 - 2026-10-02 — Mac app opens result links (hobbymaxer:// links, File ▸ Open Result Link…); website gets "Open in the Mac app"
 - 2026-10-02 — added share button and copy-link to the Mac app (same links as the website)
 - 2026-10-02 — added shareable result links to the website

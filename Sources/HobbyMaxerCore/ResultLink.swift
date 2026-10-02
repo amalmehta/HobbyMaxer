@@ -13,8 +13,12 @@ public enum ResultLink {
         public var dismissed: Set<String>
     }
 
+    /// Shareable website link. With a selected hobby it goes through that hobby's preview page
+    /// (h/<slug>/), so chat apps show a rich preview; the page forwards to the results.
     public static func url(for profile: Profile, selected: String?, dismissed: Set<String>) -> URL {
-        URL(string: website.absoluteString + "?" + query(for: profile, selected: selected, dismissed: dismissed))!
+        let rest = query(for: profile, selected: nil, dismissed: dismissed)
+        let path = selected.map { "h/\(slug($0))/" } ?? ""
+        return URL(string: website.absoluteString + path + "?" + rest)!
     }
 
     public static func query(for profile: Profile, selected: String?, dismissed: Set<String>) -> String {
@@ -61,7 +65,10 @@ public enum ResultLink {
 
         let bySlug = Dictionary(uniqueKeysWithValues: Catalog.all.map { (slug($0.name), $0.name) })
         let dismissed = (value("x") ?? "").split(separator: ",").compactMap { bySlug[String($0)] }
-        return Opened(profile: profile, selected: value("h").flatMap { bySlug[$0] }, dismissed: Set(dismissed))
+        // The hobby comes from "h=" or, for preview-page links, from the ".../h/<slug>/" path.
+        let pathSlug = text.firstMatch(of: #/\/h\/([a-z0-9-]+)\/?\?/#).map { String($0.1) }
+        let selected = (value("h") ?? pathSlug).flatMap { bySlug[$0] }
+        return Opened(profile: profile, selected: selected, dismissed: Set(dismissed))
     }
 
     public static func slug(_ name: String) -> String {
