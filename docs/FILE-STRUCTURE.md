@@ -13,13 +13,14 @@ Hobby Maxer
 │   │   ├── Models.swift          Traits, cost/time/space, goals, interests, Hobby, Profile
 │   │   ├── Catalog.swift         The 64 hobbies and their 3-step plans
 │   │   ├── Quiz.swift            The 11 questions
-│   │   └── Matcher.swift         Scoring, reasons/caveats, varied top-6 ranking
+│   │   ├── Matcher.swift         Scoring, reasons/caveats, varied top-6 ranking
+│   │   └── ResultLink.swift      Website links to a set of results (shared format with share.js)
 │   ├── ExportCatalog/            Exports the catalog + parity fixtures to the website
 │   └── HobbyMaxer/               The Mac app (SwiftUI)
 │       ├── HobbyMaxerApp.swift   App entry, window, app state
 │       ├── ContentView.swift     Screen switcher + welcome screen
 │       ├── QuizView.swift        Question screens (scale, chips, options)
-│       ├── ResultsView.swift     Match list + hobby detail and plan
+│       ├── ResultsView.swift     Match list, share/copy-link buttons, hobby detail and plan
 │       └── FeedbackTab.swift     Corner feedback tab (opens an email)
 ├── Tests/HobbyMaxerCoreTests/    Catalog and matcher tests
 ├── website/                      The website (static, served by GitHub Pages)

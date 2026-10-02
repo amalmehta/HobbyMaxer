@@ -21,6 +21,8 @@ for (const f of fixtures) {
   assert.deepEqual(rank(back.profile, data, back.dismissed).map(m => m.hobby.name), first.map(m => m.hobby.name));
   assert.equal(back.selected, state.selected);
   assert.deepEqual(back.dismissed, f.excluding);
+  // The Mac app builds the exact same link.
+  assert.equal(encode(state, data), f.link);
   checks++;
 }
 

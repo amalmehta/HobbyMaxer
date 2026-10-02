@@ -1,3 +1,4 @@
+import AppKit
 import HobbyMaxerCore
 import SwiftUI
 
@@ -20,10 +21,7 @@ struct ResultsView: View {
             }
             .navigationTitle("Your matches")
             .navigationSplitViewColumnWidth(min: 230, ideal: 250)
-            .safeAreaInset(edge: .bottom) {
-                Button("Retake quiz") { model.retake() }
-                    .padding(.bottom, 12)
-            }
+            .safeAreaInset(edge: .bottom) { SidebarActions() }
         } detail: {
             if let match = matches.first(where: { $0.id == model.selectedID }) {
                 HobbyDetail(match: match)
@@ -31,6 +29,42 @@ struct ResultsView: View {
                 Text("Pick a hobby on the left").foregroundStyle(.secondary)
             }
         }
+    }
+}
+
+/// Share, copy-link and retake buttons under the match list.
+struct SidebarActions: View {
+    @EnvironmentObject private var model: AppModel
+    @State private var copied = false
+
+    var body: some View {
+        VStack(spacing: 8) {
+            ShareLink(item: model.shareURL, subject: Text("My Hobby Maxer matches"),
+                      message: Text("Hobbies that fit me, with a 3-step plan to start each one")) {
+                Label("Share these results", systemImage: "square.and.arrow.up")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .help("Send a link that opens these results on the Hobby Maxer website")
+
+            Button {
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(model.shareURL.absoluteString, forType: .string)
+                copied = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { copied = false }
+            } label: {
+                Label(copied ? "Link copied" : "Copy link", systemImage: copied ? "checkmark" : "link")
+                    .frame(maxWidth: .infinity)
+            }
+
+            Button("Retake quiz") { model.retake() }
+                .buttonStyle(.plain)
+                .foregroundStyle(.secondary)
+                .padding(.top, 2)
+        }
+        .controlSize(.large)
+        .padding(.horizontal, 12)
+        .padding(.bottom, 12)
     }
 }
 

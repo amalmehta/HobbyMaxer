@@ -76,10 +76,12 @@ for _ in 0..<300 {
         "interests": Interest.allCases.filter { p.interests.contains($0) }.map(\.rawValue),
         "budget": p.budget.rawValue, "time": p.time.rawValue, "space": p.space.rawValue,
     ]
-    let matches = Matcher.rank(p, excluding: excluded).map {
+    let ranked = Matcher.rank(p, excluding: excluded)
+    let link = ResultLink.query(for: p, selected: ranked.last?.hobby.name, dismissed: excluded)
+    let matches = ranked.map {
         ["name": $0.hobby.name, "score": $0.score, "percent": $0.percent, "reasons": $0.reasons, "caveats": $0.caveats] as [String: Any]
     }
-    fixtures.append(["profile": profileJSON, "excluding": Array(excluded), "matches": matches])
+    fixtures.append(["profile": profileJSON, "excluding": Array(excluded), "matches": matches, "link": link])
 }
 
 func write(_ object: Any, to path: String) throws {

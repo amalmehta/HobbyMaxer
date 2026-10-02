@@ -87,6 +87,22 @@ final class MatcherTests: XCTestCase {
         }
     }
 
+    func testResultLinkMatchesWebsiteFormat() {
+        var p = Profile()
+        p.scales = [.social: 1, .outdoor: 3, .active: 1, .handsOn: 4, .creative: 3, .structured: 2]
+        p.goals = [.relax, .makeThings]
+        p.interests = [.nature, .food, .crafts]
+        p.budget = .free
+        p.time = .moderate
+        p.space = .desk
+        let url = ResultLink.url(for: p, selected: "Knitting", dismissed: ["Bonsai"])
+        // Same link the website produces for these answers (checked in website/tests/share.test.mjs).
+        XCTAssertEqual(url.absoluteString, "https://amalmehta.github.io/HobbyMaxer/?r=1-131432-010-9-j&h=knitting&x=bonsai")
+        XCTAssertEqual(ResultLink.slug("Electronics & Arduino"), "electronics-and-arduino")
+        XCTAssertEqual(ResultLink.slug("3D Printing"), "3d-printing")
+        XCTAssertEqual(Set(Catalog.all.map { ResultLink.slug($0.name) }).count, Catalog.all.count)
+    }
+
     /// Different people should see different hobbies: most of the catalog should be reachable.
     func testMostHobbiesShowUpForSomeone() {
         var rng = SystemRandomNumberGenerator()

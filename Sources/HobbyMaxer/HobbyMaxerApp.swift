@@ -66,6 +66,8 @@ final class AppModel: ObservableObject {
     var question: Question { Quiz.questions[questionIndex] }
     var isLastQuestion: Bool { questionIndex == Quiz.questions.count - 1 }
     var matches: [Match] { Matcher.rank(profile, excluding: dismissed) }
+    /// Website link that reopens exactly these results.
+    var shareURL: URL { ResultLink.url(for: profile, selected: selectedID, dismissed: dismissed) }
 
     func start() {
         questionIndex = 0

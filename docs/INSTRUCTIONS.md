@@ -38,8 +38,9 @@ The tests check the catalog (every hobby has a 3-step plan, unique names, valid 
 1. Click **Start the quiz** and answer 11 questions (Return = Next, Esc = Back).
 2. Your top 6 matches appear on the left with a match score. Click one to see **why it fits you** and your **3-step entry plan** (this week → weeks 2–4 → by month 3).
 3. Not feeling one? **Not for me — show another** swaps in the next best match.
-4. **Retake quiz** (or ⇧⌘R) starts over.
-5. The small **Feedback** tab in the corner opens a pre-filled email.
+4. **Share these results** (Messages, Mail, AirDrop…) or **Copy link** gives a website link that opens exactly these matches — anyone can open it in a browser, no app needed.
+5. **Retake quiz** (or ⇧⌘R) starts over.
+6. The small **Feedback** tab in the corner opens a pre-filled email.
 
 Nothing leaves your Mac — matching runs offline against the built-in catalog.
 
@@ -76,7 +77,7 @@ swift run ExportCatalog website
 node website/tests/parity.test.mjs
 ```
 
-`ExportCatalog` writes `website/catalog.json` (what the site loads) and `website/tests/parity.json` (300 sample answers with the Mac app's results). The parity test fails if the website's matcher (`website/matcher.js`) disagrees with the Swift one — if you change scoring in `Matcher.swift`, make the same change in `matcher.js`.
+`ExportCatalog` writes `website/catalog.json` (what the site loads) and `website/tests/parity.json` (300 sample answers with the Mac app's results). `parity.json` also holds the link the Mac app builds for each answer set, and `share.test.mjs` checks the website builds the identical one. The parity test fails if the website's matcher (`website/matcher.js`) disagrees with the Swift one — if you change scoring in `Matcher.swift`, make the same change in `matcher.js`.
 
 ## Screenshots (for maintainers)
 

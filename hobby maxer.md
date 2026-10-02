@@ -86,18 +86,25 @@ Shareable result links (2026-10-02, decided without asking):
 - Opening a link shows "Someone shared these results with you" and "Take the quiz yourself".
 - Invalid links fall back to the welcome screen.
 
+Mac app share button (2026-10-02, decided without asking):
+- Results sidebar gets "Share these results" (macOS share menu) and "Copy link"; both give
+  the website result link, so recipients don't need the app.
+- Links are built by ResultLink.swift in the shared core; the website test checks the Swift
+  and JavaScript code produce identical links for 300 answer sets.
+
 Proposals (not done — say the word):
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
 - Optional Claude API mode for free-text, more personal suggestions.
 - Notarized, signed release build / DMG on GitHub Releases.
-- Share button in the Mac app that copies a website result link.
+- Let the Mac app open result links itself (a hobbymaxer:// link or "Open in app" on the website).
 - Rich link previews (per-result image/title) when pasted into chat apps.
 
 CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-02 — added share button and copy-link to the Mac app (same links as the website)
 - 2026-10-02 — added shareable result links to the website
 - 2026-10-02 — built the website (website/), shared catalog export + JS/Swift parity test, GitHub Pages deploy; repo made public
 - 2026-09-15 — added meta-instruction: built-out applications include a small feedback tab
