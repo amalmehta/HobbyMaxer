@@ -1,0 +1,55 @@
+// Shareable result links: quiz answers packed into a short, versioned code.
+//
+//   ?r=1-134322-012-3-1c&h=container-gardening&x=bonsai,knitting
+//      │ │      │   │ └ interests bitmask (base 36, catalog.json order)
+//      │ │      │   └ goals bitmask (base 36)
+//      │ │      └ budget, time, space
+//      │ └ six trait scales, 0–4, in catalog.json "traits" order
+//      └ format version
+//   h = hobby being viewed, x = hobbies hidden with "Not for me" (both optional)
+//
+// Matches are recomputed from the answers, so links keep working when scoring changes.
+// New goals/interests must be added at the end of their lists to keep old links valid.
+
+export const slug = name => name.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const mask = (ids, all) => all.reduce((m, o, i) => (ids.includes(o.id) ? m | (1 << i) : m), 0).toString(36);
+const unmask = (code, all) => {
+  const m = parseInt(code, 36);
+  return all.filter((_, i) => m & (1 << i)).map(o => o.id);
+};
+
+export function encode(state, data) {
+  const p = state.profile;
+  const params = new URLSearchParams();
+  params.set("r", [
+    "1",
+    data.traits.map(t => p.scales[t] ?? 2).join(""),
+    `${p.budget}${p.time}${p.space}`,
+    mask(p.goals, data.goals),
+    mask(p.interests, data.interests),
+  ].join("-"));
+  if (state.selected) params.set("h", slug(state.selected));
+  if (state.dismissed.length) params.set("x", state.dismissed.map(slug).join(","));
+  return params.toString().replace(/%2C/g, ",");
+}
+
+/** Returns { profile, selected, dismissed } or null if the link isn't a valid result link. */
+export function decode(search, data) {
+  const params = new URLSearchParams(search);
+  const match = /^1-([0-4]{6})-([0-3])([0-2])([0-2])-([0-9a-z]{1,4})-([0-9a-z]{1,4})$/.exec(params.get("r") ?? "");
+  if (!match || data.traits.length !== 6) return null;
+  const [, scales, budget, time, space, goals, interests] = match;
+  const byslug = Object.fromEntries(data.hobbies.map(h => [slug(h.name), h.name]));
+  const profile = {
+    scales: Object.fromEntries(data.traits.map((t, i) => [t, Number(scales[i])])),
+    goals: unmask(goals, data.goals).slice(0, 2),
+    interests: unmask(interests, data.interests).slice(0, 3),
+    budget: Number(budget), time: Number(time), space: Number(space),
+  };
+  return {
+    profile,
+    selected: byslug[params.get("h")] ?? null,
+    dismissed: (params.get("x") ?? "").split(",").map(s => byslug[s]).filter(Boolean),
+  };
+}

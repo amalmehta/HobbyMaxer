@@ -55,6 +55,15 @@ python3 -m http.server 8765 --directory website
 
 Then open http://localhost:8765. Feedback on the website opens a pre-filled GitHub issue.
 
+**Sharing results:** on the results screen the address bar always holds a link to exactly what you're seeing — your answers, the hobby you're viewing, and any you hid with "Not for me". **🔗 Share these results** copies it (or opens the share sheet on a phone). Whoever opens it sees the same matches, marked as shared, with a button to take the quiz themselves. Links contain only quiz answers; matches are recomputed when opened. The format is documented at the top of `website/share.js`.
+
+Website tests:
+
+```bash
+node website/tests/parity.test.mjs
+node website/tests/share.test.mjs
+```
+
 **Deploying:** every push to `main` that touches `website/` runs `.github/workflows/website.yml`, which checks the website still matches the Mac app and publishes to GitHub Pages (repo Settings → Pages → Source: GitHub Actions).
 
 ## Edit the hobbies

@@ -76,17 +76,29 @@ Website, decided without asking:
 - Plain HTML/CSS/JS, no framework or build step; nothing stored, nothing sent anywhere.
 - ?demo=results / ?demo=quiz:<n> mirror the Mac app's screenshot hook.
 
+Shareable result links (2026-10-02, decided without asking):
+- Website only. Links look like ?r=1-131432-010-9-j&h=knitting&x=bonsai: a versioned
+  code of the quiz answers, plus the hobby being viewed and any hidden ones.
+  Matches are recomputed on open, so old links survive scoring changes.
+- The address bar always holds the current result link; "Share these results" uses the
+  phone share sheet or copies the link, falling back to a selectable link box if the
+  browser blocks the clipboard.
+- Opening a link shows "Someone shared these results with you" and "Take the quiz yourself".
+- Invalid links fall back to the welcome screen.
+
 Proposals (not done — say the word):
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
 - Optional Claude API mode for free-text, more personal suggestions.
 - Notarized, signed release build / DMG on GitHub Releases.
-- Shareable result links (encode answers in the URL).
+- Share button in the Mac app that copies a website result link.
+- Rich link previews (per-result image/title) when pasted into chat apps.
 
 CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-02 — added shareable result links to the website
 - 2026-10-02 — built the website (website/), shared catalog export + JS/Swift parity test, GitHub Pages deploy; repo made public
 - 2026-09-15 — added meta-instruction: built-out applications include a small feedback tab
 - 2026-09-15 — added meta-instruction: no "Claude" attribution in commits, PRs, or branches

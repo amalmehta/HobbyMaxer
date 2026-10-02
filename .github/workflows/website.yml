@@ -28,6 +28,8 @@ jobs:
           node-version: 22
       - name: Check the website matches the Mac app
         run: node website/tests/parity.test.mjs
+      - name: Check result links
+        run: node website/tests/share.test.mjs
       - name: Collect site files
         run: rsync -a --exclude tests website/ _site/
       - uses: actions/configure-pages@v5

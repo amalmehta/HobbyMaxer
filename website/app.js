@@ -1,9 +1,10 @@
 import { emptyProfile, rank } from "./matcher.js";
+import { decode, encode } from "./share.js";
 
 const ISSUE_URL = "https://github.com/amalmehta/HobbyMaxer/issues/new";
 const app = document.getElementById("app");
 
-const state = { stage: "welcome", index: 0, profile: emptyProfile(), dismissed: [], selected: null };
+const state = { stage: "welcome", index: 0, profile: emptyProfile(), dismissed: [], selected: null, shared: false };
 let data;
 
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -21,10 +22,27 @@ function applyDemo() {
   if (n !== undefined && data.questions[n]) Object.assign(state, { stage: "quiz", index: Number(n) });
 }
 
+// Opening a result link goes straight to those results.
+function applyShareLink() {
+  const shared = decode(location.search, data);
+  if (shared) Object.assign(state, shared, { stage: "results", shared: true });
+  return Boolean(shared);
+}
+
+const shareURL = () => `${location.origin}${location.pathname}?${encode(state, data)}`;
+
+// Keep the address bar in step: a result link on the results screen, a clean URL elsewhere.
+function syncURL() {
+  if (new URLSearchParams(location.search).has("demo")) return;
+  const target = state.stage === "results" ? `${location.pathname}?${encode(state, data)}` : location.pathname;
+  if (target !== location.pathname + location.search) history.replaceState(null, "", target);
+}
+
 function render() {
   if (state.stage === "welcome") renderWelcome();
   else if (state.stage === "quiz") renderQuiz();
   else renderResults();
+  syncURL();
 }
 
 function renderWelcome() {
@@ -101,14 +119,18 @@ function renderResults() {
   app.innerHTML = `
     <section class="results">
       <nav class="sidebar" aria-label="Your matches">
-        <h2>Your matches</h2>
+        ${state.shared ? `<p class="shared-note">Someone shared these results with you.</p>` : ""}
+        <h2>${state.shared ? "Shared matches" : "Your matches"}</h2>
         ${matches.map(m => `
           <button class="match" data-action="select" data-value="${esc(m.hobby.name)}" aria-current="${m === match}">
             <span class="emoji">${m.hobby.emoji}</span>
             <span><strong>${esc(m.hobby.name)}</strong>
               <span class="bar"><span class="track"><span class="fill" style="width:${m.percent}%"></span></span>${m.percent}% match</span></span>
           </button>`).join("")}
-        <button class="btn" data-action="retake">Retake quiz</button>
+        <div class="sidebar-actions">
+          <button class="btn primary" data-action="share" aria-live="polite">🔗 Share these results</button>
+          <button class="btn" data-action="retake">${state.shared ? "Take the quiz yourself" : "Retake quiz"}</button>
+        </div>
       </nav>
       ${match ? detailHTML(match) : `<p class="detail muted">No more matches — retake the quiz.</p>`}
     </section>`;
@@ -166,7 +188,31 @@ const actions = {
     return true;
   },
   dismiss(el) { state.dismissed.push(el.dataset.value); },
-  retake() { Object.assign(state, { stage: "welcome", index: 0, profile: emptyProfile(), dismissed: [], selected: null }); },
+  retake() { Object.assign(state, { stage: "welcome", index: 0, profile: emptyProfile(), dismissed: [], selected: null, shared: false }); },
+  share(el) {
+    const url = shareURL();
+    const done = label => { el.textContent = label; setTimeout(() => { el.textContent = "🔗 Share these results"; }, 2000); };
+    // Phones get the system share sheet; elsewhere the link is copied.
+    if (navigator.share && matchMedia("(pointer: coarse)").matches) {
+      navigator.share({ title: "My Hobby Maxer matches", url }).catch(() => {});
+    } else {
+      const showLink = () => {
+        // Clipboard blocked: show the link, selected, so it can be copied by hand.
+        let box = el.parentElement.querySelector(".share-link");
+        if (!box) {
+          box = Object.assign(document.createElement("input"), { className: "share-link", readOnly: true });
+          box.setAttribute("aria-label", "Link to these results");
+          el.after(box);
+        }
+        box.value = url;
+        box.focus();
+        box.select();
+        done("Copy the link below");
+      };
+      (navigator.clipboard?.writeText(url) ?? Promise.reject()).then(() => done("✓ Link copied"), showLink);
+    }
+    return true;
+  },
 };
 
 app.addEventListener("click", e => {
@@ -200,5 +246,5 @@ send.addEventListener("click", () => {
 });
 
 data = await fetch("catalog.json").then(r => r.json());
-applyDemo();
+if (!applyShareLink()) applyDemo();
 render();
