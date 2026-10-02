@@ -1,12 +1,20 @@
 # Hobby Maxer
 
-A Mac app that figures out which hobbies fit you — and gives you a 3-step plan to start one.
+A Mac app and website that figure out which hobbies fit you — and give you a 3-step plan to start one.
+
+**[Try it on the web →](https://amalmehta.github.io/HobbyMaxer/)**
 
 ![Your matches and a 3-step entry plan](docs/images/results.png)
 
 | Welcome | Quick questions | Pick what pulls at you |
 |---|---|---|
 | ![Welcome](docs/images/welcome.png) | ![Scale question](docs/images/quiz-scale.png) | ![Interests question](docs/images/quiz-interests.png) |
+
+### On the web
+
+| Desktop | Phone |
+|---|---|
+| ![Website results](docs/images/website-results.png) | <img src="docs/images/website-phone.jpg" alt="Website on a phone" width="260"> |
 
 ## How it matches
 
@@ -24,5 +32,6 @@ flowchart LR
 
 ## Links
 
+- [Website](https://amalmehta.github.io/HobbyMaxer/)
 - [Instructions](docs/INSTRUCTIONS.md) — set up, run and use
 - [File Structure](docs/FILE-STRUCTURE.md) — what's where

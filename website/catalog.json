@@ -1,0 +1,2647 @@
+{
+  "costs" : [
+    "Under $20",
+    "Under $100",
+    "Under $500",
+    "$500 or more"
+  ],
+  "goals" : [
+    {
+      "emoji" : "🌿",
+      "id" : "relax",
+      "label" : "Unwind"
+    },
+    {
+      "emoji" : "🔥",
+      "id" : "challenge",
+      "label" : "A challenge"
+    },
+    {
+      "emoji" : "👋",
+      "id" : "meetPeople",
+      "label" : "Meet people"
+    },
+    {
+      "emoji" : "🛠️",
+      "id" : "makeThings",
+      "label" : "Make things"
+    },
+    {
+      "emoji" : "💪",
+      "id" : "getFit",
+      "label" : "Get fit"
+    },
+    {
+      "emoji" : "🧠",
+      "id" : "learn",
+      "label" : "Learn something"
+    }
+  ],
+  "hobbies" : [
+    {
+      "cost" : 1,
+      "emoji" : "🧗",
+      "goals" : [
+        "challenge",
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Bouldering",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Most climbing gyms run a one-hour beginner class with shoe rental for about $25–35.",
+          "title" : "Book an intro session"
+        },
+        {
+          "detail" : "Stick to the easiest problems (V0–V1) for a month, focus on footwork, and buy your own shoes once you're hooked (~$90).",
+          "title" : "Climb twice a week on easy grades"
+        },
+        {
+          "detail" : "Most gyms have beginner nights or group chats — climbing with others helps you read routes and keeps you coming back.",
+          "title" : "Send a V3 and join a meetup"
+        }
+      ],
+      "tagline" : "Short, puzzle-like climbs on padded walls — no ropes, no partner needed.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.90000000000000002,
+        "creative" : 0.29999999999999999,
+        "handsOn" : 0.69999999999999996,
+        "outdoor" : 0.10000000000000001,
+        "social" : 0.59999999999999998,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🏓",
+      "goals" : [
+        "relax",
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Pickleball",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Look up parks or rec centers with open play — many lend paddles, and regulars teach the rules in five minutes.",
+          "title" : "Drop in to open play"
+        },
+        {
+          "detail" : "A $40–60 paddle is plenty. Watch one beginner video on dinking and the non-volley zone, then play twice a week.",
+          "title" : "Get a paddle and learn the kitchen rule"
+        },
+        {
+          "detail" : "Sign up for a beginner ladder or a 4-week clinic so you play people at your level and see your progress.",
+          "title" : "Join a ladder or clinic"
+        }
+      ],
+      "tagline" : "An easy-to-learn paddle sport played in friendly doubles.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.69999999999999996,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.40000000000000002,
+        "outdoor" : 0.59999999999999998,
+        "social" : 0.84999999999999998,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🧘",
+      "goals" : [
+        "relax",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Yoga",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Pick one free beginner series online and follow it on a towel or cheap mat.",
+          "title" : "Do three 20-minute beginner sessions"
+        },
+        {
+          "detail" : "A teacher fixes alignment in ways video can't. Most studios offer an intro week for $20–40.",
+          "title" : "Take an in-person beginner class"
+        },
+        {
+          "detail" : "Settle on a style you like (vinyasa, yin, hatha), get a decent mat, and track your sessions.",
+          "title" : "Build a three-times-a-week habit"
+        }
+      ],
+      "tagline" : "Stretch, breathe and build strength — at home or in a studio.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.5,
+        "creative" : 0.20000000000000001,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0.20000000000000001,
+        "social" : 0.29999999999999999,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🥋",
+      "goals" : [
+        "challenge",
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Brazilian Jiu-Jitsu",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Nearly every gym offers one. Wear athletic clothes without zippers; they'll loan you a gi.",
+          "title" : "Take a free trial class"
+        },
+        {
+          "detail" : "Buy a gi ($60–100), stick to fundamentals classes, and tap early and often — nobody minds.",
+          "title" : "Do two classes a week for a month"
+        },
+        {
+          "detail" : "Open mats let you practice with different partners; a first belt stripe usually comes around month 2–4.",
+          "title" : "Roll at open mat and earn a stripe"
+        }
+      ],
+      "tagline" : "A grappling martial art that plays like physical chess.",
+      "time" : 1,
+      "traits" : {
+        "active" : 1,
+        "creative" : 0.20000000000000001,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0,
+        "social" : 0.80000000000000004,
+        "structured" : 0.90000000000000002
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🏃",
+      "goals" : [
+        "relax",
+        "challenge",
+        "getFit"
+      ],
+      "interests" : [
+        "sports",
+        "nature"
+      ],
+      "name" : "Trail Running",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Find an easy, well-marked trail and alternate two minutes running with one minute walking for 20–30 minutes.",
+          "title" : "Walk-run a local trail"
+        },
+        {
+          "detail" : "Trail shoes ($100–140) grip loose ground. Build to 30 minutes of easy running and walk hills without guilt.",
+          "title" : "Get trail shoes and run three times a week"
+        },
+        {
+          "detail" : "Pick a beginner-friendly race 8–10 weeks out — a date on the calendar does wonders.",
+          "title" : "Enter a 5K or 10K trail race"
+        }
+      ],
+      "tagline" : "Running, but on dirt paths through woods and hills.",
+      "time" : 1,
+      "traits" : {
+        "active" : 1,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.20000000000000001,
+        "outdoor" : 1,
+        "social" : 0.29999999999999999,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 3,
+      "emoji" : "🚴",
+      "goals" : [
+        "relax",
+        "challenge",
+        "getFit"
+      ],
+      "interests" : [
+        "sports",
+        "nature"
+      ],
+      "name" : "Cycling",
+      "space" : 1,
+      "steps" : [
+        {
+          "detail" : "Dust off any bike or rent one for an afternoon and ride a quiet 10-mile loop or bike path.",
+          "title" : "Ride what you have, or rent"
+        },
+        {
+          "detail" : "Buy a used road or gravel bike that fits you ($400–900) plus a helmet, and learn to fix a flat.",
+          "title" : "Get a bike that fits and learn basic repair"
+        },
+        {
+          "detail" : "Bike shops host weekly no-drop rides where nobody gets left behind — aim for 30 miles by month three.",
+          "title" : "Join a no-drop group ride"
+        }
+      ],
+      "tagline" : "Explore miles of road or gravel under your own power.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.90000000000000002,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.40000000000000002,
+        "outdoor" : 1,
+        "social" : 0.40000000000000002,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🏊",
+      "goals" : [
+        "relax",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Swimming",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Go during lap swim at a local pool, rest as much as you need, and count your lengths.",
+          "title" : "Swim a 30-minute session"
+        },
+        {
+          "detail" : "Take a few adult lessons or a stroke clinic — breathing and body position are where the gains are.",
+          "title" : "Fix your stroke"
+        },
+        {
+          "detail" : "Follow a simple beginner plan three times a week, or join a masters group for coaching and company.",
+          "title" : "Swim 1,000 meters without stopping"
+        }
+      ],
+      "tagline" : "Full-body, low-impact laps with a meditative rhythm.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.90000000000000002,
+        "creative" : 0,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0.29999999999999999,
+        "social" : 0.20000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "💃",
+      "goals" : [
+        "meetPeople",
+        "getFit",
+        "learn"
+      ],
+      "interests" : [
+        "performance",
+        "music"
+      ],
+      "name" : "Salsa Dancing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Many venues run a cheap 45-minute lesson right before the social dance. No partner needed — you rotate.",
+          "title" : "Go to a lesson before a social"
+        },
+        {
+          "detail" : "Learn the basic step, cross-body lead and turns properly; practice footwork to music for 10 minutes a day.",
+          "title" : "Take a 4-week fundamentals series"
+        },
+        {
+          "detail" : "Go to a social and dance at least five songs. Everyone there was a beginner once.",
+          "title" : "Dance a full social night"
+        }
+      ],
+      "tagline" : "Partner dancing with great music and a social night out built in.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.80000000000000004,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.20000000000000001,
+        "outdoor" : 0,
+        "social" : 0.94999999999999996,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🏹",
+      "goals" : [
+        "relax",
+        "challenge"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Archery",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Indoor ranges rent equipment and run one-hour beginner sessions for about $30.",
+          "title" : "Book an intro lesson at a range"
+        },
+        {
+          "detail" : "Shoot weekly on rental gear and work on a consistent stance and anchor before buying a bow ($150–300).",
+          "title" : "Practice form weekly"
+        },
+        {
+          "detail" : "Join a beginner league or score a full round, then set a number to beat next month.",
+          "title" : "Shoot a scored round"
+        }
+      ],
+      "tagline" : "Focus, form and the satisfaction of hitting the center.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.40000000000000002,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0.5,
+        "social" : 0.29999999999999999,
+        "structured" : 0.80000000000000004
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🛹",
+      "goals" : [
+        "challenge",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Skateboarding",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A $70–120 complete from a skate shop beats a toy-store board. Add a helmet and wrist guards.",
+          "title" : "Get a real board and pads"
+        },
+        {
+          "detail" : "Spend 20 minutes a day in a smooth parking lot until riding feels boring — then you're ready for tricks.",
+          "title" : "Practice pushing, turning and stopping"
+        },
+        {
+          "detail" : "Go during quiet morning hours, watch the etiquette, and make the ollie your month-three goal.",
+          "title" : "Land an ollie and visit a skatepark"
+        }
+      ],
+      "tagline" : "Learn to roll, carve and eventually pop your first ollie.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.80000000000000004,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.5,
+        "outdoor" : 0.90000000000000002,
+        "social" : 0.5,
+        "structured" : 0.29999999999999999
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "⚽",
+      "goals" : [
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Rec Sports League",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Search for adult social leagues in your city; most let you sign up solo and place you on a team.",
+          "title" : "Find a league that takes free agents"
+        },
+        {
+          "detail" : "Seasons run 6–10 weeks with one game a week — show up, go to the post-game hangout, learn names.",
+          "title" : "Play a full season"
+        },
+        {
+          "detail" : "Join the players you liked for next season, or bring friends and captain your own team.",
+          "title" : "Re-up with your favorite people"
+        }
+      ],
+      "tagline" : "Casual adult teams — kickball, soccer, volleyball and more.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.80000000000000004,
+        "creative" : 0,
+        "handsOn" : 0.20000000000000001,
+        "outdoor" : 0.80000000000000004,
+        "social" : 1,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🥾",
+      "goals" : [
+        "relax",
+        "getFit"
+      ],
+      "interests" : [
+        "nature"
+      ],
+      "name" : "Hiking",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Pick a well-rated easy trail nearby, bring water and a snack, and tell someone where you're going.",
+          "title" : "Do a 3–5 mile marked trail"
+        },
+        {
+          "detail" : "That's all the gear you need. Hike every other weekend and gradually add elevation.",
+          "title" : "Get proper shoes and a daypack"
+        },
+        {
+          "detail" : "Choose a signature hike in your region as a goal, or join a hiking club's group outing.",
+          "title" : "Complete a 10-mile or summit hike"
+        }
+      ],
+      "tagline" : "Walk somewhere beautiful and let your head clear.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.59999999999999998,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 1,
+        "social" : 0.40000000000000002,
+        "structured" : 0.29999999999999999
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🛶",
+      "goals" : [
+        "relax",
+        "getFit"
+      ],
+      "interests" : [
+        "nature",
+        "sports"
+      ],
+      "name" : "Kayaking",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Lakes and rivers often have rental shacks — pick a calm, sheltered day and wear the life vest.",
+          "title" : "Rent a kayak for two hours"
+        },
+        {
+          "detail" : "Learn strokes, steering and how to get back in after a capsize in a half-day course.",
+          "title" : "Take a basic paddling course"
+        },
+        {
+          "detail" : "Plan a half-day trip, or join a paddling club for group outings and boats before you buy your own.",
+          "title" : "Paddle a longer route or join a club"
+        }
+      ],
+      "tagline" : "Paddle calm lakes and rivers at water level.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.59999999999999998,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 1,
+        "social" : 0.40000000000000002,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🐦",
+      "goals" : [
+        "relax",
+        "learn"
+      ],
+      "interests" : [
+        "nature",
+        "animals"
+      ],
+      "name" : "Birdwatching",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "The free Merlin Bird ID app identifies birds by sound. Walk a park for 30 minutes and see what it hears.",
+          "title" : "Install Merlin and take a walk"
+        },
+        {
+          "detail" : "Basic 8x42 binoculars (~$100) change everything. Log sightings in eBird and learn your 20 most common birds.",
+          "title" : "Get binoculars and keep a list"
+        },
+        {
+          "detail" : "Audubon chapters and nature centers run free guided walks — experienced birders teach tricks no app can.",
+          "title" : "Join a local bird walk"
+        }
+      ],
+      "tagline" : "Learn to spot and name the birds that are already around you.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0,
+        "outdoor" : 0.90000000000000002,
+        "social" : 0.20000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🌱",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "nature",
+        "food"
+      ],
+      "name" : "Container Gardening",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Basil, mint and chives in a sunny window or balcony — pots, soil and starts cost about $20.",
+          "title" : "Pot three easy herbs"
+        },
+        {
+          "detail" : "Learn your growing zone and sun hours, then add tomatoes, lettuce or peppers in bigger pots.",
+          "title" : "Plan a small container garden"
+        },
+        {
+          "detail" : "Aim for one homegrown meal by month three, and swap seeds and cuttings with a local gardening group.",
+          "title" : "Cook something you grew"
+        }
+      ],
+      "tagline" : "Grow herbs, vegetables and flowers in pots — even on a balcony.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.29999999999999999,
+        "creative" : 0.40000000000000002,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0.59999999999999998,
+        "social" : 0.10000000000000001,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🍄",
+      "goals" : [
+        "relax",
+        "learn"
+      ],
+      "interests" : [
+        "nature",
+        "food"
+      ],
+      "name" : "Foraging",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Start with easy, no-lookalike plants in your area (blackberries, dandelion) using a regional field guide.",
+          "title" : "Learn three foolproof plants"
+        },
+        {
+          "detail" : "Naturalists and mushroom societies run walks — the safest way to learn. Never eat anything you're not certain of.",
+          "title" : "Go on a guided foraging walk"
+        },
+        {
+          "detail" : "Keep a journal of finds and seasons, and cook one dish from something an expert has confirmed.",
+          "title" : "Cook a foraged meal"
+        }
+      ],
+      "tagline" : "Find wild edibles on walks — mushrooms, berries and greens.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.40000000000000002,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.40000000000000002,
+        "outdoor" : 1,
+        "social" : 0.29999999999999999,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🔭",
+      "goals" : [
+        "relax",
+        "learn"
+      ],
+      "interests" : [
+        "science",
+        "nature"
+      ],
+      "name" : "Stargazing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Use a free sky app on a clear night to find Orion, the Big Dipper, Cassiopeia and more.",
+          "title" : "Learn five constellations"
+        },
+        {
+          "detail" : "Ordinary binoculars show lunar craters and Jupiter's moons. Learn to read a monthly sky chart.",
+          "title" : "Point binoculars at the Moon and planets"
+        },
+        {
+          "detail" : "Astronomy clubs host free public nights where you can look through big telescopes before buying one.",
+          "title" : "Go to a star party"
+        }
+      ],
+      "tagline" : "Find planets, galaxies and constellations from your backyard.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0.80000000000000004,
+        "social" : 0.20000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🎣",
+      "goals" : [
+        "relax",
+        "challenge"
+      ],
+      "interests" : [
+        "nature",
+        "sports"
+      ],
+      "name" : "Fly Fishing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Fly shops often run free or cheap casting clinics on a lawn — no license needed to practice.",
+          "title" : "Take a casting lesson"
+        },
+        {
+          "detail" : "A beginner rod and reel ($150–250) plus a fishing license. Practice casting 15 minutes a day.",
+          "title" : "Get a starter setup and license"
+        },
+        {
+          "detail" : "A half-day guided trip on an easy river teaches you to read water — and you'll likely land a trout.",
+          "title" : "Catch your first fish on a guided trip"
+        }
+      ],
+      "tagline" : "An elegant, absorbing way to fish rivers and streams.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.40000000000000002,
+        "creative" : 0.20000000000000001,
+        "handsOn" : 0.69999999999999996,
+        "outdoor" : 1,
+        "social" : 0.20000000000000001,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🗺️",
+      "goals" : [
+        "relax",
+        "challenge"
+      ],
+      "interests" : [
+        "nature",
+        "games"
+      ],
+      "name" : "Geocaching",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Install the free Geocaching app and look for easy traditional caches near you.",
+          "title" : "Find your first three caches"
+        },
+        {
+          "detail" : "Move on to multi-caches and puzzle caches, and carry small trinkets to trade.",
+          "title" : "Try harder cache types"
+        },
+        {
+          "detail" : "After about 20 finds, hide one in a spot you love and go to a local geocaching event.",
+          "title" : "Hide your own cache"
+        }
+      ],
+      "tagline" : "A real-world treasure hunt using GPS and hidden containers.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.40000000000000002,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0.90000000000000002,
+        "social" : 0.29999999999999999,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🌳",
+      "goals" : [
+        "relax",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "nature",
+        "art"
+      ],
+      "name" : "Bonsai",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Skip mall bonsai. A $15–30 nursery shrub is the classic starter — learn its watering and light needs.",
+          "title" : "Buy a nursery juniper or ficus"
+        },
+        {
+          "detail" : "Get basic shears and wire, watch a styling demo, then prune and wire your tree into a simple shape.",
+          "title" : "Do your first styling"
+        },
+        {
+          "detail" : "Clubs run hands-on workshops where experienced members guide you — invaluable at repotting time.",
+          "title" : "Join a bonsai club workshop"
+        }
+      ],
+      "tagline" : "Shape living miniature trees over seasons and years.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0.40000000000000002,
+        "social" : 0.10000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 3,
+      "emoji" : "🐝",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "animals",
+        "nature"
+      ],
+      "name" : "Beekeeping",
+      "space" : 2,
+      "steps" : [
+        {
+          "detail" : "Go to a meeting or open-hive day — many pair new keepers with mentors and run winter courses.",
+          "title" : "Visit a local beekeepers' association"
+        },
+        {
+          "detail" : "Learn hive biology, confirm zoning rules, and order a hive, suit and bees ($500–800) for spring.",
+          "title" : "Take a course and check local rules"
+        },
+        {
+          "detail" : "Install bees in spring with your mentor nearby and inspect weekly; first honey usually comes in year two.",
+          "title" : "Install your first colony"
+        }
+      ],
+      "tagline" : "Keep a hive, help pollinators and harvest your own honey.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.40000000000000002,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 1,
+        "social" : 0.29999999999999999,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🐠",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "animals",
+        "art",
+        "nature"
+      ],
+      "name" : "Aquascaping",
+      "space" : 1,
+      "steps" : [
+        {
+          "detail" : "Browse aquascaping galleries, pick a style, and visit a local fish store to see planted tanks.",
+          "title" : "Study scapes you love"
+        },
+        {
+          "detail" : "A 10–20 gallon tank, light, filter, substrate and easy plants ($150–300). Let it cycle 4–6 weeks before fish.",
+          "title" : "Set up a small planted tank"
+        },
+        {
+          "detail" : "Add hardy fish or shrimp, trim and rearrange plants, and post your scape to a forum for feedback.",
+          "title" : "Add fish and refine"
+        }
+      ],
+      "tagline" : "Design planted underwater landscapes in a fish tank.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🍞",
+      "goals" : [
+        "relax",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "food"
+      ],
+      "name" : "Sourdough Baking",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Mix flour and water in a jar and feed it daily for 7–10 days until it doubles reliably.",
+          "title" : "Start a starter"
+        },
+        {
+          "detail" : "Follow one well-tested beginner recipe exactly, bake in a Dutch oven, and take notes each time.",
+          "title" : "Bake a basic loaf every weekend"
+        },
+        {
+          "detail" : "Aim for a loaf with good rise and open crumb, and give one away — or share some starter.",
+          "title" : "Nail an open crumb, then share"
+        }
+      ],
+      "tagline" : "Bake crackly, chewy bread from wild yeast you keep alive.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "creative" : 0.5,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🫙",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "food",
+        "science"
+      ],
+      "name" : "Fermentation",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Just cabbage and salt in a jar — about $5. Taste it every few days.",
+          "title" : "Make a jar of sauerkraut"
+        },
+        {
+          "detail" : "Try kimchi, pickles and kombucha. A kitchen scale and airlock lids make it easy.",
+          "title" : "Branch out to three ferments"
+        },
+        {
+          "detail" : "Create a hot sauce or kraut flavor, serve it at a meal, and swap jars with friends.",
+          "title" : "Invent your own recipe"
+        }
+      ],
+      "tagline" : "Make kimchi, sauerkraut, kombucha and hot sauce.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.5,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🍳",
+      "goals" : [
+        "meetPeople",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "food"
+      ],
+      "name" : "Cooking World Cuisines",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Choose a cuisine you love eating, find a trusted recipe, and shop a specialty grocery for ingredients.",
+          "title" : "Pick a cuisine and cook one dish"
+        },
+        {
+          "detail" : "Cook from one good cookbook for a month and learn its core techniques and staples.",
+          "title" : "Master five dishes and the pantry"
+        },
+        {
+          "detail" : "Invite friends for a full meal from that cuisine — then pick your next one.",
+          "title" : "Host a themed dinner"
+        }
+      ],
+      "tagline" : "Cook your way around the world, one cuisine at a time.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.40000000000000002,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "☕",
+      "goals" : [
+        "relax",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "food",
+        "science"
+      ],
+      "name" : "Home Coffee",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A $20 pour-over cone and fresh beans from a local roaster beat most café drip.",
+          "title" : "Buy fresh beans and try a pour-over"
+        },
+        {
+          "detail" : "A decent grinder ($100–150) and scale let you experiment with ratio, grind and temperature.",
+          "title" : "Get a burr grinder and weigh everything"
+        },
+        {
+          "detail" : "Cup three origins together, then decide whether to go deeper into espresso or roasting.",
+          "title" : "Taste side by side"
+        }
+      ],
+      "tagline" : "Dial in pour-overs and espresso like a café.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.29999999999999999,
+        "handsOn" : 0.69999999999999996,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.80000000000000004
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🍺",
+      "goals" : [
+        "meetPeople",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "food",
+        "science"
+      ],
+      "name" : "Homebrewing",
+      "space" : 1,
+      "steps" : [
+        {
+          "detail" : "A 1-gallon kit (~$50) fits on a stovetop and teaches sanitation and fermentation.",
+          "title" : "Brew a one-gallon kit"
+        },
+        {
+          "detail" : "Bottle your first batch after two weeks, then brew a different style and compare.",
+          "title" : "Bottle it and brew batch two"
+        },
+        {
+          "detail" : "Bring bottles to a homebrew club for honest feedback, or enter a beginner competition.",
+          "title" : "Share at a homebrew club"
+        }
+      ],
+      "tagline" : "Brew your own beer or cider from scratch.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "creative" : 0.5,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.29999999999999999,
+        "structured" : 0.80000000000000004
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🎨",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "art"
+      ],
+      "name" : "Watercolor Painting",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A student pan set, two brushes and real watercolor paper cost about $30. Follow one beginner tutorial.",
+          "title" : "Paint with a starter set"
+        },
+        {
+          "detail" : "Spend two weeks on washes, gradients and layering, then paint one small subject a day.",
+          "title" : "Practice washes, then paint daily"
+        },
+        {
+          "detail" : "Paint five on a theme (your street, plants, mugs) and post them or join a local art group.",
+          "title" : "Finish a series and share it"
+        }
+      ],
+      "tagline" : "Loose, luminous paintings with just water and pigment.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 1,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0.20000000000000001,
+        "social" : 0.10000000000000001,
+        "structured" : 0.29999999999999999
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "✏️",
+      "goals" : [
+        "relax",
+        "meetPeople",
+        "makeThings"
+      ],
+      "interests" : [
+        "art"
+      ],
+      "name" : "Urban Sketching",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A pocket sketchbook and a pen. Draw what's in front of you for 15 minutes — wobbly lines are the point.",
+          "title" : "Fill five pages at a café"
+        },
+        {
+          "detail" : "Learn one- and two-point perspective, and add a water brush or a few markers for color.",
+          "title" : "Learn basic perspective"
+        },
+        {
+          "detail" : "Urban Sketchers groups meet worldwide to draw together and share sketchbooks — free and welcoming.",
+          "title" : "Join an Urban Sketchers meetup"
+        }
+      ],
+      "tagline" : "Draw the world around you, on location, in a pocket sketchbook.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.5,
+        "outdoor" : 0.69999999999999996,
+        "social" : 0.40000000000000002,
+        "structured" : 0.20000000000000001
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🏺",
+      "goals" : [
+        "relax",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "crafts",
+        "art"
+      ],
+      "name" : "Pottery",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Studios run taster sessions for about $40–60 — you'll get your hands in clay right away.",
+          "title" : "Take a one-night wheel class"
+        },
+        {
+          "detail" : "Courses include clay, glazes, firing and studio time ($250–400). Expect a lot of collapsed pots at first.",
+          "title" : "Sign up for a 6–8 week course"
+        },
+        {
+          "detail" : "Aim for four mugs or bowls that roughly match — then look into a studio membership.",
+          "title" : "Make a matching set of four"
+        }
+      ],
+      "tagline" : "Throw bowls and mugs on the wheel and glaze them yourself.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.29999999999999999,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 1,
+        "outdoor" : 0,
+        "social" : 0.5,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🖋️",
+      "goals" : [
+        "relax",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "art",
+        "words"
+      ],
+      "name" : "Calligraphy",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "One brush pen (~$5) and printer paper: learn thin upstrokes and thick downstrokes.",
+          "title" : "Practice drills with a brush pen"
+        },
+        {
+          "detail" : "Follow practice sheets for a lowercase alphabet in one style, 15 minutes a day.",
+          "title" : "Work through a full alphabet"
+        },
+        {
+          "detail" : "Make a card, a quote print or place cards for an event — real use makes it stick.",
+          "title" : "Letter a real piece"
+        }
+      ],
+      "tagline" : "Turn handwriting into art with brush pens or a dip nib.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.69999999999999996,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.80000000000000004
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "📷",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "art",
+        "tech"
+      ],
+      "name" : "Photography",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Use your phone's manual mode and take one considered photo every day for a week.",
+          "title" : "Shoot one deliberate photo a day"
+        },
+        {
+          "detail" : "Understand aperture, shutter speed and ISO; if you're hooked, a used mirrorless camera runs $300–500.",
+          "title" : "Learn the exposure triangle"
+        },
+        {
+          "detail" : "Shoot a 10-photo series, edit it consistently, and join a photo walk or critique group.",
+          "title" : "Complete a themed project"
+        }
+      ],
+      "tagline" : "Learn to see light and composition — with your phone or a camera.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.29999999999999999,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.40000000000000002,
+        "outdoor" : 0.69999999999999996,
+        "social" : 0.29999999999999999,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🖌️",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "art",
+        "tech"
+      ],
+      "name" : "Digital Illustration",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Try a free app like Krita (or Procreate on an iPad) and copy a simple illustration you like.",
+          "title" : "Draw with what you have"
+        },
+        {
+          "detail" : "Follow a beginner course on shapes, values and color. A pen tablet starts around $60.",
+          "title" : "Learn fundamentals with a course"
+        },
+        {
+          "detail" : "Take three illustrations start to finish and post them, or join a weekly drawing challenge.",
+          "title" : "Finish three polished pieces"
+        }
+      ],
+      "tagline" : "Draw and paint on a tablet with unlimited undo.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "creative" : 1,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🖼️",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "art",
+        "crafts"
+      ],
+      "name" : "Linocut Printmaking",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A starter kit with lino, cutters, ink and a roller is about $30. Carve a bold, simple shape.",
+          "title" : "Carve a simple block"
+        },
+        {
+          "detail" : "Print ten copies on decent paper, experimenting with pressure and ink thickness.",
+          "title" : "Print an edition of ten"
+        },
+        {
+          "detail" : "Learn registration for a two-color design, then make cards or posters to give away or sell.",
+          "title" : "Make a two-color print"
+        }
+      ],
+      "tagline" : "Carve designs into blocks and print them by hand.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "social" : 0.20000000000000001,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🧶",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "crafts"
+      ],
+      "name" : "Knitting",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Medium-weight yarn and size 8 needles (~$15) plus a beginner video is all you need.",
+          "title" : "Cast on and knit a square"
+        },
+        {
+          "detail" : "Learn purling and ribbing, then finish your first wearable project.",
+          "title" : "Knit a scarf or hat"
+        },
+        {
+          "detail" : "Yarn shops and libraries host knit nights — bring your project and learn your next technique there.",
+          "title" : "Join a knitting circle"
+        }
+      ],
+      "tagline" : "Make cozy things with two needles and a ball of yarn.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "social" : 0.29999999999999999,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 3,
+      "emoji" : "🪚",
+      "goals" : [
+        "challenge",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "crafts"
+      ],
+      "name" : "Woodworking",
+      "space" : 2,
+      "steps" : [
+        {
+          "detail" : "Makerspaces and community colleges run intro classes with safety training and tool access.",
+          "title" : "Take an intro class at a makerspace"
+        },
+        {
+          "detail" : "Start with a simple project — measure twice, cut once, finish with oil.",
+          "title" : "Build a box or cutting board"
+        },
+        {
+          "detail" : "A step stool, bookshelf or side table — then decide which tools are worth owning.",
+          "title" : "Build a small piece of furniture"
+        }
+      ],
+      "tagline" : "Build furniture and useful objects with your own hands.",
+      "time" : 2,
+      "traits" : {
+        "active" : 0.5,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 1,
+        "outdoor" : 0.10000000000000001,
+        "social" : 0.20000000000000001,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "👜",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "crafts"
+      ],
+      "name" : "Leathercraft",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A beginner kit with pre-cut leather and tools runs $40–60 and teaches saddle stitching.",
+          "title" : "Make a card wallet from a kit"
+        },
+        {
+          "detail" : "Get a few tools and veg-tan leather; practice burnishing edges and cutting your own patterns.",
+          "title" : "Learn edge finishing and patterns"
+        },
+        {
+          "detail" : "Design and make a belt, watch strap or small bag from scratch — a great gift.",
+          "title" : "Design an original piece"
+        }
+      ],
+      "tagline" : "Hand-stitch wallets, belts and bags that last for decades.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 1,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🧵",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "crafts",
+        "art"
+      ],
+      "name" : "Sewing",
+      "space" : 1,
+      "steps" : [
+        {
+          "detail" : "Borrow or buy a basic machine and hem trousers, replace a button or take in a shirt.",
+          "title" : "Fix something you own"
+        },
+        {
+          "detail" : "Pick a pattern labelled beginner (tote bag, pajama pants) and learn to cut, pin and press.",
+          "title" : "Sew a beginner pattern"
+        },
+        {
+          "detail" : "Sew a simple top or skirt you actually wear out — then take a fit class at a sewing studio.",
+          "title" : "Make a garment you'll wear"
+        }
+      ],
+      "tagline" : "Make and alter your own clothes, exactly how you like them.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "social" : 0.20000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🪡",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "crafts",
+        "art"
+      ],
+      "name" : "Embroidery",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A hoop, needles, floss and cotton (~$15). Learn back stitch, satin stitch and French knots.",
+          "title" : "Stitch a sampler"
+        },
+        {
+          "detail" : "Follow a beginner pattern start to finish and frame it in its hoop.",
+          "title" : "Complete a printed pattern"
+        },
+        {
+          "detail" : "Add your own design to a jacket, tote or shirt.",
+          "title" : "Embroider something you wear"
+        }
+      ],
+      "tagline" : "Paint with thread — patches, hoops and custom clothes.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "📚",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "crafts",
+        "words"
+      ],
+      "name" : "Bookbinding",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Paper, an awl, waxed thread and a needle — under $20 — make a simple pamphlet-stitch notebook.",
+          "title" : "Make a stitched notebook"
+        },
+        {
+          "detail" : "Learn two classic bindings and how to cover boards with cloth or paper.",
+          "title" : "Try coptic and case binding"
+        },
+        {
+          "detail" : "Bind a hardcover journal as a gift, or rebind a beloved paperback.",
+          "title" : "Bind a full hardcover book"
+        }
+      ],
+      "tagline" : "Hand-make journals and books that open flat.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.80000000000000004
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🐉",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "crafts",
+        "games",
+        "art"
+      ],
+      "name" : "Miniature Painting",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A starter set with minis, paints and a brush is $30–50. Prime, base coat and wash.",
+          "title" : "Paint one starter mini"
+        },
+        {
+          "detail" : "Paint a small squad, practicing one technique each: drybrushing, layering, edge highlights.",
+          "title" : "Learn layering and highlighting"
+        },
+        {
+          "detail" : "Finish one mini with a detailed base, or bring a painted team to a local game night.",
+          "title" : "Paint a display piece"
+        }
+      ],
+      "tagline" : "Paint tiny fantasy figures in astonishing detail.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.29999999999999999,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🦢",
+      "goals" : [
+        "relax",
+        "challenge"
+      ],
+      "interests" : [
+        "crafts",
+        "art"
+      ],
+      "name" : "Origami",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Crane, jumping frog, box, boat and lily — printer paper cut square works fine.",
+          "title" : "Fold five classic models"
+        },
+        {
+          "detail" : "A pack of origami paper (~$10) and a beginner book; learn to read folding notation.",
+          "title" : "Get origami paper and learn diagrams"
+        },
+        {
+          "detail" : "Take on a modular or complex model like a kusudama or dragon, and gift a few.",
+          "title" : "Fold an intermediate model"
+        }
+      ],
+      "tagline" : "Fold a single square of paper into almost anything.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0,
+        "structured" : 0.90000000000000002
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🎸",
+      "goals" : [
+        "challenge",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "music"
+      ],
+      "name" : "Guitar",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Borrow or buy a beginner acoustic (~$150) and learn G, C, D and Em — they cover hundreds of songs.",
+          "title" : "Learn four chords"
+        },
+        {
+          "detail" : "Follow a structured beginner course (many are free) for chord changes and strumming patterns.",
+          "title" : "Practice 15 minutes a day"
+        },
+        {
+          "detail" : "Play one complete song start to finish for a friend — or at an open mic.",
+          "title" : "Play a full song for someone"
+        }
+      ],
+      "tagline" : "Strum songs you love within weeks.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.29999999999999999,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🎹",
+      "goals" : [
+        "relax",
+        "challenge",
+        "learn"
+      ],
+      "interests" : [
+        "music"
+      ],
+      "name" : "Piano",
+      "space" : 1,
+      "steps" : [
+        {
+          "detail" : "A used 61-key keyboard ($80–150) plus a learning app gets you playing simple melodies.",
+          "title" : "Try an app on a keyboard"
+        },
+        {
+          "detail" : "Spend a month on treble and bass clef, hand independence and simple chords.",
+          "title" : "Learn to read basic notation"
+        },
+        {
+          "detail" : "Learn one beginner piece end to end — a few lessons early on will fix technique.",
+          "title" : "Play a full piece"
+        }
+      ],
+      "tagline" : "Learn chords, melodies and the foundations of all music.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.69999999999999996,
+        "outdoor" : 0,
+        "social" : 0.20000000000000001,
+        "structured" : 0.80000000000000004
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🎤",
+      "goals" : [
+        "relax",
+        "meetPeople",
+        "learn"
+      ],
+      "interests" : [
+        "music",
+        "performance"
+      ],
+      "name" : "Choir Singing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Many community choirs welcome anyone. Go to an open rehearsal — they'll place you in a section.",
+          "title" : "Find a no-audition community choir"
+        },
+        {
+          "detail" : "Practice with rehearsal tracks during the week and learn basic breathing and posture.",
+          "title" : "Learn your part"
+        },
+        {
+          "detail" : "Perform in the end-of-term concert — the moment it all comes together.",
+          "title" : "Sing in a concert"
+        }
+      ],
+      "tagline" : "Sing with others — no solo pressure, one big shared sound.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0,
+        "social" : 0.94999999999999996,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🎧",
+      "goals" : [
+        "meetPeople",
+        "makeThings"
+      ],
+      "interests" : [
+        "music",
+        "tech"
+      ],
+      "name" : "DJing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Try free DJ software on your laptop and learn to beatmatch two tracks.",
+          "title" : "Mix in free software"
+        },
+        {
+          "detail" : "A beginner two-channel controller ($150–250) and a library of tracks sorted by energy and tempo.",
+          "title" : "Get a controller and build a crate"
+        },
+        {
+          "detail" : "Record a mix, then play for friends or at a local open-decks night.",
+          "title" : "Play a 30-minute set for people"
+        }
+      ],
+      "tagline" : "Blend tracks together and read a room.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.29999999999999999,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0,
+        "social" : 0.59999999999999998,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🎛️",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "music",
+        "tech"
+      ],
+      "name" : "Music Production",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "GarageBand is free on your Mac — follow a beginner tutorial and make an 8-bar loop.",
+          "title" : "Make a loop in GarageBand"
+        },
+        {
+          "detail" : "Recreate a song you love to understand its structure, then learn EQ and compression.",
+          "title" : "Learn arrangement and mixing basics"
+        },
+        {
+          "detail" : "Finish a 2–3 minute track and share it — finishing is the real skill.",
+          "title" : "Release a finished track"
+        }
+      ],
+      "tagline" : "Make your own tracks on a laptop.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "creative" : 1,
+        "handsOn" : 0.40000000000000002,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🎭",
+      "goals" : [
+        "challenge",
+        "meetPeople"
+      ],
+      "interests" : [
+        "performance"
+      ],
+      "name" : "Improv Comedy",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Improv theaters run cheap drop-in classes for total beginners. It's mostly games and laughing.",
+          "title" : "Take a drop-in workshop"
+        },
+        {
+          "detail" : "A 6–8 week course ($200–350) teaches yes-and, listening and building scenes.",
+          "title" : "Sign up for a Level 1 course"
+        },
+        {
+          "detail" : "Most courses end in a low-stakes showcase for friends — then join a jam or practice group.",
+          "title" : "Perform in a class show"
+        }
+      ],
+      "tagline" : "Make up scenes on the spot — and get braver everywhere.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.5,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0,
+        "outdoor" : 0,
+        "social" : 1,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🎬",
+      "goals" : [
+        "meetPeople",
+        "makeThings"
+      ],
+      "interests" : [
+        "performance"
+      ],
+      "name" : "Community Theater",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Crew is always needed and is the easiest way in.",
+          "title" : "See a show and ask to volunteer"
+        },
+        {
+          "detail" : "Audition for a small role, or join set building, props or lighting for the next show.",
+          "title" : "Audition or join a crew"
+        },
+        {
+          "detail" : "See a production through rehearsals to opening night — the cast party is the reward.",
+          "title" : "Be part of opening night"
+        }
+      ],
+      "tagline" : "Act, build sets or run lights for local productions.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0.40000000000000002,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0,
+        "social" : 1,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🃏",
+      "goals" : [
+        "challenge",
+        "meetPeople",
+        "learn"
+      ],
+      "interests" : [
+        "performance"
+      ],
+      "name" : "Card Magic",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A standard deck and a beginner book or video — self-working tricks need no sleight of hand.",
+          "title" : "Learn three self-working tricks"
+        },
+        {
+          "detail" : "Learn a double lift and a basic control in front of a mirror, 10 minutes a day.",
+          "title" : "Practice one sleight daily"
+        },
+        {
+          "detail" : "Put three tricks into a short routine and perform it for friends — then visit a magic club.",
+          "title" : "Perform a five-minute routine"
+        }
+      ],
+      "tagline" : "Learn sleight of hand and amaze people up close.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0,
+        "social" : 0.5,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "✍️",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "words"
+      ],
+      "name" : "Creative Writing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Use a prompt and write a little each day — don't edit, just finish.",
+          "title" : "Write three 500-word pieces"
+        },
+        {
+          "detail" : "Read short stories in your genre, then write and revise one 2,000-word story.",
+          "title" : "Read like a writer, then draft a story"
+        },
+        {
+          "detail" : "Join a critique group, or submit to a small magazine or contest.",
+          "title" : "Share it with a writing group"
+        }
+      ],
+      "tagline" : "Write short stories, essays or poetry.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 1,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.29999999999999999
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🗣️",
+      "goals" : [
+        "challenge",
+        "meetPeople",
+        "learn"
+      ],
+      "interests" : [
+        "words"
+      ],
+      "name" : "Learning a Language",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Start an app streak and learn greetings and your first 100 common words.",
+          "title" : "Do 15 minutes a day"
+        },
+        {
+          "detail" : "Work through a structured course and watch easy shows or videos in the language.",
+          "title" : "Add a course and easy listening"
+        },
+        {
+          "detail" : "Book a tutor session or go to a language exchange and speak for 20 minutes.",
+          "title" : "Have a real conversation"
+        }
+      ],
+      "tagline" : "Pick up a new language and a new way of seeing.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.29999999999999999,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0,
+        "social" : 0.5,
+        "structured" : 0.80000000000000004
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "📖",
+      "goals" : [
+        "relax",
+        "meetPeople",
+        "learn"
+      ],
+      "interests" : [
+        "words"
+      ],
+      "name" : "Book Club",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Libraries and bookstores host free monthly clubs — find the next pick and get a copy.",
+          "title" : "Find a club at a library or bookstore"
+        },
+        {
+          "detail" : "Jot a few notes on what you liked and didn't, and go to the meeting.",
+          "title" : "Read it and show up"
+        },
+        {
+          "detail" : "After three meetings, suggest a book — or start a club with friends around a theme you love.",
+          "title" : "Pick a book, or start your own club"
+        }
+      ],
+      "tagline" : "Read more and talk about it with interesting people.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.29999999999999999,
+        "handsOn" : 0,
+        "outdoor" : 0,
+        "social" : 0.80000000000000004,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🎙️",
+      "goals" : [
+        "meetPeople",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "words",
+        "tech"
+      ],
+      "name" : "Podcasting",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Use your phone or a USB mic and record yourself, or with a friend, on a topic you care about.",
+          "title" : "Record a 10-minute pilot"
+        },
+        {
+          "detail" : "Edit in a free tool like GarageBand, settle on a format, and record three episodes.",
+          "title" : "Learn basic editing and pick a format"
+        },
+        {
+          "detail" : "Upload to a free host that sends episodes to Apple Podcasts and Spotify, and share them.",
+          "title" : "Publish your first three episodes"
+        }
+      ],
+      "tagline" : "Talk about what you love and publish it to the world.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0,
+        "social" : 0.5,
+        "structured" : 0.5
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "♟️",
+      "goals" : [
+        "challenge",
+        "learn"
+      ],
+      "interests" : [
+        "games"
+      ],
+      "name" : "Chess",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Make a free account on Lichess or Chess.com and play 10-minute games against people at your level.",
+          "title" : "Play 10 games online"
+        },
+        {
+          "detail" : "Solve 10 tactics puzzles a day and learn one opening each for white and black.",
+          "title" : "Do daily puzzles and learn openings"
+        },
+        {
+          "detail" : "Clubs and cafés host casual nights — play over the board and watch your rating climb.",
+          "title" : "Go to a chess club night"
+        }
+      ],
+      "tagline" : "Endless strategy on 64 squares.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0,
+        "outdoor" : 0,
+        "social" : 0.40000000000000002,
+        "structured" : 0.90000000000000002
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🎲",
+      "goals" : [
+        "relax",
+        "challenge",
+        "meetPeople"
+      ],
+      "interests" : [
+        "games"
+      ],
+      "name" : "Board Game Nights",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Cafés have big libraries and staff who'll teach you. Try three different kinds of game.",
+          "title" : "Visit a board game café"
+        },
+        {
+          "detail" : "Pick up a great gateway game (Ticket to Ride, Cascadia, Codenames) and host a night.",
+          "title" : "Buy a gateway game and host"
+        },
+        {
+          "detail" : "Find a local meetup or library game night and become a regular.",
+          "title" : "Join a regular game group"
+        }
+      ],
+      "tagline" : "Modern tabletop games with friends — strategy, co-op and party.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.20000000000000001,
+        "handsOn" : 0.20000000000000001,
+        "outdoor" : 0,
+        "social" : 0.90000000000000002,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🧙",
+      "goals" : [
+        "meetPeople",
+        "makeThings"
+      ],
+      "interests" : [
+        "games",
+        "words"
+      ],
+      "name" : "Tabletop Roleplaying",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Game stores and online groups run beginner one-shots with ready-made characters.",
+          "title" : "Play a one-shot"
+        },
+        {
+          "detail" : "Join a weekly or biweekly group and build your own character with the free basic rules.",
+          "title" : "Join a campaign"
+        },
+        {
+          "detail" : "Run a short pre-written adventure for friends — game-mastering is where the creativity kicks in.",
+          "title" : "Run a one-shot yourself"
+        }
+      ],
+      "tagline" : "Collaborative storytelling games like Dungeons & Dragons.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0,
+        "social" : 0.90000000000000002,
+        "structured" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🧩",
+      "goals" : [
+        "challenge",
+        "learn"
+      ],
+      "interests" : [
+        "games"
+      ],
+      "name" : "Speedcubing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Buy a modern speedcube ($10–15) and follow a layer-by-layer beginner tutorial.",
+          "title" : "Solve it once with the beginner method"
+        },
+        {
+          "detail" : "Memorize the beginner method and time yourself every day.",
+          "title" : "Solve it without notes"
+        },
+        {
+          "detail" : "Learn the basic CFOP steps, aim for sub-60 seconds, and look up a local competition.",
+          "title" : "Get under one minute"
+        }
+      ],
+      "tagline" : "Solve a Rubik's Cube — then do it faster and faster.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0,
+        "handsOn" : 0.5,
+        "outdoor" : 0,
+        "social" : 0.20000000000000001,
+        "structured" : 1
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🔌",
+      "goals" : [
+        "challenge",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "science"
+      ],
+      "name" : "Electronics & Arduino",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "An Arduino starter kit (~$40) and its first tutorial: wire an LED and make it blink.",
+          "title" : "Blink an LED"
+        },
+        {
+          "detail" : "Build the sensor, motor and display projects and learn basic circuits and code.",
+          "title" : "Work through the kit projects"
+        },
+        {
+          "detail" : "Design your own project — a plant-watering alert or a weather display — and show it at a makerspace.",
+          "title" : "Build something useful"
+        }
+      ],
+      "tagline" : "Build blinking, beeping, sensing gadgets.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.5,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.69999999999999996
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "👾",
+      "goals" : [
+        "challenge",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "games"
+      ],
+      "name" : "Game Development",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Install a free engine (Godot is friendly) and make a tiny game following a tutorial.",
+          "title" : "Follow a beginner tutorial"
+        },
+        {
+          "detail" : "Recreate Pong or Flappy Bird yourself to learn the game loop, input and collisions.",
+          "title" : "Clone a classic"
+        },
+        {
+          "detail" : "Join an online game jam and finish a small game in a weekend.",
+          "title" : "Ship a game in a game jam"
+        }
+      ],
+      "tagline" : "Make your own video games.",
+      "time" : 2,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🖨️",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "crafts"
+      ],
+      "name" : "3D Printing",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Many offer printing — download a model from a site like Printables and print it.",
+          "title" : "Print something at a library or makerspace"
+        },
+        {
+          "detail" : "A reliable beginner printer is $200–350; learn slicer settings and calibration.",
+          "title" : "Get a printer and learn slicing"
+        },
+        {
+          "detail" : "Learn basic CAD (Tinkercad is free) and print something that solves a real problem at home.",
+          "title" : "Design your own part"
+        }
+      ],
+      "tagline" : "Design and print real objects at home.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.69999999999999996,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "⌨️",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "crafts"
+      ],
+      "name" : "Mechanical Keyboards",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A $10–15 switch tester shows the difference between linear, tactile and clicky.",
+          "title" : "Try switches with a tester"
+        },
+        {
+          "detail" : "A hot-swappable kit needs no soldering ($100–200) — assemble it with switches and keycaps you chose.",
+          "title" : "Build a hot-swap kit"
+        },
+        {
+          "detail" : "Lube switches, add foam, or solder a kit — and share it with a keyboard community.",
+          "title" : "Mod or solder your next board"
+        }
+      ],
+      "tagline" : "Build a keyboard that sounds and feels exactly how you like.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.59999999999999998,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "social" : 0.10000000000000001,
+        "structured" : 0.59999999999999998
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "📻",
+      "goals" : [
+        "challenge",
+        "meetPeople",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "science"
+      ],
+      "name" : "Ham Radio",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Use a free online web SDR or a cheap receiver to hear hams before getting licensed.",
+          "title" : "Listen in first"
+        },
+        {
+          "detail" : "Use a free practice-exam site to prepare for the entry-level license test.",
+          "title" : "Study for your license"
+        },
+        {
+          "detail" : "Take the exam at a local club, get a handheld radio, and check in to a local net.",
+          "title" : "Get licensed and make a contact"
+        }
+      ],
+      "tagline" : "Talk across town or across the world on amateur radio.",
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0.29999999999999999,
+        "social" : 0.40000000000000002,
+        "structured" : 0.90000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🐶",
+      "goals" : [
+        "relax",
+        "meetPeople"
+      ],
+      "interests" : [
+        "animals"
+      ],
+      "name" : "Shelter Volunteering",
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Most shelters require a short orientation — sign up online.",
+          "title" : "Sign up for a volunteer orientation"
+        },
+        {
+          "detail" : "Pick one regular two-hour slot walking dogs or socializing cats.",
+          "title" : "Commit to a weekly shift"
+        },
+        {
+          "detail" : "Foster an animal, help at adoption events, or photograph animals for their adoption profiles.",
+          "title" : "Take on a bigger role"
+        }
+      ],
+      "tagline" : "Walk dogs, socialize cats and help animals get adopted.",
+      "time" : 0,
+      "traits" : {
+        "active" : 0.40000000000000002,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0.40000000000000002,
+        "social" : 0.59999999999999998,
+        "structured" : 0.5
+      }
+    }
+  ],
+  "interests" : [
+    {
+      "emoji" : "🌲",
+      "id" : "nature",
+      "label" : "Nature"
+    },
+    {
+      "emoji" : "🍜",
+      "id" : "food",
+      "label" : "Food & drink"
+    },
+    {
+      "emoji" : "🎵",
+      "id" : "music",
+      "label" : "Music"
+    },
+    {
+      "emoji" : "🎨",
+      "id" : "art",
+      "label" : "Art"
+    },
+    {
+      "emoji" : "🧵",
+      "id" : "crafts",
+      "label" : "Crafts"
+    },
+    {
+      "emoji" : "📝",
+      "id" : "words",
+      "label" : "Words & languages"
+    },
+    {
+      "emoji" : "🎲",
+      "id" : "games",
+      "label" : "Games & puzzles"
+    },
+    {
+      "emoji" : "💻",
+      "id" : "tech",
+      "label" : "Tech"
+    },
+    {
+      "emoji" : "🔬",
+      "id" : "science",
+      "label" : "Science"
+    },
+    {
+      "emoji" : "🏅",
+      "id" : "sports",
+      "label" : "Sports"
+    },
+    {
+      "emoji" : "🐾",
+      "id" : "animals",
+      "label" : "Animals"
+    },
+    {
+      "emoji" : "🎭",
+      "id" : "performance",
+      "label" : "Performing"
+    }
+  ],
+  "questions" : [
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 0,
+      "kind" : "scale",
+      "left" : "On my own",
+      "prompt" : "When you recharge, you'd rather be…",
+      "right" : "Around people",
+      "trait" : "social"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 1,
+      "kind" : "scale",
+      "left" : "Indoors",
+      "prompt" : "Where do you feel best?",
+      "right" : "Outside",
+      "trait" : "outdoor"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 2,
+      "kind" : "scale",
+      "left" : "Calm and still",
+      "prompt" : "How much do you want to move?",
+      "right" : "Moving and sweaty",
+      "trait" : "active"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 3,
+      "kind" : "scale",
+      "left" : "My head",
+      "prompt" : "What do you like to work with?",
+      "right" : "My hands",
+      "trait" : "handsOn"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 4,
+      "kind" : "scale",
+      "left" : "Mastering a skill",
+      "prompt" : "What feels more rewarding?",
+      "right" : "Making or expressing something",
+      "trait" : "creative"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 5,
+      "kind" : "scale",
+      "left" : "Freeform, no rules",
+      "prompt" : "How do you like to learn?",
+      "right" : "Clear steps and levels",
+      "trait" : "structured"
+    },
+    {
+      "hint" : "Pick up to 2.",
+      "id" : 6,
+      "kind" : "goals",
+      "max" : 2,
+      "prompt" : "What do you want out of a hobby?"
+    },
+    {
+      "hint" : "Pick up to 3.",
+      "id" : 7,
+      "kind" : "interests",
+      "max" : 3,
+      "prompt" : "Which of these pull at you?"
+    },
+    {
+      "hint" : "Rough startup cost, not ongoing.",
+      "id" : 8,
+      "kind" : "budget",
+      "prompt" : "What can you spend to get started?"
+    },
+    {
+      "hint" : "Be honest — a hobby you keep beats one you drop.",
+      "id" : 9,
+      "kind" : "time",
+      "prompt" : "How much time can you give it?"
+    },
+    {
+      "hint" : "For gear and doing it at home.",
+      "id" : 10,
+      "kind" : "space",
+      "prompt" : "How much space do you have at home?"
+    }
+  ],
+  "spaces" : [
+    "A desk or a corner",
+    "A spare room or a big table",
+    "A garage, yard or workshop"
+  ],
+  "times" : [
+    "1–2 hours a week",
+    "3–5 hours a week",
+    "6+ hours a week"
+  ],
+  "timing" : [
+    "This week",
+    "Weeks 2–4",
+    "By month 3"
+  ],
+  "traits" : [
+    "social",
+    "outdoor",
+    "active",
+    "handsOn",
+    "creative",
+    "structured"
+  ]
+}

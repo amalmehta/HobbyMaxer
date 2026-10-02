@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hobby Maxer</title>
+  <meta name="description" content="Answer 11 quick questions. Get hobbies that fit you — and a 3-step plan to start one.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <main id="app" aria-live="polite"><p class="loading">Loading…</p></main>
+
+  <button id="feedback-tab" class="feedback-tab" type="button">💬 Feedback</button>
+  <dialog id="feedback">
+    <form method="dialog">
+      <h2>Send Feedback</h2>
+      <p class="muted">What worked, what didn't, what hobby was missing?</p>
+      <textarea id="feedback-text" rows="6" aria-label="Your feedback"></textarea>
+      <p class="muted small">Opens a pre-filled GitHub issue (needs a free GitHub account).</p>
+      <div class="row end">
+        <button value="cancel" class="btn">Cancel</button>
+        <button id="feedback-send" type="button" class="btn primary" disabled>Send</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>

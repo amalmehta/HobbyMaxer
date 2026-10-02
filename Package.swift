@@ -7,6 +7,7 @@ let package = Package(
     targets: [
         .target(name: "HobbyMaxerCore"),
         .executableTarget(name: "HobbyMaxer", dependencies: ["HobbyMaxerCore"]),
+        .executableTarget(name: "ExportCatalog", dependencies: ["HobbyMaxerCore"]),
         .testTarget(name: "HobbyMaxerCoreTests", dependencies: ["HobbyMaxerCore"]),
     ]
 )
