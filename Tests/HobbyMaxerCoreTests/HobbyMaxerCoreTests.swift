@@ -97,7 +97,7 @@ final class MatcherTests: XCTestCase {
         p.space = .desk
         let url = ResultLink.url(for: p, selected: "Knitting", dismissed: ["Bonsai"])
         // Same link the website produces for these answers (checked in website/tests/share.test.mjs).
-        XCTAssertEqual(url.absoluteString, "https://amalmehta.github.io/HobbyMaxer/h/knitting/?r=1-131432-010-9-j&x=bonsai")
+        XCTAssertEqual(url.absoluteString, "https://amalmehta.github.io/HobbyMaxer/h/knitting/79/?r=1-131432-010-9-j&x=bonsai")
         XCTAssertEqual(ResultLink.slug("Electronics & Arduino"), "electronics-and-arduino")
         XCTAssertEqual(ResultLink.slug("3D Printing"), "3d-printing")
         XCTAssertEqual(Set(Catalog.all.map { ResultLink.slug($0.name) }).count, Catalog.all.count)

@@ -13,11 +13,12 @@ public enum ResultLink {
         public var dismissed: Set<String>
     }
 
-    /// Shareable website link. With a selected hobby it goes through that hobby's preview page
-    /// (h/<slug>/), so chat apps show a rich preview; the page forwards to the results.
+    /// Shareable website link. With a selected hobby it goes through that hobby's preview page for
+    /// its match % (h/<slug>/<percent>/), so chat apps show a rich preview; the page forwards to the results.
     public static func url(for profile: Profile, selected: String?, dismissed: Set<String>) -> URL {
         let rest = query(for: profile, selected: nil, dismissed: dismissed)
-        let path = selected.map { "h/\(slug($0))/" } ?? ""
+        let hobby = selected.flatMap { name in Catalog.all.first { $0.name == name } }
+        let path = hobby.map { "h/\(slug($0.name))/\(Matcher.score($0, for: profile).percent)/" } ?? ""
         return URL(string: website.absoluteString + path + "?" + rest)!
     }
 
@@ -66,7 +67,7 @@ public enum ResultLink {
         let bySlug = Dictionary(uniqueKeysWithValues: Catalog.all.map { (slug($0.name), $0.name) })
         let dismissed = (value("x") ?? "").split(separator: ",").compactMap { bySlug[String($0)] }
         // The hobby comes from "h=" or, for preview-page links, from the ".../h/<slug>/" path.
-        let pathSlug = text.firstMatch(of: #/\/h\/([a-z0-9-]+)\/?\?/#).map { String($0.1) }
+        let pathSlug = text.firstMatch(of: #/\/h\/([a-z0-9-]+)\/(?:\d{1,3}\/)?\?/#).map { String($0.1) }
         let selected = (value("h") ?? pathSlug).flatMap { bySlug[$0] }
         return Opened(profile: profile, selected: selected, dismissed: Set(dismissed))
     }

@@ -114,18 +114,25 @@ Rich link previews (2026-10-02, decided without asking):
   a CI test checks every hobby has a valid page and image before deploying.
 - Mac app Share/Copy link use the same new format; it reads both formats when opening links.
 
+Per-result previews with match % (asked and answered 2026-10-02):
+- Static: a page per hobby per percentage, h/<slug>/<0-100>/ (6,528 pages incl. no-% ones,
+  ~16 MB). Preview title: "Knitting — a 79% match for me"; image stays the per-hobby card.
+- Shared links are now …/h/<slug>/<percent>/?r=…&x=…; earlier link formats still work.
+  The % is computed from the answers the same way in Swift and JavaScript (tested).
+
 Proposals (not done — say the word):
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
 - Optional Claude API mode for free-text, more personal suggestions.
 - Notarized, signed release build / DMG on GitHub Releases.
 - Open plain https:// links straight in the app (needs notarization + a custom domain).
-- Per-result previews showing the sharer's match % (needs a small server, e.g. a Cloudflare Worker).
+- % badge on the preview image too (needs a small server, e.g. a Cloudflare Worker, or ~110 MB of pre-drawn images).
 
 CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-02 — link previews show the sharer's match % in the title (per-percentage preview pages)
 - 2026-10-02 — rich link previews: per-hobby preview pages and images, default site preview
 - 2026-10-02 — Mac app opens result links (hobbymaxer:// links, File ▸ Open Result Link…); website gets "Open in the Mac app"
 - 2026-10-02 — added share button and copy-link to the Mac app (same links as the website)

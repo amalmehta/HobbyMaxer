@@ -1,6 +1,7 @@
 // Link-preview pages and images for chat apps (iMessage, Slack, WhatsApp…), which read
 // Open Graph tags from static HTML and don't run JavaScript. Each hobby gets
-// website/h/<slug>/index.html (tags + redirect to the app) and website/previews/<slug>.jpg.
+// website/h/<slug>/index.html (tags + redirect to the app), website/previews/<slug>.jpg, and
+// website/h/<slug>/<0-100>/index.html so a shared link's preview title can carry the match %.
 import AppKit
 import Foundation
 import HobbyMaxerCore
@@ -28,19 +29,26 @@ enum Previews {
             try image(emoji: hobby.emoji, title: hobby.name, subtitle: hobby.tagline,
                       lines: hobby.steps.map(\.title), numbered: true)
                 .write(to: images.appendingPathComponent("\(slug).jpg"))
-            let page = folder.appendingPathComponent("h/\(slug)/index.html")
-            try FileManager.default.createDirectory(at: page.deletingLastPathComponent(), withIntermediateDirectories: true)
-            try html(for: hobby, slug: slug).write(to: page, atomically: true, encoding: .utf8)
+            for percent in [nil] + (0...100).map(Optional.some) {
+                let path = percent.map { "h/\(slug)/\($0)/index.html" } ?? "h/\(slug)/index.html"
+                let page = folder.appendingPathComponent(path)
+                try FileManager.default.createDirectory(at: page.deletingLastPathComponent(), withIntermediateDirectories: true)
+                try html(for: hobby, slug: slug, percent: percent).write(to: page, atomically: true, encoding: .utf8)
+            }
         }
-        print("Wrote \(Catalog.all.count) preview pages and \(Catalog.all.count + 1) preview images")
+        print("Wrote \(Catalog.all.count * 102) preview pages and \(Catalog.all.count + 1) preview images")
     }
 
     // MARK: Page
 
-    static func html(for hobby: Hobby, slug: String) -> String {
+    static func html(for hobby: Hobby, slug: String, percent: Int?) -> String {
         let site = ResultLink.website.absoluteString
-        let title = esc("\(hobby.name) — a Hobby Maxer match")
-        let description = esc("\(hobby.tagline) See the 3-step plan to get started.")
+        let here = "\(site)h/\(slug)/" + (percent.map { "\($0)/" } ?? "")
+        let root = percent == nil ? "../../" : "../../../"
+        let title = esc(percent.map { "\(hobby.name) — a \($0)% match for me" } ?? "\(hobby.name) — a Hobby Maxer match")
+        let description = esc(percent == nil
+            ? "\(hobby.tagline) See the 3-step plan to get started."
+            : "Hobby Maxer matched me with \(hobby.name). \(hobby.tagline) Here's the 3-step plan to start.")
         return """
         <!doctype html>
         <html lang="en">
@@ -49,12 +57,12 @@ enum Previews {
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <title>\(esc(hobby.name)) · Hobby Maxer</title>
           <meta name="description" content="\(description)">
-          <link rel="canonical" href="\(site)h/\(slug)/">
+          <link rel="canonical" href="\(here)">
           <meta property="og:type" content="website">
           <meta property="og:site_name" content="Hobby Maxer">
           <meta property="og:title" content="\(title)">
           <meta property="og:description" content="\(description)">
-          <meta property="og:url" content="\(site)h/\(slug)/">
+          <meta property="og:url" content="\(here)">
           <meta property="og:image" content="\(site)previews/\(slug).jpg">
           <meta property="og:image:width" content="1200">
           <meta property="og:image:height" content="630">
@@ -64,11 +72,11 @@ enum Previews {
           <script>
             const params = new URLSearchParams(location.search);
             params.set("h", "\(slug)");
-            location.replace("../../?" + params.toString().replace(/%2C/g, ","));
+            location.replace("\(root)?" + params.toString().replace(/%2C/g, ","));
           </script>
         </head>
         <body>
-          <p><a href="../../">Open Hobby Maxer</a></p>
+          <p><a href="\(root)">Open Hobby Maxer</a></p>
         </body>
         </html>
 

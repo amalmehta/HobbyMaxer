@@ -25,8 +25,15 @@ for (const hobby of data.hobbies) {
   assert.equal(tag(html, "og:url"), `${site}h/${s}/`);
   assert.equal(tag(html, "twitter:card"), "summary_large_image");
   assert.ok(html.includes(`params.set("h", "${s}")`), `${hobby.name} page doesn't forward to the app`);
+  for (let pct = 0; pct <= 100; pct++) {
+    const sub = readFileSync(new URL(`h/${s}/${pct}/index.html`, root), "utf8");
+    assert.equal(unesc(tag(sub, "og:title")), `${hobby.name} — a ${pct}% match for me`);
+    assert.equal(tag(sub, "og:image"), `${site}previews/${s}.jpg`);
+    assert.equal(tag(sub, "og:url"), `${site}h/${s}/${pct}/`);
+    assert.ok(sub.includes(`location.replace("../../../?"`), `${s}/${pct} forwards to the wrong place`);
+  }
   const image = readFileSync(new URL(`previews/${s}.jpg`, root));
   assert.equal(image.readUInt16BE(0), 0xffd8, `${s}.jpg isn't a JPEG`);
   assert.ok(image.length < 300_000, `${s}.jpg is too big for chat apps`);
 }
-console.log(`${data.hobbies.length} preview pages and images checked`);
+console.log(`${data.hobbies.length * 102} preview pages and ${data.hobbies.length} images checked`);
