@@ -35,6 +35,11 @@ Hobby Maxer
 │   ├── h/<hobby>/[<percent>/]    Generated link-preview pages per hobby and match % (forward to results)
 │   ├── previews/                 Generated 1200×630 preview images (<hobby>.jpg, <hobby>-<25…100>.jpg with % badge)
 │   └── tests/                    Parity, share-link and preview tests
+├── og/                           Preview image server (Vercel, Root Directory "og")
+│   ├── api/og.js                 Draws hobby card + exact % badge: /<hobby>/<percent>.png
+│   ├── vercel.json               Routes /<hobby>/<percent>.png to the function
+│   ├── slugs.json                Generated list of known hobbies
+│   └── test/render.test.mjs      Local render test
 ├── .github/workflows/website.yml Tests and deploys the website on push
 └── docs/
     ├── INSTRUCTIONS.md           Setup, run, use

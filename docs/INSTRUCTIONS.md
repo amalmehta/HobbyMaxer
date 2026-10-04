@@ -72,6 +72,14 @@ node website/tests/previews.test.mjs
 
 **Deploying:** every push to `main` that touches `website/` runs `.github/workflows/website.yml`, which checks the website still matches the Mac app and publishes to GitHub Pages (repo Settings → Pages → Source: GitHub Actions).
 
+## The preview image server
+
+`og/` is a tiny Vercel project that draws link-preview images with the exact match %: `GET /<hobby>/<percent>.png` lays the pre-drawn badge `website/previews/badges/<percent>.png` over the hobby card `website/previews/<hobby>.jpg` (both fetched from the live site) and returns a 1200×630 PNG, cached for a year. Unknown hobbies or percentages outside 0–100 get a 404.
+
+- **Deploy:** Vercel is connected to this repo with Root Directory `og`, so every push redeploys it.
+- **Test locally:** serve the website (`python3 -m http.server 8766 --directory website`), then `cd og && npm install && PREVIEW_ASSETS=http://localhost:8766/previews/ npm test` — it renders `og/test/knitting-79.png` and checks bad requests are refused.
+- **Switching pages to it:** set `imageServer` in `Sources/ExportCatalog/Previews.swift` to the Vercel address and re-run `swift run ExportCatalog website`.
+
 ## Edit the hobbies
 
 All hobbies live in `Sources/HobbyMaxerCore/Catalog.swift`. Each entry has a name, emoji, tagline, six trait values (0–1), cost, time, space, goals, interests (first = primary) and three plan steps. Then update the website and check both still agree:
