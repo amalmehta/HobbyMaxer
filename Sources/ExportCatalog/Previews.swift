@@ -1,9 +1,9 @@
-// Link-preview pages and images for chat apps (iMessage, Slack, WhatsApp…), which read
-// Open Graph tags from static HTML and don't run JavaScript. Each hobby gets
-// website/h/<slug>/index.html (tags + redirect to the app), website/previews/<slug>.jpg, and
-// website/h/<slug>/<0-100>/index.html so a shared link's preview can carry the match %: exact in the
-// title, and on the image as a "~80%" badge rounded to 5% (website/previews/<slug>-<25…100>.jpg)
-// to keep the repo small. Below 25% the plain image is used.
+// Link-preview images that need a Mac to draw (AppKit, Apple emoji, SF fonts):
+//   website/previews/<slug>.jpg + default.jpg   one 1200×630 card per hobby, plus the site's card
+//   website/previews/badges/<0-100>.png         exact "79% MATCH" badges (for the og/ preview server)
+//   website/previews/badges/approx-<25…100>.png "~80% MATCH" badges, laid over the cards at deploy
+// The 6,528 preview pages and the badged cards are built from these by scripts/previews/build.mjs
+// during each GitHub deploy, so they aren't committed.
 import AppKit
 import Foundation
 import HobbyMaxerCore
@@ -14,34 +14,19 @@ enum Previews {
     static let ink = NSColor(red: 0.11, green: 0.11, blue: 0.12, alpha: 1)
     static let muted = NSColor(red: 0.43, green: 0.43, blue: 0.45, alpha: 1)
 
-    /// The Vercel preview server (og/) that draws the exact % badge, e.g. "https://hobbymaxer.vercel.app".
-    /// When set, per-% pages use its images and the rounded badge JPEGs aren't generated.
-    static let imageServer: String? = nil
-
-    static let badgeSteps = imageServer == nil ? Array(stride(from: 25, through: 100, by: 5)) : []
-
-    /// The badge an exact percentage shows, rounded to the nearest 5; nil below 25%.
-    static func badge(for percent: Int) -> Int? {
-        let rounded = Int((Double(percent) / 5).rounded()) * 5
-        return rounded >= 25 ? min(rounded, 100) : nil
-    }
-
-    /// "a 79%" but "an 80%", "an 8%", "an 11%", "an 18%".
-    static func article(_ percent: Int) -> String {
-        [8, 11, 18].contains(percent) || (80...89).contains(percent) ? "an" : "a"
-    }
-
     static func write(to folder: URL) throws {
         let images = folder.appendingPathComponent("previews")
         try? FileManager.default.removeItem(at: images)
-        try? FileManager.default.removeItem(at: folder.appendingPathComponent("h"))
-        try FileManager.default.createDirectory(at: images, withIntermediateDirectories: true)
-
         let badges = images.appendingPathComponent("badges")
         try FileManager.default.createDirectory(at: badges, withIntermediateDirectories: true)
+
         for percent in 0...100 {
-            try badgeImage(percent).write(to: badges.appendingPathComponent("\(percent).png"))
+            try badgeImage("\(percent)%").write(to: badges.appendingPathComponent("\(percent).png"))
         }
+        for step in stride(from: 25, through: 100, by: 5) {
+            try badgeImage("~\(step)%").write(to: badges.appendingPathComponent("approx-\(step).png"))
+        }
+
         // The preview server only draws images for hobbies it knows.
         let og = folder.deletingLastPathComponent().appendingPathComponent("og")
         if FileManager.default.fileExists(atPath: og.path) {
@@ -54,87 +39,17 @@ enum Previews {
                   lines: ["11 quick questions", "\(Catalog.all.count) hobbies", "Free, nothing to sign up for"],
                   numbered: false)
             .write(to: images.appendingPathComponent("default.jpg"))
-
         for hobby in Catalog.all {
-            let slug = ResultLink.slug(hobby.name)
-            for badge in [nil] + badgeSteps.map(Optional.some) {
-                try image(emoji: hobby.emoji, title: hobby.name, subtitle: hobby.tagline,
-                          lines: hobby.steps.map(\.title), numbered: true, badge: badge)
-                    .write(to: images.appendingPathComponent(badge.map { "\(slug)-\($0).jpg" } ?? "\(slug).jpg"))
-            }
-            for percent in [nil] + (0...100).map(Optional.some) {
-                let path = percent.map { "h/\(slug)/\($0)/index.html" } ?? "h/\(slug)/index.html"
-                let page = folder.appendingPathComponent(path)
-                try FileManager.default.createDirectory(at: page.deletingLastPathComponent(), withIntermediateDirectories: true)
-                try html(for: hobby, slug: slug, percent: percent).write(to: page, atomically: true, encoding: .utf8)
-            }
+            try image(emoji: hobby.emoji, title: hobby.name, subtitle: hobby.tagline,
+                      lines: hobby.steps.map(\.title), numbered: true)
+                .write(to: images.appendingPathComponent("\(ResultLink.slug(hobby.name)).jpg"))
         }
-        print("Wrote \(Catalog.all.count * 102) preview pages and \(Catalog.all.count * (badgeSteps.count + 1) + 1) preview images")
-    }
-
-    // MARK: Page
-
-    static func html(for hobby: Hobby, slug: String, percent: Int?) -> String {
-        let site = ResultLink.website.absoluteString
-        let here = "\(site)h/\(slug)/" + (percent.map { "\($0)/" } ?? "")
-        let root = percent == nil ? "../../" : "../../../"
-        let title = esc(percent.map { "\(hobby.name) — \(article($0)) \($0)% match for me" } ?? "\(hobby.name) — a Hobby Maxer match")
-        let imageURL: String
-        if let server = imageServer, let percent {
-            imageURL = "\(server)/\(slug)/\(percent).png"
-        } else {
-            imageURL = site + "previews/" + (percent.flatMap(badge(for:)).map { "\(slug)-\($0).jpg" } ?? "\(slug).jpg")
-        }
-        let matchNote = imageServer != nil
-            ? percent.map { " \(article($0).capitalized) \($0)% match." }
-            : percent.flatMap(badge(for:)).map { " About \(article($0)) \($0)% match." }
-        let alt = esc("\(hobby.emoji) \(hobby.name): \(hobby.tagline)" + (matchNote ?? ""))
-        let description = esc(percent == nil
-            ? "\(hobby.tagline) See the 3-step plan to get started."
-            : "Hobby Maxer matched me with \(hobby.name). \(hobby.tagline) Here's the 3-step plan to start.")
-        return """
-        <!doctype html>
-        <html lang="en">
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>\(esc(hobby.name)) · Hobby Maxer</title>
-          <meta name="description" content="\(description)">
-          <link rel="canonical" href="\(here)">
-          <meta property="og:type" content="website">
-          <meta property="og:site_name" content="Hobby Maxer">
-          <meta property="og:title" content="\(title)">
-          <meta property="og:description" content="\(description)">
-          <meta property="og:url" content="\(here)">
-          <meta property="og:image" content="\(imageURL)">
-          <meta property="og:image:width" content="1200">
-          <meta property="og:image:height" content="630">
-          <meta property="og:image:alt" content="\(alt)">
-          <meta name="twitter:card" content="summary_large_image">
-          <!-- Generated by `swift run ExportCatalog website` — don't hand-edit. -->
-          <script>
-            const params = new URLSearchParams(location.search);
-            params.set("h", "\(slug)");
-            location.replace("\(root)?" + params.toString().replace(/%2C/g, ","));
-          </script>
-        </head>
-        <body>
-          <p><a href="\(root)">Open Hobby Maxer</a></p>
-        </body>
-        </html>
-
-        """
-    }
-
-    static func esc(_ s: String) -> String {
-        s.replacingOccurrences(of: "&", with: "&amp;").replacingOccurrences(of: "<", with: "&lt;")
-            .replacingOccurrences(of: ">", with: "&gt;").replacingOccurrences(of: "\"", with: "&quot;")
+        print("Wrote \(Catalog.all.count + 1) preview cards and 117 badges")
     }
 
     // MARK: Image
 
-    static func image(emoji: String, title: String, subtitle: String, lines: [String], numbered: Bool,
-                      badge: Int? = nil) -> Data {
+    static func image(emoji: String, title: String, subtitle: String, lines: [String], numbered: Bool) -> Data {
         let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: Int(size.width), pixelsHigh: Int(size.height),
                                    bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
                                    colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0)!
@@ -157,11 +72,6 @@ enum Previews {
         let glyph = NSAttributedString(string: emoji, attributes: [.font: NSFont.systemFont(ofSize: 170)])
         let g = glyph.size()
         glyph.draw(at: NSPoint(x: tile.midX - g.width / 2, y: tile.midY - g.height / 2))
-
-        // Match badge on the tile's bottom-right corner
-        if let badge {
-            drawBadge("~\(badge)%", in: NSRect(x: badgeOrigin.x + 9, y: badgeOrigin.y + 9, width: 150, height: 150))
-        }
 
         // Text column, measured first so it can be centered vertically.
         let x: CGFloat = 430, width = size.width - x - 64
@@ -195,9 +105,8 @@ enum Previews {
         return rep.representation(using: .jpeg, properties: [.compressionFactor: 0.8])!
     }
 
-    /// Where the badge (with its 9 px ring) sits on the 1200×630 card: on the emoji tile's bottom-right corner.
-    /// og/api/og.js places the server-drawn badge at the same spot.
-    static let badgeOrigin = NSPoint(x: 235, y: 344)
+    /// Badges are 168×168 with a 9 px ring. They're laid over a card's emoji tile at (235, 344) —
+    /// by scripts/previews/build.mjs and og/api/og.js.
     static let badgeSize = 168
 
     static func drawBadge(_ text: String, in disc: NSRect) {
@@ -216,7 +125,7 @@ enum Previews {
     }
 
     /// A transparent badge on its own, for the preview server to lay over a hobby card.
-    static func badgeImage(_ percent: Int) -> Data {
+    static func badgeImage(_ text: String) -> Data {
         let rep = NSBitmapImageRep(bitmapDataPlanes: nil, pixelsWide: badgeSize, pixelsHigh: badgeSize,
                                    bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
                                    colorSpaceName: .deviceRGB, bytesPerRow: 0, bitsPerPixel: 0)!
@@ -225,7 +134,7 @@ enum Previews {
         cg.scaleBy(x: 1, y: -1)
         NSGraphicsContext.saveGraphicsState()
         NSGraphicsContext.current = NSGraphicsContext(cgContext: cg, flipped: true)
-        drawBadge("\(percent)%", in: NSRect(x: 9, y: 9, width: 150, height: 150))
+        drawBadge(text, in: NSRect(x: 9, y: 9, width: 150, height: 150))
         NSGraphicsContext.restoreGraphicsState()
         return rep.representation(using: .png, properties: [:])!
     }

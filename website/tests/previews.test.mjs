@@ -1,11 +1,13 @@
-// Every hobby has a link-preview page with Open Graph tags and an image.
-// Regenerate with: swift run ExportCatalog website
-// Run with: node website/tests/previews.test.mjs
+// Every hobby has link-preview pages with Open Graph tags, pointing at images that exist.
+// Checks a built site (the pages and badged cards are generated at deploy):
+//   node scripts/previews/build.mjs _site && node website/tests/previews.test.mjs _site
 import { existsSync, readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import { slug } from "../share.js";
 
-const root = new URL("../", import.meta.url);
+import { pathToFileURL } from "node:url";
+if (!process.argv[2]) throw new Error("Usage: node website/tests/previews.test.mjs <built-site-folder>");
+const root = pathToFileURL(process.argv[2].replace(/\/?$/, "/"));
 const site = "https://amalmehta.github.io/HobbyMaxer/";
 const data = JSON.parse(readFileSync(new URL("catalog.json", root)));
 const tag = (html, prop) => new RegExp(`<meta (?:property|name)="${prop}" content="([^"]*)"`).exec(html)?.[1];

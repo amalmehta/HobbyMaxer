@@ -4,3 +4,6 @@ build/
 .swiftpm/
 node_modules/
 og/test/*.png
+# Built at deploy by scripts/previews/build.mjs
+website/h/
+website/previews/*-[0-9]*.jpg

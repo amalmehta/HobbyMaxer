@@ -127,6 +127,19 @@ Per-result previews with match % (asked and answered 2026-10-02):
 - Decided without asking: "a"/"an" chosen by the number ("an 80%", "an 8%").
 - Checked: in-app scores fall between 28% and 98% (98% of them between 45% and 83%).
 
+Exact % via server (asked and answered 2026-10-02, in progress):
+- Vercel, imported via its website, Root Directory og/. og/api/og.js lays an exact
+  badge (website/previews/badges/<n>.png) over the hobby card. Built and tested locally;
+  waiting on the deployed Vercel address to switch pages over (IMAGE_SERVER in
+  scripts/previews/build.mjs). Pinned @vercel/og 0.11 (1.0.3 crashes under Node 24).
+
+Repo cleanup (asked and answered 2026-10-10):
+- The preview features had committed 7,718 generated files (6,528 pages + 1,190 images).
+  Now only inputs are committed (65 cards + 117 badge pieces); the GitHub deploy builds the
+  pages and badged cards with scripts/previews/build.mjs. Repo: 7,763 → 230 tracked files.
+  Live URLs and previews unchanged (new pages checked byte-identical to the old ones).
+- Git history left alone (~88 MB of old images stay in it), as chosen.
+
 Proposals (not done — say the word):
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
@@ -139,6 +152,8 @@ CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-10 — preview pages and badged cards built at deploy instead of committed (7,763 → 230 tracked files)
+- 2026-10-02 — preview server for exact % built (og/, Vercel), not yet live
 - 2026-10-02 — preview images get a "~80%" match badge (rounded to 5%)
 - 2026-10-02 — link previews show the sharer's match % in the title (per-percentage preview pages)
 - 2026-10-02 — rich link previews: per-hobby preview pages and images, default site preview

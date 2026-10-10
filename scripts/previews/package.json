@@ -1,0 +1,12 @@
+{
+  "name": "hobbymaxer-previews",
+  "private": true,
+  "type": "module",
+  "description": "Builds Hobby Maxer's link-preview pages and badged cards at deploy time",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.34.0"
+  }
+}

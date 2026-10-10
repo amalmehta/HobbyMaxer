@@ -3,7 +3,7 @@ name: Website
 on:
   push:
     branches: [main]
-    paths: ["website/**", ".github/workflows/website.yml"]
+    paths: ["website/**", "scripts/previews/**", ".github/workflows/website.yml"]
   workflow_dispatch:
 
 permissions:
@@ -30,10 +30,14 @@ jobs:
         run: node website/tests/parity.test.mjs
       - name: Check result links
         run: node website/tests/share.test.mjs
-      - name: Check link previews
-        run: node website/tests/previews.test.mjs
       - name: Collect site files
         run: rsync -a --exclude tests website/ _site/
+      - name: Build link-preview pages and badged cards
+        run: |
+          npm ci --prefix scripts/previews
+          node scripts/previews/build.mjs _site
+      - name: Check link previews
+        run: node website/tests/previews.test.mjs _site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
       - id: deployment
