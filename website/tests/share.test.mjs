@@ -2,7 +2,7 @@
 // Run with: node website/tests/share.test.mjs
 import { readFileSync } from "node:fs";
 import assert from "node:assert/strict";
-import { decode, encode, sharePath, slug } from "../share.js";
+import { codeFor, decode, encode, profileFromCode, sharePath, slug } from "../share.js";
 import { rank } from "../matcher.js";
 
 const data = JSON.parse(readFileSync(new URL("../catalog.json", import.meta.url)));
@@ -32,6 +32,19 @@ const ex = decode("?r=1-134322-012-3-1c&h=container-gardening&x=bonsai,no-such-h
 assert.equal(ex.selected, "Container Gardening");
 assert.deepEqual(ex.dismissed, ["Bonsai"]);
 assert.deepEqual(ex.profile.goals, ["relax", "challenge"]); checks++;
+
+// Format-1 links (before the location and life questions) still open, with defaults for the new answers.
+const old = decode("?r=1-431001-110-3-1c", data);
+assert.equal(old.profile.scales.social, 4);
+assert.equal(old.profile.scales.competitive, undefined);
+assert.deepEqual(old.profile.nearby, []);
+assert.equal(old.profile.setting, 1); checks++;
+
+// Every format-2 code round-trips exactly.
+for (const f of fixtures) {
+  const code = new URLSearchParams(f.link).get("r");
+  assert.equal(codeFor(profileFromCode(code, data), data), code); checks++;
+}
 
 // Bad or missing codes are rejected.
 for (const bad of ["", "?r=", "?r=2-134322-012-3-1c", "?r=1-934322-012-3-1c", "?r=1-13432-012-3-1c", "?r=1-134322-412-3-1c", "?r=1-134322-012-$-1c", "?demo=results"]) {

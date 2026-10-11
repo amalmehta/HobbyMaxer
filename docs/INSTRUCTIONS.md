@@ -35,9 +35,12 @@ The tests check the catalog (every hobby has a 3-step plan, unique names, valid 
 
 ## Use it
 
-1. Click **Start the quiz** and answer 11 questions (Return = Next, Esc = Back).
+1. Click **Start the quiz** and answer 26 questions in three parts — **You** (11 personality scales, goals, interests), **Where you live** (city to countryside, climate, what's near you, what your community is into) and **Your life** (who with, when you're free, budget, time, space, noise, mess, physical limits, travel). Return = Next, Esc = Back.
 2. Your top 6 matches appear on the left with a match score. Click one to see **why it fits you** and your **3-step entry plan** (this week → weeks 2–4 → by month 3).
-3. Not feeling one? **Not for me — show another** swaps in the next best match.
+3. Not feeling one? **Not for me — show another** swaps in the next best match and leaves it out of future quizzes (undo it in My hobbies).
+   On each hobby, set **Where are you with it?** (Interested / Trying it / Not for me) and tick off plan steps as you do them — ticking a step marks it as "Trying it".
+   **My hobbies** (⌘Y) lists everything you've ever been suggested, grouped by status, with how often it came up and how its match changed (e.g. 89% → 87%), plus your past quizzes, which you can reopen.
+   **Everything is saved** between launches in `~/Library/Application Support/Hobby Maxer/history.json`. Next time you open the app it says welcome back, and **Retake the quiz** starts from your last answers.
 4. **Share these results** (Messages, Mail, AirDrop…) or **Copy link** gives a website link that opens exactly these matches — anyone can open it in a browser, no app needed.
 5. **Opening links in the app:** click a `hobbymaxer://` link (the website shows **Open in the Mac app** on Macs), or choose **File ▸ Open Result Link…** (⌘L) and paste any Hobby Maxer website link — it pre-fills if one is on your clipboard. Shared results show **Shared with you** and **Take the quiz yourself**.
    The `hobbymaxer://` link type is registered when `build-app.sh` runs (and whenever macOS first sees the app). Ordinary `https://` website links still open in the browser — making them open the app directly would need a notarized app and a domain the app is verified with, which a GitHub project site can't provide.
@@ -48,7 +51,7 @@ Nothing leaves your Mac — matching runs offline against the built-in catalog.
 
 ## The website
 
-Live at **https://amalmehta.github.io/HobbyMaxer/** — same quiz, same 64 hobbies, same results as the Mac app. It is plain HTML, CSS and JavaScript in `website/`, with no build step.
+Live at **https://amalmehta.github.io/HobbyMaxer/** — same quiz, same 86 hobbies, same results as the Mac app, with the same saving, statuses, plan tick-offs and My hobbies. The website saves in that browser (localStorage), so each browser keeps its own history; private windows or blocked storage still work but forget on reload (the page says so). It is plain HTML, CSS and JavaScript in `website/`, with no build step.
 
 Run it locally (it loads `catalog.json`, so it needs a web server, not a double-click):
 
@@ -69,6 +72,7 @@ Website tests:
 ```bash
 node website/tests/parity.test.mjs
 node website/tests/share.test.mjs
+node website/tests/history.test.mjs
 node website/tests/previews.test.mjs /tmp/site   # after building the previews as above
 ```
 

@@ -68,10 +68,14 @@ struct SidebarActions: View {
                     .frame(maxWidth: .infinity)
             }
 
-            Button(model.shared ? "Take the quiz yourself" : "Retake quiz") { model.retake() }
-                .buttonStyle(.plain)
-                .foregroundStyle(.secondary)
-                .padding(.top, 2)
+            HStack {
+                Button(model.shared ? "Take the quiz yourself" : "Retake quiz") { model.retake() }
+                Spacer()
+                Button("My hobbies") { model.stage = .myHobbies }
+            }
+            .buttonStyle(.plain)
+            .foregroundStyle(.secondary)
+            .padding(.top, 2)
         }
         .controlSize(.large)
         .padding(.horizontal, 12)
@@ -128,32 +132,12 @@ struct HobbyDetail: View {
                     }
                 }
 
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Your 3-step entry plan").font(.title2.bold())
-                    ForEach(Array(hobby.steps.enumerated()), id: \.offset) { index, step in
-                        HStack(alignment: .top, spacing: 14) {
-                            Text("\(index + 1)")
-                                .font(.title3.bold())
-                                .foregroundStyle(.white)
-                                .frame(width: 34, height: 34)
-                                .background(Circle().fill(Color.accent))
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(PlanStep.timing[index].uppercased())
-                                    .font(.caption.weight(.semibold))
-                                    .foregroundStyle(Color.accent)
-                                Text(step.title).font(.headline)
-                                Text(step.detail).foregroundStyle(.secondary)
-                                    .fixedSize(horizontal: false, vertical: true)
-                            }
-                            Spacer(minLength: 0)
-                        }
-                        .padding(16)
-                        .background(RoundedRectangle(cornerRadius: 14).fill(Color.secondary.opacity(0.08)))
-                    }
-                }
+                StatusPicker(name: hobby.name)
+
+                PlanSteps(hobby: hobby)
 
                 Button("Not for me — show another") { model.dismiss(hobby.id) }
-                    .help("Hide this hobby and bring in the next best match")
+                    .help("Hide this hobby and leave it out of future matches (undo in My hobbies)")
             }
             .padding(32)
             .padding(.bottom, 40)
@@ -174,5 +158,67 @@ struct Pill: View {
             .padding(.vertical, 4)
             .background(Capsule().fill(strong ? Color.accent.opacity(0.2) : Color.secondary.opacity(0.12)))
             .foregroundStyle(strong ? Color.accent : .secondary)
+    }
+}
+
+/// Interested / Trying it / Not for me, saved in history.
+struct StatusPicker: View {
+    @EnvironmentObject private var model: AppModel
+    let name: String
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Text("Where are you with it?").font(.headline)
+            Picker("Status", selection: Binding(
+                get: { model.history.statuses[name] },
+                set: { model.setStatus($0, for: name) })) {
+                Text("Not sure yet").tag(HobbyStatus?.none)
+                ForEach(HobbyStatus.allCases, id: \.self) { Text($0.label).tag(HobbyStatus?.some($0)) }
+            }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .frame(maxWidth: 420)
+        }
+    }
+}
+
+/// The 3-step plan, with steps you can tick off.
+struct PlanSteps: View {
+    @EnvironmentObject private var model: AppModel
+    let hobby: Hobby
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Your 3-step entry plan").font(.title2.bold())
+            ForEach(Array(hobby.steps.enumerated()), id: \.offset) { index, step in
+                let done = model.history.stepDone(index, for: hobby.name)
+                HStack(alignment: .top, spacing: 14) {
+                    Text("\(index + 1)")
+                        .font(.title3.bold())
+                        .foregroundStyle(.white)
+                        .frame(width: 34, height: 34)
+                        .background(Circle().fill(done ? Color.secondary : Color.accent))
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(PlanStep.timing[index].uppercased())
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(Color.accent)
+                        Text(step.title).font(.headline).strikethrough(done)
+                        Text(step.detail).foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 0)
+                    Button { model.toggleStep(index, for: hobby.name) } label: {
+                        Image(systemName: done ? "checkmark.circle.fill" : "circle")
+                            .font(.title2)
+                            .foregroundStyle(done ? Color.accent : .secondary)
+                    }
+                    .buttonStyle(.plain)
+                    .help(done ? "Mark as not done" : "Mark as done")
+                    .accessibilityLabel(done ? "Done: \(step.title)" : "Mark done: \(step.title)")
+                }
+                .padding(16)
+                .background(RoundedRectangle(cornerRadius: 14).fill(Color.secondary.opacity(done ? 0.04 : 0.08)))
+            }
+        }
     }
 }

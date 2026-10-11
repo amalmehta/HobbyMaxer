@@ -10,7 +10,7 @@ struct QuizView: View {
             ProgressView(value: Double(model.questionIndex + 1), total: Double(Quiz.questions.count))
                 .padding(.horizontal, 40)
                 .padding(.top, 24)
-            Text("Question \(model.questionIndex + 1) of \(Quiz.questions.count)")
+            Text("\(question.section) · Question \(model.questionIndex + 1) of \(Quiz.questions.count)")
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .padding(.top, 8)
@@ -55,18 +55,16 @@ struct QuizView: View {
             ScalePicker(left: left, right: right, value: Binding(
                 get: { model.profile.scale(trait) },
                 set: { model.profile.scales[trait] = $0 }))
-        case let .goals(max):
-            ChipGrid(items: Goal.allCases, label: { "\($0.emoji)  \($0.label)" },
-                     selection: $model.profile.goals, max: max)
-        case let .interests(max):
-            ChipGrid(items: Interest.allCases, label: { "\($0.emoji)  \($0.label)" },
-                     selection: $model.profile.interests, max: max)
-        case .budget:
-            OptionList(items: Cost.allCases, label: \.label, selection: $model.profile.budget)
-        case .time:
-            OptionList(items: TimeNeed.allCases, label: \.label, selection: $model.profile.time)
-        case .space:
-            OptionList(items: Space.allCases, label: \.label, selection: $model.profile.space)
+        case let .multi(key, max):
+            let options = key.options
+            ChipGrid(items: options.map(\.id),
+                     label: { id in options.first { $0.id == id }.map { "\($0.emoji)  \($0.label)" } ?? id },
+                     selection: Binding(get: { model.profile[multi: key] }, set: { model.profile[multi: key] = $0 }),
+                     max: max ?? options.count)
+        case let .single(key):
+            let labels = key.options
+            OptionList(items: Array(labels.indices), label: { labels[$0] },
+                       selection: Binding(get: { model.profile[single: key] }, set: { model.profile[single: key] = $0 }))
         }
     }
 }
@@ -120,7 +118,9 @@ struct ChipGrid<Item: Hashable>: View {
                 } label: {
                     Text(label(item))
                         .font(.body.weight(.medium))
-                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 8)
+                        .frame(maxWidth: .infinity, minHeight: 22)
                         .padding(.vertical, 12)
                         .background(RoundedRectangle(cornerRadius: 12)
                             .fill(isOn ? Color.accent.opacity(0.18) : Color.secondary.opacity(0.08)))
@@ -138,7 +138,7 @@ struct ChipGrid<Item: Hashable>: View {
 /// Single-select list of cards.
 struct OptionList<Item: Hashable>: View {
     let items: [Item]
-    let label: KeyPath<Item, String>
+    let label: (Item) -> String
     @Binding var selection: Item
 
     var body: some View {
@@ -147,7 +147,7 @@ struct OptionList<Item: Hashable>: View {
                 let isOn = selection == item
                 Button { selection = item } label: {
                     HStack {
-                        Text(item[keyPath: label]).font(.title3.weight(.medium))
+                        Text(label(item)).font(.title3.weight(.medium))
                         Spacer()
                         Image(systemName: isOn ? "checkmark.circle.fill" : "circle")
                             .font(.title2)

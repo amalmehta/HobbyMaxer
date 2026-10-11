@@ -30,6 +30,8 @@ jobs:
         run: node website/tests/parity.test.mjs
       - name: Check result links
         run: node website/tests/share.test.mjs
+      - name: Check saved history
+        run: node website/tests/history.test.mjs
       - name: Collect site files
         run: rsync -a --exclude tests website/ _site/
       - name: Build link-preview pages and badged cards

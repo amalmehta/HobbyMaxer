@@ -1,421 +1,640 @@
 import Foundation
 
-// Trait order in every entry: social, outdoor, active, handsOn, creative, structured (each 0...1).
+// Trait order in every entry (0...1):
+// social, outdoor, active, handsOn, creative, structured, competitive, thrill, patience, screens, selfTaught
 private func h(_ name: String, _ emoji: String, _ tagline: String,
-               _ t: (Double, Double, Double, Double, Double, Double),
+               _ t: [Double],
                _ cost: Cost, _ time: TimeNeed, _ space: Space,
                _ goals: Set<Goal>, _ interests: [Interest],
+               tags: Set<Tag> = [], needs: [Place] = [],
                _ steps: [(String, String)]) -> Hobby {
-    Hobby(name: name, emoji: emoji, tagline: tagline,
-          traits: Traits(social: t.0, outdoor: t.1, active: t.2, handsOn: t.3, creative: t.4, structured: t.5),
+    Hobby(name: name, emoji: emoji, tagline: tagline, traits: Traits(t),
           cost: cost, time: time, space: space, goals: goals, interests: interests,
-          steps: steps.map { PlanStep(title: $0.0, detail: $0.1) })
+          tags: tags, needs: needs, steps: steps.map { PlanStep(title: $0.0, detail: $0.1) })
 }
 
 public enum Catalog {
     public static let all: [Hobby] = [
         // MARK: Sports & movement
-        h("Bouldering", "🧗", "Short, puzzle-like climbs on padded walls — no ropes, no partner needed.",
-          (0.6, 0.1, 0.9, 0.7, 0.3, 0.7), .low, .moderate, .desk, [.challenge, .getFit, .meetPeople], [.sports], [
-            ("Book an intro session", "Most climbing gyms run a one-hour beginner class with shoe rental for about $25–35."),
-            ("Climb twice a week on easy grades", "Stick to the easiest problems (V0–V1) for a month, focus on footwork, and buy your own shoes once you're hooked (~$90)."),
-            ("Send a V3 and join a meetup", "Most gyms have beginner nights or group chats — climbing with others helps you read routes and keeps you coming back."),
+        h("Bouldering", "🧗", "Short, puzzle-like climbs on padded walls — no ropes, no partner.",
+          [0.6, 0.1, 0.9, 0.7, 0.3, 0.7, 0.4, 0.7, 0.5, 0.0, 0.3], .low, .moderate, .desk,
+          [.challenge, .getFit, .meetPeople], [.sports], tags: [.highImpact], needs: [.climbing], [
+            ("Book an intro session", "Most climbing gyms run a short beginner orientation; a day pass plus shoe rental is usually about $30–45."),
+            ("Climb twice a week on easy grades", "Stay on V0–V1 for a month and focus on quiet, precise feet. Buy your own shoes once you're hooked (~$90–130)."),
+            ("Send a V3 and join a meetup", "Most gyms have beginner nights or group chats — climbing with others helps you read problems and keeps you coming back."),
           ]),
-        h("Pickleball", "🏓", "An easy-to-learn paddle sport played in friendly doubles.",
-          (0.85, 0.6, 0.7, 0.4, 0.1, 0.5), .low, .light, .desk, [.meetPeople, .getFit, .relax], [.sports], [
-            ("Drop in to open play", "Look up parks or rec centers with open play — many lend paddles, and regulars teach the rules in five minutes."),
-            ("Get a paddle and learn the kitchen rule", "A $40–60 paddle is plenty. Watch one beginner video on dinking and the non-volley zone, then play twice a week."),
-            ("Join a ladder or clinic", "Sign up for a beginner ladder or a 4-week clinic so you play people at your level and see your progress."),
+        h("Pickleball", "🏓", "An easy-to-learn paddle sport played in friendly, chatty doubles.",
+          [0.85, 0.6, 0.7, 0.4, 0.1, 0.5, 0.6, 0.3, 0.3, 0.0, 0.6], .low, .light, .desk,
+          [.meetPeople, .getFit, .relax], [.sports], tags: [.familyFriendly], needs: [.courts], [
+            ("Drop in to open play", "Check your parks department or rec center for open play — many lend paddles, and regulars teach the rules in five minutes."),
+            ("Get a paddle, learn the kitchen", "A $50–90 composite paddle is plenty. Watch one video on dinking and the non-volley zone, then play twice a week."),
+            ("Join a ladder and get rated", "Sign up for a beginner ladder or 4-week clinic and log matches for a DUPR rating so you can find games at your level."),
           ]),
         h("Yoga", "🧘", "Stretch, breathe and build strength — at home or in a studio.",
-          (0.3, 0.2, 0.5, 0.3, 0.2, 0.5), .free, .light, .desk, [.relax, .getFit], [.sports], [
-            ("Do three 20-minute beginner sessions", "Pick one free beginner series online and follow it on a towel or cheap mat."),
-            ("Take an in-person beginner class", "A teacher fixes alignment in ways video can't. Most studios offer an intro week for $20–40."),
-            ("Build a three-times-a-week habit", "Settle on a style you like (vinyasa, yin, hatha), get a decent mat, and track your sessions."),
+          [0.3, 0.2, 0.5, 0.3, 0.2, 0.5, 0.0, 0.0, 0.5, 0.4, 0.7], .free, .light, .desk,
+          [.relax, .getFit], [.sports], tags: [.portable], [
+            ("Do three 20-minute sessions", "Follow a free beginner series on YouTube (Yoga With Adriene is a classic) on a towel or a cheap mat."),
+            ("Take an in-person beginner class", "A teacher fixes alignment in ways video can't. Most studios have a new-student intro offer, often $20–50 for a week or more."),
+            ("Build a three-times-a-week habit", "Settle on a style you like (vinyasa, yin, hatha), get a decent mat (~$30–80), and track your sessions."),
           ]),
         h("Brazilian Jiu-Jitsu", "🥋", "A grappling martial art that plays like physical chess.",
-          (0.8, 0.0, 1.0, 0.6, 0.2, 0.9), .medium, .moderate, .desk, [.challenge, .getFit, .meetPeople], [.sports], [
-            ("Take a free trial class", "Nearly every gym offers one. Wear athletic clothes without zippers; they'll loan you a gi."),
-            ("Do two classes a week for a month", "Buy a gi ($60–100), stick to fundamentals classes, and tap early and often — nobody minds."),
+          [0.8, 0.0, 1.0, 0.6, 0.2, 0.9, 0.8, 0.6, 0.9, 0.0, 0.1], .medium, .moderate, .desk,
+          [.challenge, .getFit, .meetPeople], [.sports], tags: [.highImpact, .scheduled], needs: [.studios], [
+            ("Take a free trial class", "Nearly every gym offers one. Wear athletic clothes without zippers; most will loan you a gi or run a no-gi class."),
+            ("Do two classes a week for a month", "Buy a gi ($70–150) or rash guard, stick to fundamentals classes, and tap early and often — nobody minds."),
             ("Roll at open mat and earn a stripe", "Open mats let you practice with different partners; a first belt stripe usually comes around month 2–4."),
           ]),
         h("Trail Running", "🏃", "Running, but on dirt paths through woods and hills.",
-          (0.3, 1.0, 1.0, 0.2, 0.1, 0.4), .low, .moderate, .desk, [.getFit, .relax, .challenge], [.sports, .nature], [
-            ("Walk-run a local trail", "Find an easy, well-marked trail and alternate two minutes running with one minute walking for 20–30 minutes."),
-            ("Get trail shoes and run three times a week", "Trail shoes ($100–140) grip loose ground. Build to 30 minutes of easy running and walk hills without guilt."),
-            ("Enter a 5K or 10K trail race", "Pick a beginner-friendly race 8–10 weeks out — a date on the calendar does wonders."),
+          [0.3, 1.0, 1.0, 0.2, 0.1, 0.4, 0.3, 0.4, 0.4, 0.1, 0.8], .low, .moderate, .desk,
+          [.getFit, .relax, .challenge], [.sports, .nature], tags: [.highImpact], needs: [.trailsParks], [
+            ("Walk-run a local trail", "Find an easy, well-marked trail on AllTrails (free) and alternate two minutes running with one minute walking for 20–30 minutes."),
+            ("Get trail shoes, run 3x a week", "Trail shoes ($120–160) grip loose ground. Build to 30 minutes of easy running and walk the hills without guilt."),
+            ("Enter a 5K or 10K trail race", "Pick a beginner-friendly race 8–10 weeks out on UltraSignup or a local club calendar — a date on the calendar does wonders."),
           ]),
         h("Cycling", "🚴", "Explore miles of road or gravel under your own power.",
-          (0.4, 1.0, 0.9, 0.4, 0.1, 0.5), .high, .moderate, .room, [.getFit, .relax, .challenge], [.sports, .nature], [
-            ("Ride what you have, or rent", "Dust off any bike or rent one for an afternoon and ride a quiet 10-mile loop or bike path."),
-            ("Get a bike that fits and learn basic repair", "Buy a used road or gravel bike that fits you ($400–900) plus a helmet, and learn to fix a flat."),
+          [0.4, 1.0, 0.9, 0.4, 0.1, 0.5, 0.3, 0.5, 0.4, 0.2, 0.7], .high, .moderate, .room,
+          [.getFit, .relax, .challenge], [.sports, .nature], tags: [.seasonal], [
+            ("Ride what you have, or bike-share", "Dust off any bike, rent one, or grab a bike-share and ride a quiet 10-mile loop or protected bike path."),
+            ("Get a bike that fits; fix a flat", "Buy a used road or gravel bike that fits you ($400–900) plus a helmet, and learn to fix a flat. Plan routes in Strava or Komoot."),
             ("Join a no-drop group ride", "Bike shops host weekly no-drop rides where nobody gets left behind — aim for 30 miles by month three."),
           ]),
         h("Swimming", "🏊", "Full-body, low-impact laps with a meditative rhythm.",
-          (0.2, 0.3, 0.9, 0.1, 0.0, 0.6), .low, .moderate, .desk, [.getFit, .relax], [.sports], [
-            ("Swim a 30-minute session", "Go during lap swim at a local pool, rest as much as you need, and count your lengths."),
+          [0.2, 0.3, 0.9, 0.1, 0.0, 0.6, 0.2, 0.1, 0.5, 0.0, 0.5], .low, .moderate, .desk,
+          [.getFit, .relax], [.sports], needs: [.gymPool, .water], [
+            ("Swim a 30-minute session", "Go during lap swim at a local pool (day passes are often $5–15), rest as much as you need, and count your lengths."),
             ("Fix your stroke", "Take a few adult lessons or a stroke clinic — breathing and body position are where the gains are."),
-            ("Swim 1,000 meters without stopping", "Follow a simple beginner plan three times a week, or join a masters group for coaching and company."),
+            ("Swim 1,000 meters nonstop", "Follow a simple beginner plan three times a week, or join a U.S. Masters Swimming group for coaching and company."),
           ]),
         h("Salsa Dancing", "💃", "Partner dancing with great music and a social night out built in.",
-          (0.95, 0.0, 0.8, 0.2, 0.6, 0.6), .low, .light, .desk, [.meetPeople, .getFit, .learn], [.performance, .music], [
+          [0.95, 0.0, 0.8, 0.2, 0.6, 0.6, 0.1, 0.3, 0.6, 0.0, 0.2], .low, .light, .desk,
+          [.meetPeople, .getFit, .learn], [.performance, .music], tags: [.scheduled], needs: [.studios, .venues], [
             ("Go to a lesson before a social", "Many venues run a cheap 45-minute lesson right before the social dance. No partner needed — you rotate."),
             ("Take a 4-week fundamentals series", "Learn the basic step, cross-body lead and turns properly; practice footwork to music for 10 minutes a day."),
             ("Dance a full social night", "Go to a social and dance at least five songs. Everyone there was a beginner once."),
           ]),
         h("Archery", "🏹", "Focus, form and the satisfaction of hitting the center.",
-          (0.3, 0.5, 0.4, 0.6, 0.1, 0.8), .medium, .light, .desk, [.relax, .challenge], [.sports], [
-            ("Book an intro lesson at a range", "Indoor ranges rent equipment and run one-hour beginner sessions for about $30."),
-            ("Practice form weekly", "Shoot weekly on rental gear and work on a consistent stance and anchor before buying a bow ($150–300)."),
+          [0.3, 0.5, 0.4, 0.6, 0.1, 0.8, 0.5, 0.2, 0.6, 0.0, 0.3], .medium, .light, .desk,
+          [.relax, .challenge], [.sports], needs: [.courts, .trailsParks], [
+            ("Book an intro lesson at a range", "Indoor ranges rent equipment and run one-hour beginner sessions, typically around $30–50."),
+            ("Practice form weekly", "Shoot weekly on rental gear and nail a consistent stance and anchor before buying a recurve ($150–300)."),
             ("Shoot a scored round", "Join a beginner league or score a full round, then set a number to beat next month."),
           ]),
         h("Skateboarding", "🛹", "Learn to roll, carve and eventually pop your first ollie.",
-          (0.5, 0.9, 0.8, 0.5, 0.6, 0.3), .low, .moderate, .desk, [.challenge, .getFit], [.sports], [
-            ("Get a real board and pads", "A $70–120 complete from a skate shop beats a toy-store board. Add a helmet and wrist guards."),
-            ("Practice pushing, turning and stopping", "Spend 20 minutes a day in a smooth parking lot until riding feels boring — then you're ready for tricks."),
-            ("Land an ollie and visit a skatepark", "Go during quiet morning hours, watch the etiquette, and make the ollie your month-three goal."),
+          [0.5, 0.9, 0.8, 0.5, 0.6, 0.3, 0.2, 0.8, 0.7, 0.0, 0.8], .low, .moderate, .desk,
+          [.challenge, .getFit], [.sports], tags: [.highImpact, .seasonal], [
+            ("Get a real board and pads", "A $80–130 complete from a skate shop beats a toy-store board. Add a helmet and wrist guards."),
+            ("Practice pushing, turning, stopping", "Spend 20 minutes a day in a smooth parking lot until riding feels boring — then you're ready for tricks."),
+            ("Land an ollie at a skatepark", "Go during quiet morning hours, watch the etiquette, and make the ollie your month-three goal."),
           ]),
         h("Rec Sports League", "⚽", "Casual adult teams — kickball, soccer, volleyball and more.",
-          (1.0, 0.8, 0.8, 0.2, 0.0, 0.5), .low, .light, .desk, [.meetPeople, .getFit], [.sports], [
+          [1.0, 0.8, 0.8, 0.2, 0.0, 0.5, 0.6, 0.3, 0.2, 0.0, 0.5], .low, .light, .desk,
+          [.meetPeople, .getFit], [.sports], tags: [.scheduled], needs: [.courts], [
             ("Find a league that takes free agents", "Search for adult social leagues in your city; most let you sign up solo and place you on a team."),
             ("Play a full season", "Seasons run 6–10 weeks with one game a week — show up, go to the post-game hangout, learn names."),
             ("Re-up with your favorite people", "Join the players you liked for next season, or bring friends and captain your own team."),
           ]),
+        h("Padel", "🎾", "Tennis meets squash: fast, social doubles inside a glass-walled court.",
+          [0.85, 0.5, 0.8, 0.3, 0.1, 0.5, 0.6, 0.4, 0.4, 0.0, 0.4], .low, .light, .desk,
+          [.meetPeople, .getFit, .challenge], [.sports], needs: [.courts], [
+            ("Book a beginner clinic", "US padel clubs passed 1,000 courts in 2026 and most run intro clinics with racket rental; court time splits four ways."),
+            ("Play twice a week, learn the walls", "Join open matches at your level through your club's booking app. A beginner racket runs about $60–120 once you're hooked."),
+            ("Play an americano or league", "Americano nights rotate partners every game — the fastest way to find regular doubles partners at your level."),
+          ]),
+        h("Run Club", "👟", "Free weekly group runs for every pace — with coffee after.",
+          [0.9, 0.7, 0.9, 0.1, 0.1, 0.5, 0.2, 0.2, 0.3, 0.1, 0.8], .free, .light, .desk,
+          [.meetPeople, .getFit], [.sports, .nature], tags: [.highImpact, .scheduled], [
+            ("Show up to a free group run", "Running shops, cafés and breweries host free weekly runs; search Strava clubs, or try parkrun's free timed Saturday 5K."),
+            ("Get fitted and pick one club", "Most run shops do a free gait check; good shoes run $120–160. Go to the same run every week so faces become friends."),
+            ("Run a 5K or 10K with the club", "Pick a race your club is already doing and train with them — finishing together is the best part."),
+          ]),
+        h("Disc Golf", "🥏", "Frisbee meets golf on free courses in your local park.",
+          [0.5, 1.0, 0.5, 0.4, 0.1, 0.5, 0.4, 0.1, 0.5, 0.1, 0.8], .low, .light, .desk,
+          [.relax, .getFit, .meetPeople], [.nature, .sports], tags: [.familyFriendly, .seasonal], needs: [.trailsParks], [
+            ("Play a free park course", "Find a nearby course in the free UDisc app — most park courses cost nothing. A 3-disc starter set is about $20–30."),
+            ("Learn a backhand, track rounds", "Throw lightweight beginner discs (not pro drivers), focus on putting, and log rounds in UDisc to watch your score drop."),
+            ("Join a weekly doubles league", "Many courses run casual random-partner doubles nights for a few dollars — great for tips and new friends."),
+          ]),
+        h("Rucking", "🎒", "Walk with a weighted pack — simple strength and cardio in one.",
+          [0.5, 0.9, 0.8, 0.1, 0.0, 0.4, 0.2, 0.2, 0.2, 0.0, 0.9], .free, .light, .desk,
+          [.getFit, .relax, .challenge], [.nature, .sports], [
+            ("Do a 30-minute loaded walk", "Put 10–15 lb (wrapped books or water bottles) high in a sturdy backpack and walk a familiar 2-mile loop."),
+            ("Add weight slowly", "Add about 5 lb every couple of weeks and ruck 2–3 times a week. A dedicated ruck plate and pack can come later."),
+            ("Do a group ruck or event", "Find a local rucking club on social media or Meetup, or sign up for a GORUCK-style event as a 3-month goal."),
+          ]),
+        h("Paddleboarding", "🏄", "Stand up and glide across calm water — a full-body balance workout.",
+          [0.4, 1.0, 0.6, 0.2, 0.1, 0.3, 0.1, 0.4, 0.2, 0.0, 0.6], .medium, .light, .desk,
+          [.relax, .getFit], [.nature, .sports], tags: [.seasonal, .familyFriendly], needs: [.water], [
+            ("Rent a board for an hour", "Lakes and beaches with rental shacks are perfect. Start kneeling on a calm morning, wear the leash and a life vest."),
+            ("Take a lesson, then paddle weekly", "A one-hour lesson covers stance, strokes and falling safely. Practice turns and paddling straight every week."),
+            ("Buy an inflatable or join a group", "An inflatable board ($300–600) fits in a closet; or join group paddles and SUP yoga to keep going."),
+          ]),
+        h("Wild Swimming", "🌊", "Swim in lakes, rivers and the sea — calm, cold and exhilarating.",
+          [0.5, 1.0, 0.8, 0.1, 0.0, 0.3, 0.1, 0.7, 0.4, 0.0, 0.4], .low, .light, .desk,
+          [.relax, .getFit, .challenge], [.nature, .sports], tags: [.seasonal], needs: [.water], [
+            ("Swim at a lifeguarded beach", "Go with a buddy, stay parallel to shore, and get in slowly — cold water steals your breath for the first minute."),
+            ("Get a tow float and a bright cap", "A tow float ($20–35) and bright cap make you visible; add a wetsuit if your water stays below about 65°F."),
+            ("Join an open-water group", "Open-water swim groups meet at dawn on weekends — swim with them, then aim for a 1-mile event."),
+          ]),
 
         // MARK: Nature
         h("Hiking", "🥾", "Walk somewhere beautiful and let your head clear.",
-          (0.4, 1.0, 0.6, 0.1, 0.1, 0.3), .free, .light, .desk, [.relax, .getFit], [.nature], [
-            ("Do a 3–5 mile marked trail", "Pick a well-rated easy trail nearby, bring water and a snack, and tell someone where you're going."),
+          [0.4, 1.0, 0.6, 0.1, 0.1, 0.3, 0.0, 0.2, 0.2, 0.1, 0.9], .free, .light, .desk,
+          [.relax, .getFit], [.nature], tags: [.familyFriendly], needs: [.trailsParks], [
+            ("Do a 3–5 mile marked trail", "Pick a well-rated easy trail on AllTrails, download the map offline, bring water, and tell someone where you're going."),
             ("Get proper shoes and a daypack", "That's all the gear you need. Hike every other weekend and gradually add elevation."),
-            ("Complete a 10-mile or summit hike", "Choose a signature hike in your region as a goal, or join a hiking club's group outing."),
+            ("Do a 10-mile or summit hike", "Choose a signature hike in your region as a goal, or join a hiking club or Meetup group outing."),
           ]),
         h("Kayaking", "🛶", "Paddle calm lakes and rivers at water level.",
-          (0.4, 1.0, 0.6, 0.3, 0.1, 0.4), .medium, .light, .desk, [.relax, .getFit], [.nature, .sports], [
+          [0.4, 1.0, 0.6, 0.3, 0.1, 0.4, 0.1, 0.4, 0.3, 0.0, 0.4], .medium, .light, .desk,
+          [.relax, .getFit], [.nature, .sports], tags: [.seasonal, .familyFriendly], needs: [.water], [
             ("Rent a kayak for two hours", "Lakes and rivers often have rental shacks — pick a calm, sheltered day and wear the life vest."),
             ("Take a basic paddling course", "Learn strokes, steering and how to get back in after a capsize in a half-day course."),
-            ("Paddle a longer route or join a club", "Plan a half-day trip, or join a paddling club for group outings and boats before you buy your own."),
+            ("Paddle a longer route or club", "Plan a half-day trip, or join a paddling club for group outings and boats before you buy your own."),
           ]),
         h("Birdwatching", "🐦", "Learn to spot and name the birds that are already around you.",
-          (0.2, 0.9, 0.2, 0.0, 0.1, 0.6), .free, .light, .desk, [.relax, .learn], [.nature, .animals], [
+          [0.2, 0.9, 0.2, 0.0, 0.1, 0.6, 0.1, 0.0, 0.6, 0.2, 0.8], .free, .light, .desk,
+          [.relax, .learn], [.nature, .animals], tags: [.portable, .familyFriendly], [
             ("Install Merlin and take a walk", "The free Merlin Bird ID app identifies birds by sound. Walk a park for 30 minutes and see what it hears."),
-            ("Get binoculars and keep a list", "Basic 8x42 binoculars (~$100) change everything. Log sightings in eBird and learn your 20 most common birds."),
+            ("Get binoculars and keep a list", "Basic 8x42 binoculars (~$100–150) change everything. Log sightings in eBird and learn your 20 most common birds."),
             ("Join a local bird walk", "Audubon chapters and nature centers run free guided walks — experienced birders teach tricks no app can."),
           ]),
         h("Container Gardening", "🌱", "Grow herbs, vegetables and flowers in pots — even on a balcony.",
-          (0.1, 0.6, 0.3, 0.8, 0.4, 0.4), .free, .light, .desk, [.relax, .makeThings], [.nature, .food], [
+          [0.1, 0.6, 0.3, 0.8, 0.4, 0.4, 0.0, 0.0, 0.4, 0.0, 0.9], .free, .light, .desk,
+          [.relax, .makeThings], [.nature, .food], tags: [.familyFriendly], [
             ("Pot three easy herbs", "Basil, mint and chives in a sunny window or balcony — pots, soil and starts cost about $20."),
-            ("Plan a small container garden", "Learn your growing zone and sun hours, then add tomatoes, lettuce or peppers in bigger pots."),
-            ("Cook something you grew", "Aim for one homegrown meal by month three, and swap seeds and cuttings with a local gardening group."),
+            ("Plan a small container garden", "Look up your USDA zone and sun hours, then add tomatoes, lettuce or peppers in bigger pots."),
+            ("Cook something you grew", "Aim for one homegrown meal by month three, and swap seeds and cuttings at a library seed swap or garden club."),
           ]),
         h("Foraging", "🍄", "Find wild edibles on walks — mushrooms, berries and greens.",
-          (0.3, 1.0, 0.4, 0.4, 0.1, 0.6), .free, .light, .desk, [.learn, .relax], [.nature, .food], [
-            ("Learn three foolproof plants", "Start with easy, no-lookalike plants in your area (blackberries, dandelion) using a regional field guide."),
-            ("Go on a guided foraging walk", "Naturalists and mushroom societies run walks — the safest way to learn. Never eat anything you're not certain of."),
+          [0.3, 1.0, 0.4, 0.4, 0.1, 0.6, 0.0, 0.3, 0.7, 0.1, 0.4], .free, .light, .desk,
+          [.learn, .relax], [.nature, .food], tags: [.seasonal], needs: [.trailsParks], [
+            ("Learn three foolproof plants", "Start with easy, no-lookalike plants (blackberries, dandelion) using a regional field guide; check park rules first."),
+            ("Go on a guided foraging walk", "Mushroom societies and naturalists run walks. Apps like iNaturalist help ID, but never eat anything on an app's word."),
             ("Cook a foraged meal", "Keep a journal of finds and seasons, and cook one dish from something an expert has confirmed."),
           ]),
         h("Stargazing", "🔭", "Find planets, galaxies and constellations from your backyard.",
-          (0.2, 0.8, 0.0, 0.3, 0.1, 0.6), .free, .light, .desk, [.relax, .learn], [.science, .nature], [
-            ("Learn five constellations", "Use a free sky app on a clear night to find Orion, the Big Dipper, Cassiopeia and more."),
-            ("Point binoculars at the Moon and planets", "Ordinary binoculars show lunar craters and Jupiter's moons. Learn to read a monthly sky chart."),
+          [0.2, 0.8, 0.0, 0.3, 0.1, 0.6, 0.0, 0.0, 0.5, 0.2, 0.8], .free, .light, .desk,
+          [.relax, .learn], [.science, .nature], tags: [.familyFriendly], [
+            ("Learn five constellations", "Use a free sky app like Stellarium on a clear night to find Orion, the Big Dipper, Cassiopeia and more."),
+            ("Aim binoculars at Moon and planets", "Ordinary binoculars show lunar craters and Jupiter's moons. Learn to read a monthly sky chart."),
             ("Go to a star party", "Astronomy clubs host free public nights where you can look through big telescopes before buying one."),
           ]),
         h("Fly Fishing", "🎣", "An elegant, absorbing way to fish rivers and streams.",
-          (0.2, 1.0, 0.4, 0.7, 0.2, 0.7), .medium, .moderate, .desk, [.relax, .challenge], [.nature, .sports], [
+          [0.2, 1.0, 0.4, 0.7, 0.2, 0.7, 0.1, 0.2, 0.8, 0.0, 0.4], .medium, .moderate, .desk,
+          [.relax, .challenge], [.nature, .sports], tags: [.seasonal], needs: [.water], [
             ("Take a casting lesson", "Fly shops often run free or cheap casting clinics on a lawn — no license needed to practice."),
-            ("Get a starter setup and license", "A beginner rod and reel ($150–250) plus a fishing license. Practice casting 15 minutes a day."),
-            ("Catch your first fish on a guided trip", "A half-day guided trip on an easy river teaches you to read water — and you'll likely land a trout."),
+            ("Get a starter setup and license", "A beginner rod-and-reel outfit ($150–250) plus a state fishing license. Practice casting 15 minutes a day."),
+            ("Catch a fish on a guided trip", "A half-day guided trip on an easy river teaches you to read water — and you'll likely land a trout."),
           ]),
         h("Geocaching", "🗺️", "A real-world treasure hunt using GPS and hidden containers.",
-          (0.3, 0.9, 0.4, 0.3, 0.1, 0.4), .free, .light, .desk, [.relax, .challenge], [.nature, .games], [
+          [0.3, 0.9, 0.4, 0.3, 0.1, 0.4, 0.2, 0.2, 0.2, 0.4, 0.9], .free, .light, .desk,
+          [.relax, .challenge], [.nature, .games], tags: [.familyFriendly, .portable], [
             ("Find your first three caches", "Install the free Geocaching app and look for easy traditional caches near you."),
             ("Try harder cache types", "Move on to multi-caches and puzzle caches, and carry small trinkets to trade."),
             ("Hide your own cache", "After about 20 finds, hide one in a spot you love and go to a local geocaching event."),
           ]),
         h("Bonsai", "🌳", "Shape living miniature trees over seasons and years.",
-          (0.1, 0.4, 0.1, 0.8, 0.7, 0.6), .free, .light, .desk, [.relax, .makeThings, .learn], [.nature, .art], [
+          [0.1, 0.4, 0.1, 0.8, 0.7, 0.6, 0.0, 0.0, 0.95, 0.0, 0.6], .free, .light, .desk,
+          [.relax, .makeThings, .learn], [.nature, .art], [
             ("Buy a nursery juniper or ficus", "Skip mall bonsai. A $15–30 nursery shrub is the classic starter — learn its watering and light needs."),
             ("Do your first styling", "Get basic shears and wire, watch a styling demo, then prune and wire your tree into a simple shape."),
             ("Join a bonsai club workshop", "Clubs run hands-on workshops where experienced members guide you — invaluable at repotting time."),
           ]),
         h("Beekeeping", "🐝", "Keep a hive, help pollinators and harvest your own honey.",
-          (0.3, 1.0, 0.4, 0.8, 0.1, 0.7), .high, .moderate, .workshop, [.learn, .makeThings], [.animals, .nature], [
-            ("Visit a local beekeepers' association", "Go to a meeting or open-hive day — many pair new keepers with mentors and run winter courses."),
-            ("Take a course and check local rules", "Learn hive biology, confirm zoning rules, and order a hive, suit and bees ($500–800) for spring."),
+          [0.3, 1.0, 0.4, 0.8, 0.1, 0.7, 0.0, 0.4, 0.8, 0.0, 0.3], .high, .moderate, .workshop,
+          [.learn, .makeThings], [.animals, .nature], tags: [.seasonal], [
+            ("Visit a beekeepers' association", "Go to a meeting or open-hive day — many pair new keepers with mentors and run winter courses."),
+            ("Take a course, check local rules", "Learn hive biology, confirm zoning rules, and order a hive, suit and bees ($600–900) in winter for spring."),
             ("Install your first colony", "Install bees in spring with your mentor nearby and inspect weekly; first honey usually comes in year two."),
           ]),
         h("Aquascaping", "🐠", "Design planted underwater landscapes in a fish tank.",
-          (0.1, 0.0, 0.1, 0.8, 0.8, 0.6), .medium, .light, .room, [.relax, .makeThings], [.animals, .art, .nature], [
+          [0.1, 0.0, 0.1, 0.8, 0.8, 0.6, 0.1, 0.0, 0.7, 0.1, 0.7], .medium, .light, .room,
+          [.relax, .makeThings], [.animals, .art, .nature], [
             ("Study scapes you love", "Browse aquascaping galleries, pick a style, and visit a local fish store to see planted tanks."),
             ("Set up a small planted tank", "A 10–20 gallon tank, light, filter, substrate and easy plants ($150–300). Let it cycle 4–6 weeks before fish."),
             ("Add fish and refine", "Add hardy fish or shrimp, trim and rearrange plants, and post your scape to a forum for feedback."),
           ]),
+        h("Mushroom Growing", "🧫", "Grow oyster and lion's mane mushrooms on your kitchen counter.",
+          [0.1, 0.0, 0.1, 0.8, 0.3, 0.7, 0.0, 0.0, 0.5, 0.0, 0.8], .low, .light, .desk,
+          [.learn, .makeThings], [.science, .food], tags: [.familyFriendly], [
+            ("Grow a countertop kit", "An oyster mushroom grow kit ($20–35) just needs misting and fruits in about 1–2 weeks."),
+            ("Do a straw or sawdust bucket", "Buy grain spawn and pasteurize straw or hardwood pellets in a drilled bucket — learn sterile habits and fresh air needs."),
+            ("Join a mycological society", "Local clubs (many affiliated with NAMA) run forays and grow workshops; share your first harvest at a meeting."),
+          ]),
 
         // MARK: Food & drink
         h("Sourdough Baking", "🍞", "Bake crackly, chewy bread from wild yeast you keep alive.",
-          (0.1, 0.0, 0.2, 0.9, 0.5, 0.7), .free, .moderate, .desk, [.makeThings, .relax, .learn], [.food], [
-            ("Start a starter", "Mix flour and water in a jar and feed it daily for 7–10 days until it doubles reliably."),
+          [0.1, 0.0, 0.2, 0.9, 0.5, 0.7, 0.0, 0.0, 0.6, 0.0, 0.8], .free, .moderate, .desk,
+          [.makeThings, .relax, .learn], [.food], tags: [.messy, .familyFriendly], [
+            ("Start a starter", "Mix flour and water in a jar and feed it daily for 7–10 days until it doubles reliably — or ask a local baker for some."),
             ("Bake a basic loaf every weekend", "Follow one well-tested beginner recipe exactly, bake in a Dutch oven, and take notes each time."),
             ("Nail an open crumb, then share", "Aim for a loaf with good rise and open crumb, and give one away — or share some starter."),
           ]),
         h("Fermentation", "🫙", "Make kimchi, sauerkraut, kombucha and hot sauce.",
-          (0.1, 0.0, 0.1, 0.8, 0.5, 0.6), .free, .light, .desk, [.makeThings, .learn], [.food, .science], [
+          [0.1, 0.0, 0.1, 0.8, 0.5, 0.6, 0.0, 0.1, 0.4, 0.0, 0.9], .free, .light, .desk,
+          [.makeThings, .learn], [.food, .science], [
             ("Make a jar of sauerkraut", "Just cabbage and salt in a jar — about $5. Taste it every few days."),
             ("Branch out to three ferments", "Try kimchi, pickles and kombucha. A kitchen scale and airlock lids make it easy."),
             ("Invent your own recipe", "Create a hot sauce or kraut flavor, serve it at a meal, and swap jars with friends."),
           ]),
         h("Cooking World Cuisines", "🍳", "Cook your way around the world, one cuisine at a time.",
-          (0.4, 0.0, 0.2, 0.8, 0.7, 0.5), .low, .moderate, .desk, [.makeThings, .learn, .meetPeople], [.food], [
-            ("Pick a cuisine and cook one dish", "Choose a cuisine you love eating, find a trusted recipe, and shop a specialty grocery for ingredients."),
-            ("Master five dishes and the pantry", "Cook from one good cookbook for a month and learn its core techniques and staples."),
+          [0.4, 0.0, 0.2, 0.8, 0.7, 0.5, 0.0, 0.0, 0.5, 0.1, 0.9], .low, .moderate, .desk,
+          [.makeThings, .learn, .meetPeople], [.food], tags: [.familyFriendly], [
+            ("Pick a cuisine, cook one dish", "Choose a cuisine you love eating, find a trusted recipe, and shop a specialty grocery for ingredients."),
+            ("Master five dishes and the pantry", "Cook from one good cookbook (borrow it free on Libby) for a month and learn its core techniques and staples."),
             ("Host a themed dinner", "Invite friends for a full meal from that cuisine — then pick your next one."),
           ]),
         h("Home Coffee", "☕", "Dial in pour-overs and espresso like a café.",
-          (0.1, 0.0, 0.1, 0.7, 0.3, 0.8), .medium, .light, .desk, [.learn, .relax, .makeThings], [.food, .science], [
-            ("Buy fresh beans and try a pour-over", "A $20 pour-over cone and fresh beans from a local roaster beat most café drip."),
-            ("Get a burr grinder and weigh everything", "A decent grinder ($100–150) and scale let you experiment with ratio, grind and temperature."),
-            ("Taste side by side", "Cup three origins together, then decide whether to go deeper into espresso or roasting."),
+          [0.1, 0.0, 0.1, 0.7, 0.3, 0.8, 0.1, 0.0, 0.5, 0.0, 0.9], .medium, .light, .desk,
+          [.learn, .relax, .makeThings], [.food, .science], [
+            ("Buy fresh beans, try a pour-over", "A $20–30 pour-over cone and fresh beans from a local roaster beat most café drip."),
+            ("Get a burr grinder and a scale", "A decent burr grinder ($100–170) and a $15 scale let you experiment with ratio, grind and temperature."),
+            ("Taste side by side", "Cup three origins together, then decide whether to go deeper into espresso or home roasting."),
           ]),
         h("Homebrewing", "🍺", "Brew your own beer or cider from scratch.",
-          (0.3, 0.0, 0.2, 0.8, 0.5, 0.8), .low, .moderate, .room, [.makeThings, .learn, .meetPeople], [.food, .science], [
-            ("Brew a one-gallon kit", "A 1-gallon kit (~$50) fits on a stovetop and teaches sanitation and fermentation."),
+          [0.3, 0.0, 0.2, 0.8, 0.5, 0.8, 0.2, 0.0, 0.6, 0.0, 0.8], .low, .moderate, .room,
+          [.makeThings, .learn, .meetPeople], [.food, .science], tags: [.messy], [
+            ("Brew a one-gallon kit", "A 1-gallon kit (~$50–70) fits on a stovetop and teaches sanitation and fermentation."),
             ("Bottle it and brew batch two", "Bottle your first batch after two weeks, then brew a different style and compare."),
             ("Share at a homebrew club", "Bring bottles to a homebrew club for honest feedback, or enter a beginner competition."),
           ]),
 
         // MARK: Art
         h("Watercolor Painting", "🎨", "Loose, luminous paintings with just water and pigment.",
-          (0.1, 0.2, 0.0, 0.6, 1.0, 0.3), .low, .light, .desk, [.relax, .makeThings], [.art], [
-            ("Paint with a starter set", "A student pan set, two brushes and real watercolor paper cost about $30. Follow one beginner tutorial."),
+          [0.1, 0.2, 0.0, 0.6, 1.0, 0.3, 0.0, 0.0, 0.7, 0.0, 0.8], .low, .light, .desk,
+          [.relax, .makeThings], [.art], tags: [.messy, .portable], [
+            ("Paint with a starter set", "A student pan set, two brushes and 100% cotton watercolor paper cost about $30–40. Follow one beginner tutorial."),
             ("Practice washes, then paint daily", "Spend two weeks on washes, gradients and layering, then paint one small subject a day."),
             ("Finish a series and share it", "Paint five on a theme (your street, plants, mugs) and post them or join a local art group."),
           ]),
         h("Urban Sketching", "✏️", "Draw the world around you, on location, in a pocket sketchbook.",
-          (0.4, 0.7, 0.2, 0.5, 0.9, 0.2), .free, .light, .desk, [.relax, .makeThings, .meetPeople], [.art], [
+          [0.4, 0.7, 0.2, 0.5, 0.9, 0.2, 0.0, 0.0, 0.6, 0.0, 0.8], .free, .light, .desk,
+          [.relax, .makeThings, .meetPeople], [.art], tags: [.portable], [
             ("Fill five pages at a café", "A pocket sketchbook and a pen. Draw what's in front of you for 15 minutes — wobbly lines are the point."),
             ("Learn basic perspective", "Learn one- and two-point perspective, and add a water brush or a few markers for color."),
-            ("Join an Urban Sketchers meetup", "Urban Sketchers groups meet worldwide to draw together and share sketchbooks — free and welcoming."),
+            ("Join an Urban Sketchers meetup", "Urban Sketchers chapters meet worldwide to draw together and share sketchbooks — free and welcoming."),
           ]),
         h("Pottery", "🏺", "Throw bowls and mugs on the wheel and glaze them yourself.",
-          (0.5, 0.0, 0.3, 1.0, 0.8, 0.6), .medium, .moderate, .desk, [.makeThings, .relax, .learn], [.crafts, .art], [
-            ("Take a one-night wheel class", "Studios run taster sessions for about $40–60 — you'll get your hands in clay right away."),
-            ("Sign up for a 6–8 week course", "Courses include clay, glazes, firing and studio time ($250–400). Expect a lot of collapsed pots at first."),
+          [0.5, 0.0, 0.3, 1.0, 0.8, 0.6, 0.0, 0.0, 0.8, 0.0, 0.3], .medium, .moderate, .desk,
+          [.makeThings, .relax, .learn], [.crafts, .art], tags: [.messy, .scheduled], needs: [.studios, .makerspace], [
+            ("Take a one-night wheel class", "Studios run taster sessions, usually about $50–75 — you'll get your hands in clay right away."),
+            ("Sign up for a 6–8 week course", "Courses include clay, glazes, firing and studio time ($300–450). Expect a lot of collapsed pots at first."),
             ("Make a matching set of four", "Aim for four mugs or bowls that roughly match — then look into a studio membership."),
           ]),
         h("Calligraphy", "🖋️", "Turn handwriting into art with brush pens or a dip nib.",
-          (0.1, 0.0, 0.0, 0.7, 0.8, 0.8), .free, .light, .desk, [.relax, .makeThings, .learn], [.art, .words], [
-            ("Practice drills with a brush pen", "One brush pen (~$5) and printer paper: learn thin upstrokes and thick downstrokes."),
-            ("Work through a full alphabet", "Follow practice sheets for a lowercase alphabet in one style, 15 minutes a day."),
+          [0.1, 0.0, 0.0, 0.7, 0.8, 0.8, 0.0, 0.0, 0.7, 0.0, 0.8], .free, .light, .desk,
+          [.relax, .makeThings, .learn], [.art, .words], tags: [.portable], [
+            ("Practice drills with a brush pen", "One brush pen (~$5) and smooth printer paper: learn thin upstrokes and thick downstrokes."),
+            ("Work through a full alphabet", "Follow free practice sheets for a lowercase alphabet in one style, 15 minutes a day."),
             ("Letter a real piece", "Make a card, a quote print or place cards for an event — real use makes it stick."),
           ]),
         h("Photography", "📷", "Learn to see light and composition — with your phone or a camera.",
-          (0.3, 0.7, 0.3, 0.4, 0.9, 0.5), .free, .light, .desk, [.makeThings, .learn], [.art, .tech], [
-            ("Shoot one deliberate photo a day", "Use your phone's manual mode and take one considered photo every day for a week."),
-            ("Learn the exposure triangle", "Understand aperture, shutter speed and ISO; if you're hooked, a used mirrorless camera runs $300–500."),
+          [0.3, 0.7, 0.3, 0.4, 0.9, 0.5, 0.1, 0.1, 0.6, 0.4, 0.8], .free, .light, .desk,
+          [.makeThings, .learn], [.art, .tech], tags: [.portable], [
+            ("Shoot one deliberate photo a day", "Use your phone's Pro or manual mode and take one considered photo every day; edit in a free app like Snapseed."),
+            ("Learn the exposure triangle", "Understand aperture, shutter speed and ISO; if you're hooked, a used mirrorless camera with a kit lens runs about $350–600."),
             ("Complete a themed project", "Shoot a 10-photo series, edit it consistently, and join a photo walk or critique group."),
           ]),
+        h("Film Photography", "🎞️", "Shoot 36 frames at a time and wait for the magic to come back.",
+          [0.3, 0.7, 0.3, 0.6, 0.9, 0.5, 0.0, 0.1, 0.6, 0.1, 0.7], .medium, .light, .desk,
+          [.makeThings, .learn, .relax], [.art], tags: [.portable], [
+            ("Shoot one roll this week", "Grab a reusable film camera (like Kodak's Ektar H35) or a thrifted point-and-shoot, plus a roll of color film (~$10–15)."),
+            ("Develop, scan, learn exposure", "Labs develop and scan a roll for roughly $15–25. Then pick up a used manual SLR ($100–250) to learn aperture and shutter."),
+            ("Shoot a five-roll series", "Shoot a themed project, try home-developing black-and-white, and join a film photo walk or lab meetup."),
+          ]),
+        h("Drone Photography", "🚁", "Capture landscapes and cities from above with a small camera drone.",
+          [0.2, 0.8, 0.2, 0.4, 0.8, 0.6, 0.1, 0.4, 0.5, 0.6, 0.8], .medium, .light, .desk,
+          [.makeThings, .learn], [.tech, .art, .nature], tags: [.seasonal, .portable], needs: [.trailsParks], [
+            ("Pass the free FAA TRUST test", "Every US recreational flyer must pass the free online TRUST test (about 30 minutes); practice on a cheap indoor drone."),
+            ("Fly a sub-250 g camera drone", "Recreational drones under 250 g need no FAA registration (heavier ones: $5 for 3 years). Check airspace in a B4UFLY app first."),
+            ("Shoot and edit an aerial series", "Plan golden-hour flights over legal spots, edit a 10-photo or 60-second video set, and share it in a local drone group."),
+          ]),
         h("Digital Illustration", "🖌️", "Draw and paint on a tablet with unlimited undo.",
-          (0.1, 0.0, 0.0, 0.3, 1.0, 0.4), .low, .moderate, .desk, [.makeThings, .learn], [.art, .tech], [
-            ("Draw with what you have", "Try a free app like Krita (or Procreate on an iPad) and copy a simple illustration you like."),
-            ("Learn fundamentals with a course", "Follow a beginner course on shapes, values and color. A pen tablet starts around $60."),
-            ("Finish three polished pieces", "Take three illustrations start to finish and post them, or join a weekly drawing challenge."),
+          [0.1, 0.0, 0.0, 0.3, 1.0, 0.4, 0.1, 0.0, 0.7, 0.9, 0.8], .low, .moderate, .desk,
+          [.makeThings, .learn], [.art, .tech], [
+            ("Draw with what you have", "Try free Krita on a computer, or Procreate ($12.99 one-time) on an iPad, and copy a simple illustration you like."),
+            ("Learn the fundamentals", "Follow a free beginner course on shapes, values and color. A basic pen tablet starts around $40–70."),
+            ("Finish three polished pieces", "Take three illustrations start to finish and post them, or join a monthly drawing-prompt challenge."),
           ]),
         h("Linocut Printmaking", "🖼️", "Carve designs into blocks and print them by hand.",
-          (0.2, 0.0, 0.1, 0.9, 0.9, 0.5), .low, .light, .desk, [.makeThings, .relax], [.art, .crafts], [
-            ("Carve a simple block", "A starter kit with lino, cutters, ink and a roller is about $30. Carve a bold, simple shape."),
+          [0.2, 0.0, 0.1, 0.9, 0.9, 0.5, 0.0, 0.1, 0.5, 0.0, 0.8], .low, .light, .desk,
+          [.makeThings, .relax], [.art, .crafts], tags: [.messy], [
+            ("Carve a simple block", "A starter kit with lino, cutters, ink and a brayer is about $30–40. Carve a bold, simple shape."),
             ("Print an edition of ten", "Print ten copies on decent paper, experimenting with pressure and ink thickness."),
             ("Make a two-color print", "Learn registration for a two-color design, then make cards or posters to give away or sell."),
+          ]),
+        h("Rug Tufting", "🪢", "Shoot yarn into cloth with a tufting gun to make bold, fluffy rugs.",
+          [0.2, 0.0, 0.3, 1.0, 0.9, 0.5, 0.0, 0.2, 0.4, 0.1, 0.6], .medium, .moderate, .room,
+          [.makeThings, .relax], [.art, .crafts], tags: [.loud, .messy], needs: [.studios, .makerspace], [
+            ("Book a tufting studio session", "Tufting studios and some makerspaces run 2–3 hour beginner sessions where you design and tuft a small rug or mirror."),
+            ("Build a frame, get a gun", "A cut/loop tufting gun starts around $60–110; add a wooden frame, primary tufting cloth and acrylic yarn."),
+            ("Finish and back a 2x3 ft rug", "Shear, glue and back your own design — then make a custom rug as a gift."),
+          ]),
+        h("Thrift Flipping", "🧥", "Turn thrift-store finds into clothes and decor you love — or sell.",
+          [0.3, 0.2, 0.2, 0.8, 0.8, 0.4, 0.1, 0.1, 0.4, 0.3, 0.9], .free, .light, .desk,
+          [.makeThings, .relax], [.art, .crafts], [
+            ("Flip one $10 thrift find", "Pick a piece with good fabric and a bad fit or finish — crop it, dye it, or repaint a frame or lamp."),
+            ("Learn three alterations", "Learn to hem, take in a side seam and swap buttons by hand or on a basic machine; add fabric paint or patches."),
+            ("Sell or swap your flips", "List five pieces on Depop, Poshmark or eBay, or bring them to a local clothing swap or market."),
           ]),
 
         // MARK: Crafts
         h("Knitting", "🧶", "Make cozy things with two needles and a ball of yarn.",
-          (0.3, 0.0, 0.0, 0.9, 0.6, 0.7), .free, .light, .desk, [.relax, .makeThings], [.crafts], [
-            ("Cast on and knit a square", "Medium-weight yarn and size 8 needles (~$15) plus a beginner video is all you need."),
-            ("Knit a scarf or hat", "Learn purling and ribbing, then finish your first wearable project."),
+          [0.3, 0.0, 0.0, 0.9, 0.6, 0.7, 0.0, 0.0, 0.6, 0.0, 0.9], .free, .light, .desk,
+          [.relax, .makeThings], [.crafts], tags: [.portable], [
+            ("Cast on and knit a square", "Worsted-weight yarn and US 8 needles (~$15) plus a beginner video is all you need."),
+            ("Knit a scarf or hat", "Learn purling and ribbing, then finish your first wearable project from a free Ravelry pattern."),
             ("Join a knitting circle", "Yarn shops and libraries host knit nights — bring your project and learn your next technique there."),
           ]),
+        h("Crochet", "🪝", "Hook yarn into blankets, bags and tiny amigurumi animals.",
+          [0.3, 0.0, 0.0, 0.9, 0.7, 0.6, 0.0, 0.0, 0.5, 0.1, 0.9], .free, .light, .desk,
+          [.relax, .makeThings], [.crafts], tags: [.portable], [
+            ("Crochet a granny square", "A 5 mm hook and a skein of worsted acrylic (~$10) plus a beginner video: learn chain, single and double crochet."),
+            ("Make a hat or tote bag", "Follow a free beginner pattern on Ravelry or YouTube and learn to read pattern abbreviations."),
+            ("Make an amigurumi, join a group", "Crochet a small stuffed animal, then bring it to a yarn-shop or library craft night."),
+          ]),
         h("Woodworking", "🪚", "Build furniture and useful objects with your own hands.",
-          (0.2, 0.1, 0.5, 1.0, 0.6, 0.7), .high, .heavy, .workshop, [.makeThings, .challenge, .learn], [.crafts], [
-            ("Take an intro class at a makerspace", "Makerspaces and community colleges run intro classes with safety training and tool access."),
-            ("Build a box or cutting board", "Start with a simple project — measure twice, cut once, finish with oil."),
+          [0.2, 0.1, 0.5, 1.0, 0.6, 0.7, 0.0, 0.4, 0.8, 0.0, 0.4], .high, .heavy, .workshop,
+          [.makeThings, .challenge, .learn], [.crafts], tags: [.loud, .messy], needs: [.makerspace], [
+            ("Take a makerspace intro class", "Makerspaces and community colleges run intro classes with safety training and tool access."),
+            ("Build a box or cutting board", "Start with a simple project — measure twice, cut once, finish with food-safe oil."),
             ("Build a small piece of furniture", "A step stool, bookshelf or side table — then decide which tools are worth owning."),
           ]),
         h("Leathercraft", "👜", "Hand-stitch wallets, belts and bags that last for decades.",
-          (0.1, 0.0, 0.1, 1.0, 0.6, 0.7), .low, .light, .desk, [.makeThings, .learn], [.crafts], [
-            ("Make a card wallet from a kit", "A beginner kit with pre-cut leather and tools runs $40–60 and teaches saddle stitching."),
-            ("Learn edge finishing and patterns", "Get a few tools and veg-tan leather; practice burnishing edges and cutting your own patterns."),
+          [0.1, 0.0, 0.1, 1.0, 0.6, 0.7, 0.0, 0.1, 0.6, 0.0, 0.7], .low, .light, .desk,
+          [.makeThings, .learn], [.crafts], [
+            ("Make a card wallet from a kit", "A beginner kit with pre-cut leather and tools runs $40–70 and teaches saddle stitching."),
+            ("Learn edges and patterns", "Get a few tools and veg-tan leather; practice burnishing edges and cutting your own patterns."),
             ("Design an original piece", "Design and make a belt, watch strap or small bag from scratch — a great gift."),
           ]),
         h("Sewing", "🧵", "Make and alter your own clothes, exactly how you like them.",
-          (0.2, 0.0, 0.1, 0.9, 0.8, 0.6), .medium, .moderate, .room, [.makeThings, .learn], [.crafts, .art], [
-            ("Fix something you own", "Borrow or buy a basic machine and hem trousers, replace a button or take in a shirt."),
+          [0.2, 0.0, 0.1, 0.9, 0.8, 0.6, 0.0, 0.0, 0.7, 0.0, 0.6], .medium, .moderate, .room,
+          [.makeThings, .learn], [.crafts, .art], [
+            ("Fix something you own", "Borrow or buy a basic machine ($100–200) and hem trousers, replace a button or take in a shirt."),
             ("Sew a beginner pattern", "Pick a pattern labelled beginner (tote bag, pajama pants) and learn to cut, pin and press."),
             ("Make a garment you'll wear", "Sew a simple top or skirt you actually wear out — then take a fit class at a sewing studio."),
           ]),
         h("Embroidery", "🪡", "Paint with thread — patches, hoops and custom clothes.",
-          (0.1, 0.0, 0.0, 0.9, 0.9, 0.4), .free, .light, .desk, [.relax, .makeThings], [.crafts, .art], [
+          [0.1, 0.0, 0.0, 0.9, 0.9, 0.4, 0.0, 0.0, 0.4, 0.0, 0.9], .free, .light, .desk,
+          [.relax, .makeThings], [.crafts, .art], tags: [.portable], [
             ("Stitch a sampler", "A hoop, needles, floss and cotton (~$15). Learn back stitch, satin stitch and French knots."),
             ("Complete a printed pattern", "Follow a beginner pattern start to finish and frame it in its hoop."),
             ("Embroider something you wear", "Add your own design to a jacket, tote or shirt."),
           ]),
         h("Bookbinding", "📚", "Hand-make journals and books that open flat.",
-          (0.1, 0.0, 0.0, 0.9, 0.6, 0.8), .free, .light, .desk, [.makeThings, .relax], [.crafts, .words], [
+          [0.1, 0.0, 0.0, 0.9, 0.6, 0.8, 0.0, 0.0, 0.5, 0.0, 0.7], .free, .light, .desk,
+          [.makeThings, .relax], [.crafts, .words], [
             ("Make a stitched notebook", "Paper, an awl, waxed thread and a needle — under $20 — make a simple pamphlet-stitch notebook."),
             ("Try coptic and case binding", "Learn two classic bindings and how to cover boards with cloth or paper."),
             ("Bind a full hardcover book", "Bind a hardcover journal as a gift, or rebind a beloved paperback."),
           ]),
         h("Miniature Painting", "🐉", "Paint tiny fantasy figures in astonishing detail.",
-          (0.3, 0.0, 0.0, 0.8, 0.8, 0.7), .low, .light, .desk, [.relax, .makeThings], [.crafts, .games, .art], [
-            ("Paint one starter mini", "A starter set with minis, paints and a brush is $30–50. Prime, base coat and wash."),
-            ("Learn layering and highlighting", "Paint a small squad, practicing one technique each: drybrushing, layering, edge highlights."),
+          [0.3, 0.0, 0.0, 0.8, 0.8, 0.7, 0.2, 0.0, 0.7, 0.0, 0.8], .low, .light, .desk,
+          [.relax, .makeThings], [.crafts, .games, .art], [
+            ("Paint one starter mini", "A starter set with minis, paints and a brush is $30–60. Prime, base coat and wash."),
+            ("Learn layering and highlights", "Paint a small squad, practicing one technique each: drybrushing, layering, edge highlights."),
             ("Paint a display piece", "Finish one mini with a detailed base, or bring a painted team to a local game night."),
           ]),
         h("Origami", "🦢", "Fold a single square of paper into almost anything.",
-          (0.0, 0.0, 0.0, 0.8, 0.6, 0.9), .free, .light, .desk, [.relax, .challenge], [.crafts, .art], [
+          [0.0, 0.0, 0.0, 0.8, 0.6, 0.9, 0.0, 0.0, 0.5, 0.0, 0.9], .free, .light, .desk,
+          [.relax, .challenge], [.crafts, .art], tags: [.portable, .familyFriendly], [
             ("Fold five classic models", "Crane, jumping frog, box, boat and lily — printer paper cut square works fine."),
-            ("Get origami paper and learn diagrams", "A pack of origami paper (~$10) and a beginner book; learn to read folding notation."),
+            ("Get paper and learn diagrams", "A pack of origami paper (~$10) and a beginner book; learn to read folding notation."),
             ("Fold an intermediate model", "Take on a modular or complex model like a kusudama or dragon, and gift a few."),
+          ]),
+        h("Candle Making", "🕯️", "Pour soy-wax candles with your own scents and vessels.",
+          [0.2, 0.0, 0.1, 0.9, 0.7, 0.6, 0.0, 0.1, 0.3, 0.0, 0.9], .low, .light, .desk,
+          [.makeThings, .relax], [.crafts], tags: [.messy], [
+            ("Pour candles from a kit", "A soy-wax starter kit ($25–40) with wicks, fragrance and tins makes 4–6 candles in an evening."),
+            ("Dial in wicks and scent", "Test wick sizes, fragrance load (about 6–10%) and a 1–2 week cure; thrifted jars make great vessels."),
+            ("Host a pour night or sell", "Make a batch for friends or a craft market; label with safety warnings and burn-test every design."),
+          ]),
+        h("Lego Building", "🧱", "Build adult LEGO sets as a mindful, screen-free way to unwind.",
+          [0.2, 0.0, 0.0, 0.8, 0.5, 0.9, 0.0, 0.0, 0.2, 0.0, 0.9], .low, .light, .desk,
+          [.relax, .makeThings], [.crafts, .games, .art], tags: [.familyFriendly], [
+            ("Build one adult set", "Pick a set from LEGO's 18+ range — flowers and small display sets are often $20–60 — and build it in an evening."),
+            ("Build alternates from your parts", "Rebrickable shows fan-designed builds you can make from sets you own; try designing in free BrickLink Studio."),
+            ("Join a LEGO fan group", "Adult fan groups (LUGs) meet monthly and exhibit at shows — bring an original build of your own."),
           ]),
 
         // MARK: Music & performing
         h("Guitar", "🎸", "Strum songs you love within weeks.",
-          (0.3, 0.0, 0.1, 0.8, 0.7, 0.6), .medium, .moderate, .desk, [.learn, .makeThings, .challenge], [.music], [
-            ("Learn four chords", "Borrow or buy a beginner acoustic (~$150) and learn G, C, D and Em — they cover hundreds of songs."),
-            ("Practice 15 minutes a day", "Follow a structured beginner course (many are free) for chord changes and strumming patterns."),
+          [0.3, 0.0, 0.1, 0.8, 0.7, 0.6, 0.1, 0.1, 0.8, 0.1, 0.7], .medium, .moderate, .desk,
+          [.learn, .makeThings, .challenge], [.music], tags: [.loud], [
+            ("Learn four chords", "Borrow or buy a beginner acoustic ($150–250) and learn G, C, D and Em — they cover hundreds of songs."),
+            ("Practice 15 minutes a day", "Follow a free structured course like JustinGuitar for chord changes and strumming patterns."),
             ("Play a full song for someone", "Play one complete song start to finish for a friend — or at an open mic."),
           ]),
         h("Piano", "🎹", "Learn chords, melodies and the foundations of all music.",
-          (0.2, 0.0, 0.0, 0.7, 0.6, 0.8), .medium, .moderate, .room, [.learn, .challenge, .relax], [.music], [
-            ("Try an app on a keyboard", "A used 61-key keyboard ($80–150) plus a learning app gets you playing simple melodies."),
+          [0.2, 0.0, 0.0, 0.7, 0.6, 0.8, 0.1, 0.0, 0.85, 0.2, 0.6], .medium, .moderate, .room,
+          [.learn, .challenge, .relax], [.music], [
+            ("Try an app on a keyboard", "A used 61-key keyboard ($80–150) plus a learning app (most have a free trial) gets you playing simple melodies."),
             ("Learn to read basic notation", "Spend a month on treble and bass clef, hand independence and simple chords."),
             ("Play a full piece", "Learn one beginner piece end to end — a few lessons early on will fix technique."),
           ]),
         h("Choir Singing", "🎤", "Sing with others — no solo pressure, one big shared sound.",
-          (0.95, 0.0, 0.2, 0.1, 0.6, 0.7), .free, .light, .desk, [.meetPeople, .learn, .relax], [.music, .performance], [
-            ("Find a no-audition community choir", "Many community choirs welcome anyone. Go to an open rehearsal — they'll place you in a section."),
+          [0.95, 0.0, 0.2, 0.1, 0.6, 0.7, 0.0, 0.1, 0.5, 0.0, 0.2], .free, .light, .desk,
+          [.meetPeople, .learn, .relax], [.music, .performance], tags: [.scheduled], needs: [.communityCenter, .venues], [
+            ("Find a no-audition choir", "Many community choirs welcome anyone. Go to an open rehearsal — they'll place you in a section."),
             ("Learn your part", "Practice with rehearsal tracks during the week and learn basic breathing and posture."),
             ("Sing in a concert", "Perform in the end-of-term concert — the moment it all comes together."),
           ]),
         h("DJing", "🎧", "Blend tracks together and read a room.",
-          (0.6, 0.0, 0.3, 0.6, 0.7, 0.5), .medium, .moderate, .desk, [.makeThings, .meetPeople], [.music, .tech], [
-            ("Mix in free software", "Try free DJ software on your laptop and learn to beatmatch two tracks."),
-            ("Get a controller and build a crate", "A beginner two-channel controller ($150–250) and a library of tracks sorted by energy and tempo."),
-            ("Play a 30-minute set for people", "Record a mix, then play for friends or at a local open-decks night."),
+          [0.6, 0.0, 0.3, 0.6, 0.7, 0.5, 0.2, 0.3, 0.6, 0.6, 0.8], .medium, .moderate, .desk,
+          [.makeThings, .meetPeople], [.music, .tech], tags: [.loud], [
+            ("Mix in free software", "Try free DJ software (Mixxx, Serato DJ Lite or rekordbox) on your laptop and learn to beatmatch two tracks."),
+            ("Get a controller, build a crate", "A beginner two-channel controller ($150–300) and tracks bought on Bandcamp or Beatport, sorted by energy and tempo."),
+            ("Play a 30-minute set for people", "Record a mix and post it to SoundCloud or Mixcloud, then play for friends or a local open-decks night."),
           ]),
-        h("Music Production", "🎛️", "Make your own tracks on a laptop.",
-          (0.1, 0.0, 0.0, 0.4, 1.0, 0.4), .free, .moderate, .desk, [.makeThings, .learn], [.music, .tech], [
-            ("Make a loop in GarageBand", "GarageBand is free on your Mac — follow a beginner tutorial and make an 8-bar loop."),
-            ("Learn arrangement and mixing basics", "Recreate a song you love to understand its structure, then learn EQ and compression."),
-            ("Release a finished track", "Finish a 2–3 minute track and share it — finishing is the real skill."),
+        h("Music Production", "🎛️", "Make your own tracks on a laptop or phone.",
+          [0.1, 0.0, 0.0, 0.4, 1.0, 0.4, 0.0, 0.0, 0.7, 0.8, 0.8], .free, .moderate, .desk,
+          [.makeThings, .learn], [.music, .tech], [
+            ("Make a beat in BandLab", "BandLab is a free DAW in your browser or phone (Mac users also get GarageBand free). Follow a tutorial and make an 8-bar loop."),
+            ("Learn arrangement and mixing", "Recreate a song you love to learn its structure, then EQ and compression. Ableton Live Lite comes free with many MIDI keyboards."),
+            ("Release a finished track", "Finish a 2–3 minute track and post it on SoundCloud or BandLab — finishing is the real skill."),
+          ]),
+        h("Vinyl Collecting", "💿", "Dig through crates and build a record collection you can hold.",
+          [0.4, 0.0, 0.1, 0.3, 0.2, 0.4, 0.0, 0.0, 0.4, 0.1, 0.9], .medium, .light, .desk,
+          [.relax, .learn], [.music], [
+            ("Dig at a record store", "Spend an hour in the used bins with a $20 budget and ask the staff for recommendations in a genre you love."),
+            ("Set up a turntable", "A belt-drive turntable ($150–350) plus powered speakers. Catalog what you own and want in the free Discogs app."),
+            ("Go to a record fair or RSD", "Hit a local record fair or Record Store Day, and trade or swap duplicates with other collectors."),
           ]),
         h("Improv Comedy", "🎭", "Make up scenes on the spot — and get braver everywhere.",
-          (1.0, 0.0, 0.5, 0.0, 0.9, 0.4), .low, .light, .desk, [.meetPeople, .challenge], [.performance], [
+          [1.0, 0.0, 0.5, 0.0, 0.9, 0.4, 0.0, 0.6, 0.5, 0.0, 0.1], .low, .light, .desk,
+          [.meetPeople, .challenge], [.performance], tags: [.scheduled], needs: [.venues, .studios], [
             ("Take a drop-in workshop", "Improv theaters run cheap drop-in classes for total beginners. It's mostly games and laughing."),
-            ("Sign up for a Level 1 course", "A 6–8 week course ($200–350) teaches yes-and, listening and building scenes."),
+            ("Sign up for a Level 1 course", "A 6–8 week course ($250–400) teaches yes-and, listening and building scenes."),
             ("Perform in a class show", "Most courses end in a low-stakes showcase for friends — then join a jam or practice group."),
           ]),
         h("Community Theater", "🎬", "Act, build sets or run lights for local productions.",
-          (1.0, 0.0, 0.4, 0.3, 0.8, 0.6), .free, .moderate, .desk, [.meetPeople, .makeThings], [.performance], [
-            ("See a show and ask to volunteer", "Crew is always needed and is the easiest way in."),
+          [1.0, 0.0, 0.4, 0.3, 0.8, 0.6, 0.2, 0.5, 0.4, 0.0, 0.1], .free, .moderate, .desk,
+          [.meetPeople, .makeThings], [.performance], tags: [.scheduled], needs: [.venues, .communityCenter], [
+            ("See a show and ask to volunteer", "Crew is always needed and is the easiest way in — ushering counts too."),
             ("Audition or join a crew", "Audition for a small role, or join set building, props or lighting for the next show."),
             ("Be part of opening night", "See a production through rehearsals to opening night — the cast party is the reward."),
           ]),
         h("Card Magic", "🃏", "Learn sleight of hand and amaze people up close.",
-          (0.5, 0.0, 0.0, 0.6, 0.6, 0.7), .free, .light, .desk, [.challenge, .learn, .meetPeople], [.performance], [
+          [0.5, 0.0, 0.0, 0.6, 0.6, 0.7, 0.0, 0.3, 0.8, 0.1, 0.8], .free, .light, .desk,
+          [.challenge, .learn, .meetPeople], [.performance], tags: [.portable], [
             ("Learn three self-working tricks", "A standard deck and a beginner book or video — self-working tricks need no sleight of hand."),
             ("Practice one sleight daily", "Learn a double lift and a basic control in front of a mirror, 10 minutes a day."),
             ("Perform a five-minute routine", "Put three tricks into a short routine and perform it for friends — then visit a magic club."),
           ]),
+        h("Line Dancing", "🤠", "Country-bar line dances — no partner needed, all ages welcome.",
+          [0.9, 0.0, 0.7, 0.0, 0.4, 0.8, 0.0, 0.1, 0.3, 0.1, 0.4], .free, .light, .desk,
+          [.meetPeople, .getFit, .relax], [.performance, .music], tags: [.scheduled], needs: [.venues, .studios, .communityCenter], [
+            ("Go to a beginner lesson night", "Country bars, dance studios and community centers run cheap or free lessons before open dancing."),
+            ("Learn five floor-fillers", "Learn the classics your local spot plays most; drill the steps with YouTube breakdowns at home."),
+            ("Dance a full night", "Join in on every song you know for a whole night — regulars love teaching newcomers."),
+          ]),
 
         // MARK: Words
         h("Creative Writing", "✍️", "Write short stories, essays or poetry.",
-          (0.1, 0.0, 0.0, 0.1, 1.0, 0.3), .free, .light, .desk, [.makeThings, .relax], [.words], [
+          [0.1, 0.0, 0.0, 0.1, 1.0, 0.3, 0.1, 0.0, 0.6, 0.6, 0.9], .free, .light, .desk,
+          [.makeThings, .relax], [.words], tags: [.portable], [
             ("Write three 500-word pieces", "Use a prompt and write a little each day — don't edit, just finish."),
-            ("Read like a writer, then draft a story", "Read short stories in your genre, then write and revise one 2,000-word story."),
+            ("Read like a writer, then draft", "Read short stories in your genre, then write and revise one 2,000-word story."),
             ("Share it with a writing group", "Join a critique group, or submit to a small magazine or contest."),
           ]),
+        h("Journaling", "📓", "A notebook and ten minutes a day to think, plan and remember.",
+          [0.1, 0.0, 0.0, 0.3, 0.7, 0.5, 0.0, 0.0, 0.2, 0.1, 1.0], .free, .light, .desk,
+          [.relax, .learn], [.words, .art], tags: [.portable], [
+            ("Write ten minutes a day", "Any notebook and pen. Answer one prompt a day — what happened, what you felt, what's next."),
+            ("Find your format", "Try a bullet journal for planning, a gratitude list, or a junk journal with tickets and collage."),
+            ("Keep a 90-day streak", "Look back at your first entries, then join a journaling meetup or online community to swap ideas."),
+          ]),
         h("Learning a Language", "🗣️", "Pick up a new language and a new way of seeing.",
-          (0.5, 0.0, 0.0, 0.1, 0.3, 0.8), .free, .moderate, .desk, [.learn, .challenge, .meetPeople], [.words], [
+          [0.5, 0.0, 0.0, 0.1, 0.3, 0.8, 0.1, 0.1, 0.85, 0.6, 0.7], .free, .moderate, .desk,
+          [.learn, .challenge, .meetPeople], [.words], tags: [.portable], [
             ("Do 15 minutes a day", "Start an app streak and learn greetings and your first 100 common words."),
-            ("Add a course and easy listening", "Work through a structured course and watch easy shows or videos in the language."),
-            ("Have a real conversation", "Book a tutor session or go to a language exchange and speak for 20 minutes."),
+            ("Add a course and easy listening", "Work through a structured course and watch easy shows or YouTube channels made for learners."),
+            ("Have a real conversation", "Book a tutor on italki or Preply, or go to a language exchange, and speak for 20 minutes."),
           ]),
         h("Book Club", "📖", "Read more and talk about it with interesting people.",
-          (0.8, 0.0, 0.0, 0.0, 0.3, 0.4), .free, .light, .desk, [.meetPeople, .relax, .learn], [.words], [
-            ("Find a club at a library or bookstore", "Libraries and bookstores host free monthly clubs — find the next pick and get a copy."),
+          [0.8, 0.0, 0.0, 0.0, 0.3, 0.4, 0.0, 0.0, 0.1, 0.0, 0.9], .free, .light, .desk,
+          [.meetPeople, .relax, .learn], [.words], tags: [.scheduled], [
+            ("Find a library or bookstore club", "Libraries and bookstores host free monthly clubs — borrow the next pick free on Libby."),
             ("Read it and show up", "Jot a few notes on what you liked and didn't, and go to the meeting."),
-            ("Pick a book, or start your own club", "After three meetings, suggest a book — or start a club with friends around a theme you love."),
+            ("Pick a book, or start a club", "After three meetings, suggest a book — or start a club with friends around a theme you love."),
           ]),
         h("Podcasting", "🎙️", "Talk about what you love and publish it to the world.",
-          (0.5, 0.0, 0.0, 0.3, 0.8, 0.5), .low, .moderate, .desk, [.makeThings, .learn, .meetPeople], [.words, .tech], [
-            ("Record a 10-minute pilot", "Use your phone or a USB mic and record yourself, or with a friend, on a topic you care about."),
-            ("Learn basic editing and pick a format", "Edit in a free tool like GarageBand, settle on a format, and record three episodes."),
-            ("Publish your first three episodes", "Upload to a free host that sends episodes to Apple Podcasts and Spotify, and share them."),
+          [0.5, 0.0, 0.0, 0.3, 0.8, 0.5, 0.0, 0.1, 0.5, 0.8, 0.8], .low, .moderate, .desk,
+          [.makeThings, .learn, .meetPeople], [.words, .tech], [
+            ("Record a 10-minute pilot", "Use your phone or a USB mic (~$50–100) and record yourself, or with a friend, on a topic you care about."),
+            ("Learn editing, pick a format", "Edit in free Audacity or GarageBand, settle on a format, and record three episodes."),
+            ("Publish three episodes", "Host free on Spotify for Creators, which feeds Apple Podcasts and other apps; post a video version to YouTube too."),
+          ]),
+        h("Pub Trivia", "❓", "Weekly team quiz nights at a bar — bragging rights and snacks.",
+          [0.95, 0.0, 0.0, 0.0, 0.2, 0.5, 0.7, 0.1, 0.3, 0.0, 0.8], .free, .light, .desk,
+          [.meetPeople, .learn, .challenge], [.games, .words], tags: [.scheduled], needs: [.venues], [
+            ("Go to a quiz night", "Bars and breweries run free weekly trivia; ask to join a short-handed team if you go solo."),
+            ("Form a regular team of 4–6", "Recruit people who know different things (sports, pop culture, science) and play the same night weekly."),
+            ("Study your weak categories", "Use free Sporcle quizzes on geography and flags, then aim for a top-three finish by month three."),
           ]),
 
         // MARK: Games & puzzles
         h("Chess", "♟️", "Endless strategy on 64 squares.",
-          (0.4, 0.0, 0.0, 0.0, 0.1, 0.9), .free, .light, .desk, [.challenge, .learn], [.games], [
+          [0.4, 0.0, 0.0, 0.0, 0.1, 0.9, 0.8, 0.1, 0.85, 0.7, 0.8], .free, .light, .desk,
+          [.challenge, .learn], [.games], tags: [.portable], [
             ("Play 10 games online", "Make a free account on Lichess or Chess.com and play 10-minute games against people at your level."),
-            ("Do daily puzzles and learn openings", "Solve 10 tactics puzzles a day and learn one opening each for white and black."),
-            ("Go to a chess club night", "Clubs and cafés host casual nights — play over the board and watch your rating climb."),
+            ("Do daily puzzles, learn openings", "Solve 10 tactics puzzles a day and learn one opening each for white and black."),
+            ("Go to a chess club night", "Clubs, cafés and parks host casual nights — play over the board and watch your rating climb."),
           ]),
         h("Board Game Nights", "🎲", "Modern tabletop games with friends — strategy, co-op and party.",
-          (0.9, 0.0, 0.0, 0.2, 0.2, 0.6), .low, .light, .desk, [.meetPeople, .relax, .challenge], [.games], [
+          [0.9, 0.0, 0.0, 0.2, 0.2, 0.6, 0.5, 0.0, 0.2, 0.0, 0.7], .low, .light, .desk,
+          [.meetPeople, .relax, .challenge], [.games], tags: [.familyFriendly], needs: [.gameCafe, .communityCenter], [
             ("Visit a board game café", "Cafés have big libraries and staff who'll teach you. Try three different kinds of game."),
             ("Buy a gateway game and host", "Pick up a great gateway game (Ticket to Ride, Cascadia, Codenames) and host a night."),
             ("Join a regular game group", "Find a local meetup or library game night and become a regular."),
           ]),
+        h("Mahjong", "🀄", "The tile game behind a boom in social clubs and lesson nights.",
+          [0.9, 0.0, 0.0, 0.2, 0.1, 0.8, 0.5, 0.1, 0.6, 0.1, 0.4], .low, .light, .desk,
+          [.meetPeople, .challenge, .relax], [.games], tags: [.scheduled], needs: [.gameCafe, .communityCenter], [
+            ("Take a beginner lesson", "Libraries, community centers and bars now run beginner nights. Pick a style: American, Hong Kong or Riichi."),
+            ("Get the card or a set", "American mahjong uses a new National Mah Jongg League card each year ($14–15); a tile set runs $50 to several hundred."),
+            ("Join a weekly table", "Find a regular club or start a four-player table with friends; practice Riichi free in apps between games."),
+          ]),
         h("Tabletop Roleplaying", "🧙", "Collaborative storytelling games like Dungeons & Dragons.",
-          (0.9, 0.0, 0.0, 0.1, 0.9, 0.4), .free, .light, .desk, [.meetPeople, .makeThings], [.games, .words], [
-            ("Play a one-shot", "Game stores and online groups run beginner one-shots with ready-made characters."),
-            ("Join a campaign", "Join a weekly or biweekly group and build your own character with the free basic rules."),
+          [0.9, 0.0, 0.0, 0.1, 0.9, 0.4, 0.0, 0.1, 0.4, 0.3, 0.6], .free, .light, .desk,
+          [.meetPeople, .makeThings], [.games, .words], tags: [.scheduled], [
+            ("Play a one-shot", "Game stores, libraries and online groups run beginner one-shots with ready-made characters."),
+            ("Join a campaign", "Join a weekly or biweekly group and build a character with the free 2024 D&D rules on D&D Beyond."),
             ("Run a one-shot yourself", "Run a short pre-written adventure for friends — game-mastering is where the creativity kicks in."),
           ]),
         h("Speedcubing", "🧩", "Solve a Rubik's Cube — then do it faster and faster.",
-          (0.2, 0.0, 0.0, 0.5, 0.0, 1.0), .free, .light, .desk, [.challenge, .learn], [.games], [
-            ("Solve it once with the beginner method", "Buy a modern speedcube ($10–15) and follow a layer-by-layer beginner tutorial."),
-            ("Solve it without notes", "Memorize the beginner method and time yourself every day."),
-            ("Get under one minute", "Learn the basic CFOP steps, aim for sub-60 seconds, and look up a local competition."),
+          [0.2, 0.0, 0.0, 0.5, 0.0, 1.0, 0.7, 0.1, 0.7, 0.1, 0.9], .free, .light, .desk,
+          [.challenge, .learn], [.games], tags: [.portable, .familyFriendly], [
+            ("Solve it once, beginner method", "Buy a magnetic speedcube ($10–20) and follow a layer-by-layer beginner tutorial."),
+            ("Solve it without notes", "Memorize the beginner method and time yourself every day with a free timer like csTimer."),
+            ("Get under one minute", "Learn the basic CFOP steps, aim for sub-60 seconds, and find a WCA competition near you."),
           ]),
 
         // MARK: Tech & science
         h("Electronics & Arduino", "🔌", "Build blinking, beeping, sensing gadgets.",
-          (0.1, 0.0, 0.0, 0.8, 0.5, 0.7), .low, .moderate, .desk, [.makeThings, .learn, .challenge], [.tech, .science], [
-            ("Blink an LED", "An Arduino starter kit (~$40) and its first tutorial: wire an LED and make it blink."),
+          [0.1, 0.0, 0.0, 0.8, 0.5, 0.7, 0.0, 0.1, 0.6, 0.5, 0.8], .low, .moderate, .desk,
+          [.makeThings, .learn, .challenge], [.tech, .science], [
+            ("Blink an LED", "Try it free in the Wokwi browser simulator, then get an Arduino-compatible starter kit (~$40–60) and wire a real one."),
             ("Work through the kit projects", "Build the sensor, motor and display projects and learn basic circuits and code."),
             ("Build something useful", "Design your own project — a plant-watering alert or a weather display — and show it at a makerspace."),
           ]),
         h("Game Development", "👾", "Make your own video games.",
-          (0.1, 0.0, 0.0, 0.1, 0.9, 0.6), .free, .heavy, .desk, [.makeThings, .learn, .challenge], [.tech, .games], [
-            ("Follow a beginner tutorial", "Install a free engine (Godot is friendly) and make a tiny game following a tutorial."),
+          [0.1, 0.0, 0.0, 0.1, 0.9, 0.6, 0.1, 0.0, 0.8, 1.0, 0.9], .free, .heavy, .desk,
+          [.makeThings, .learn, .challenge], [.tech, .games], [
+            ("Follow a beginner tutorial", "Install the free Godot engine and make a tiny game following its official step-by-step tutorial."),
             ("Clone a classic", "Recreate Pong or Flappy Bird yourself to learn the game loop, input and collisions."),
-            ("Ship a game in a game jam", "Join an online game jam and finish a small game in a weekend."),
+            ("Ship a game in a game jam", "Join an online jam on itch.io and finish a small game in a weekend."),
           ]),
         h("3D Printing", "🖨️", "Design and print real objects at home.",
-          (0.1, 0.0, 0.0, 0.7, 0.7, 0.6), .medium, .light, .desk, [.makeThings, .learn], [.tech, .crafts], [
-            ("Print something at a library or makerspace", "Many offer printing — download a model from a site like Printables and print it."),
-            ("Get a printer and learn slicing", "A reliable beginner printer is $200–350; learn slicer settings and calibration."),
-            ("Design your own part", "Learn basic CAD (Tinkercad is free) and print something that solves a real problem at home."),
+          [0.1, 0.0, 0.0, 0.7, 0.7, 0.6, 0.0, 0.0, 0.5, 0.6, 0.8], .medium, .light, .desk,
+          [.makeThings, .learn], [.tech, .crafts], [
+            ("Print at a library or makerspace", "Many offer printing — download a model from Printables or MakerWorld and print it."),
+            ("Get a printer, learn slicing", "Auto-calibrating beginner printers now start around $220–400; learn slicer settings and filament types."),
+            ("Design your own part", "Learn basic CAD in free Tinkercad or Onshape and print something that solves a real problem at home."),
           ]),
         h("Mechanical Keyboards", "⌨️", "Build a keyboard that sounds and feels exactly how you like.",
-          (0.1, 0.0, 0.0, 0.8, 0.6, 0.6), .medium, .light, .desk, [.makeThings, .learn], [.tech, .crafts], [
+          [0.1, 0.0, 0.0, 0.8, 0.6, 0.6, 0.0, 0.0, 0.4, 0.3, 0.9], .medium, .light, .desk,
+          [.makeThings, .learn], [.tech, .crafts], [
             ("Try switches with a tester", "A $10–15 switch tester shows the difference between linear, tactile and clicky."),
             ("Build a hot-swap kit", "A hot-swappable kit needs no soldering ($100–200) — assemble it with switches and keycaps you chose."),
             ("Mod or solder your next board", "Lube switches, add foam, or solder a kit — and share it with a keyboard community."),
           ]),
         h("Ham Radio", "📻", "Talk across town or across the world on amateur radio.",
-          (0.4, 0.3, 0.0, 0.6, 0.1, 0.9), .low, .moderate, .desk, [.learn, .meetPeople, .challenge], [.tech, .science], [
-            ("Listen in first", "Use a free online web SDR or a cheap receiver to hear hams before getting licensed."),
-            ("Study for your license", "Use a free practice-exam site to prepare for the entry-level license test."),
-            ("Get licensed and make a contact", "Take the exam at a local club, get a handheld radio, and check in to a local net."),
+          [0.4, 0.3, 0.0, 0.6, 0.1, 0.9, 0.3, 0.1, 0.7, 0.3, 0.7], .low, .moderate, .desk,
+          [.learn, .meetPeople, .challenge], [.tech, .science], [
+            ("Listen in first", "Tune a free online WebSDR receiver in your browser to hear hams talking before you get licensed."),
+            ("Study for the Technician exam", "Use free HamStudy.org practice tests for the 35-question entry-level exam."),
+            ("Get licensed, make a contact", "Test with a local club (~$15) plus the FCC's $35 fee, get a handheld radio, and check in to a local net."),
+          ]),
+        h("Home Lab", "🖥️", "Run your own servers at home: photo backup, ad-blocking, media.",
+          [0.2, 0.0, 0.0, 0.5, 0.4, 0.8, 0.0, 0.1, 0.7, 1.0, 0.8], .low, .moderate, .desk,
+          [.learn, .makeThings, .challenge], [.tech, .science], [
+            ("Turn an old PC into a server", "Memory prices spiked in 2026, so reuse a spare laptop or mini PC: install Ubuntu Server or Debian and log in over SSH."),
+            ("Self-host your first apps", "Learn Docker, then run Pi-hole for network ad-blocking and Immich or Jellyfin for photos and media."),
+            ("Add backups and remote access", "Set up 3-2-1 backups and remote access with Tailscale's free personal plan, then share your setup on r/homelab."),
+          ]),
+        h("Video Editing", "✂️", "Cut phone clips into stories for YouTube, TikTok or friends.",
+          [0.2, 0.0, 0.0, 0.1, 0.9, 0.5, 0.1, 0.0, 0.5, 1.0, 0.9], .free, .moderate, .desk,
+          [.makeThings, .learn], [.tech, .art], [
+            ("Edit a 60-second video", "Shoot 10 short clips on your phone and cut them to music in a free editor like iMovie or DaVinci Resolve."),
+            ("Learn cuts, audio and color", "Follow a free DaVinci Resolve beginner course: J/L cuts, clean audio, captions and a basic color grade."),
+            ("Publish a five-video series", "Upload a themed series to YouTube or Shorts on a schedule and study the retention graphs."),
           ]),
 
         // MARK: Animals & community
         h("Shelter Volunteering", "🐶", "Walk dogs, socialize cats and help animals get adopted.",
-          (0.6, 0.4, 0.4, 0.6, 0.1, 0.5), .free, .light, .desk, [.meetPeople, .relax], [.animals], [
-            ("Sign up for a volunteer orientation", "Most shelters require a short orientation — sign up online."),
+          [0.6, 0.4, 0.4, 0.6, 0.1, 0.5, 0.0, 0.1, 0.2, 0.0, 0.3], .free, .light, .desk,
+          [.meetPeople, .relax], [.animals], tags: [.scheduled], needs: [.communityCenter], [
+            ("Sign up for an orientation", "Most shelters require a short orientation — sign up online."),
             ("Commit to a weekly shift", "Pick one regular two-hour slot walking dogs or socializing cats."),
             ("Take on a bigger role", "Foster an animal, help at adoption events, or photograph animals for their adoption profiles."),
+          ]),
+        h("Dog Agility", "🐕", "Run an obstacle course with your dog as your teammate.",
+          [0.6, 0.6, 0.7, 0.3, 0.1, 0.8, 0.5, 0.3, 0.7, 0.0, 0.3], .medium, .moderate, .desk,
+          [.getFit, .challenge, .learn], [.animals, .sports], tags: [.scheduled], needs: [.studios, .communityCenter], [
+            ("Practice focus games at home", "Spend 10 minutes a day on recalls, sit-stays and treat-based focus games; mixed breeds welcome."),
+            ("Take a foundations class", "Dog-training clubs run 6-week agility foundations courses on jumps, tunnels and handling."),
+            ("Run a fun match", "Enter a club fun match, then look at AKC or USDAA trials — AKC lets mixed breeds compete too."),
           ]),
     ]
 }

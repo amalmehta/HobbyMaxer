@@ -50,30 +50,41 @@
         "sports"
       ],
       "name" : "Bouldering",
+      "needs" : [
+        "climbing"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Most climbing gyms run a one-hour beginner class with shoe rental for about $25–35.",
+          "detail" : "Most climbing gyms run a short beginner orientation; a day pass plus shoe rental is usually about $30–45.",
           "title" : "Book an intro session"
         },
         {
-          "detail" : "Stick to the easiest problems (V0–V1) for a month, focus on footwork, and buy your own shoes once you're hooked (~$90).",
+          "detail" : "Stay on V0–V1 for a month and focus on quiet, precise feet. Buy your own shoes once you're hooked (~$90–130).",
           "title" : "Climb twice a week on easy grades"
         },
         {
-          "detail" : "Most gyms have beginner nights or group chats — climbing with others helps you read routes and keeps you coming back.",
+          "detail" : "Most gyms have beginner nights or group chats — climbing with others helps you read problems and keeps you coming back.",
           "title" : "Send a V3 and join a meetup"
         }
       ],
-      "tagline" : "Short, puzzle-like climbs on padded walls — no ropes, no partner needed.",
+      "tagline" : "Short, puzzle-like climbs on padded walls — no ropes, no partner.",
+      "tags" : [
+        "highImpact"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.90000000000000002,
+        "competitive" : 0.40000000000000002,
         "creative" : 0.29999999999999999,
         "handsOn" : 0.69999999999999996,
         "outdoor" : 0.10000000000000001,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.29999999999999999,
         "social" : 0.59999999999999998,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.69999999999999996
       }
     },
     {
@@ -88,30 +99,41 @@
         "sports"
       ],
       "name" : "Pickleball",
+      "needs" : [
+        "courts"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Look up parks or rec centers with open play — many lend paddles, and regulars teach the rules in five minutes.",
+          "detail" : "Check your parks department or rec center for open play — many lend paddles, and regulars teach the rules in five minutes.",
           "title" : "Drop in to open play"
         },
         {
-          "detail" : "A $40–60 paddle is plenty. Watch one beginner video on dinking and the non-volley zone, then play twice a week.",
-          "title" : "Get a paddle and learn the kitchen rule"
+          "detail" : "A $50–90 composite paddle is plenty. Watch one video on dinking and the non-volley zone, then play twice a week.",
+          "title" : "Get a paddle, learn the kitchen"
         },
         {
-          "detail" : "Sign up for a beginner ladder or a 4-week clinic so you play people at your level and see your progress.",
-          "title" : "Join a ladder or clinic"
+          "detail" : "Sign up for a beginner ladder or 4-week clinic and log matches for a DUPR rating so you can find games at your level.",
+          "title" : "Join a ladder and get rated"
         }
       ],
-      "tagline" : "An easy-to-learn paddle sport played in friendly doubles.",
+      "tagline" : "An easy-to-learn paddle sport played in friendly, chatty doubles.",
+      "tags" : [
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.69999999999999996,
+        "competitive" : 0.59999999999999998,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.40000000000000002,
         "outdoor" : 0.59999999999999998,
+        "patience" : 0.29999999999999999,
+        "screens" : 0,
+        "selfTaught" : 0.59999999999999998,
         "social" : 0.84999999999999998,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.29999999999999999
       }
     },
     {
@@ -125,30 +147,41 @@
         "sports"
       ],
       "name" : "Yoga",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Pick one free beginner series online and follow it on a towel or cheap mat.",
-          "title" : "Do three 20-minute beginner sessions"
+          "detail" : "Follow a free beginner series on YouTube (Yoga With Adriene is a classic) on a towel or a cheap mat.",
+          "title" : "Do three 20-minute sessions"
         },
         {
-          "detail" : "A teacher fixes alignment in ways video can't. Most studios offer an intro week for $20–40.",
+          "detail" : "A teacher fixes alignment in ways video can't. Most studios have a new-student intro offer, often $20–50 for a week or more.",
           "title" : "Take an in-person beginner class"
         },
         {
-          "detail" : "Settle on a style you like (vinyasa, yin, hatha), get a decent mat, and track your sessions.",
+          "detail" : "Settle on a style you like (vinyasa, yin, hatha), get a decent mat (~$30–80), and track your sessions.",
           "title" : "Build a three-times-a-week habit"
         }
       ],
       "tagline" : "Stretch, breathe and build strength — at home or in a studio.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.5,
+        "competitive" : 0,
         "creative" : 0.20000000000000001,
         "handsOn" : 0.29999999999999999,
         "outdoor" : 0.20000000000000001,
+        "patience" : 0.5,
+        "screens" : 0.40000000000000002,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.29999999999999999,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0
       }
     },
     {
@@ -163,14 +196,17 @@
         "sports"
       ],
       "name" : "Brazilian Jiu-Jitsu",
+      "needs" : [
+        "studios"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Nearly every gym offers one. Wear athletic clothes without zippers; they'll loan you a gi.",
+          "detail" : "Nearly every gym offers one. Wear athletic clothes without zippers; most will loan you a gi or run a no-gi class.",
           "title" : "Take a free trial class"
         },
         {
-          "detail" : "Buy a gi ($60–100), stick to fundamentals classes, and tap early and often — nobody minds.",
+          "detail" : "Buy a gi ($70–150) or rash guard, stick to fundamentals classes, and tap early and often — nobody minds.",
           "title" : "Do two classes a week for a month"
         },
         {
@@ -179,14 +215,23 @@
         }
       ],
       "tagline" : "A grappling martial art that plays like physical chess.",
+      "tags" : [
+        "highImpact",
+        "scheduled"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 1,
+        "competitive" : 0.80000000000000004,
         "creative" : 0.20000000000000001,
         "handsOn" : 0.59999999999999998,
         "outdoor" : 0,
+        "patience" : 0.90000000000000002,
+        "screens" : 0,
+        "selfTaught" : 0.10000000000000001,
         "social" : 0.80000000000000004,
-        "structured" : 0.90000000000000002
+        "structured" : 0.90000000000000002,
+        "thrill" : 0.59999999999999998
       }
     },
     {
@@ -202,30 +247,41 @@
         "nature"
       ],
       "name" : "Trail Running",
+      "needs" : [
+        "trailsParks"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Find an easy, well-marked trail and alternate two minutes running with one minute walking for 20–30 minutes.",
+          "detail" : "Find an easy, well-marked trail on AllTrails (free) and alternate two minutes running with one minute walking for 20–30 minutes.",
           "title" : "Walk-run a local trail"
         },
         {
-          "detail" : "Trail shoes ($100–140) grip loose ground. Build to 30 minutes of easy running and walk hills without guilt.",
-          "title" : "Get trail shoes and run three times a week"
+          "detail" : "Trail shoes ($120–160) grip loose ground. Build to 30 minutes of easy running and walk the hills without guilt.",
+          "title" : "Get trail shoes, run 3x a week"
         },
         {
-          "detail" : "Pick a beginner-friendly race 8–10 weeks out — a date on the calendar does wonders.",
+          "detail" : "Pick a beginner-friendly race 8–10 weeks out on UltraSignup or a local club calendar — a date on the calendar does wonders.",
           "title" : "Enter a 5K or 10K trail race"
         }
       ],
       "tagline" : "Running, but on dirt paths through woods and hills.",
+      "tags" : [
+        "highImpact"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 1,
+        "competitive" : 0.29999999999999999,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.20000000000000001,
         "outdoor" : 1,
+        "patience" : 0.40000000000000002,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.29999999999999999,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0.40000000000000002
       }
     },
     {
@@ -241,15 +297,18 @@
         "nature"
       ],
       "name" : "Cycling",
+      "needs" : [
+
+      ],
       "space" : 1,
       "steps" : [
         {
-          "detail" : "Dust off any bike or rent one for an afternoon and ride a quiet 10-mile loop or bike path.",
-          "title" : "Ride what you have, or rent"
+          "detail" : "Dust off any bike, rent one, or grab a bike-share and ride a quiet 10-mile loop or protected bike path.",
+          "title" : "Ride what you have, or bike-share"
         },
         {
-          "detail" : "Buy a used road or gravel bike that fits you ($400–900) plus a helmet, and learn to fix a flat.",
-          "title" : "Get a bike that fits and learn basic repair"
+          "detail" : "Buy a used road or gravel bike that fits you ($400–900) plus a helmet, and learn to fix a flat. Plan routes in Strava or Komoot.",
+          "title" : "Get a bike that fits; fix a flat"
         },
         {
           "detail" : "Bike shops host weekly no-drop rides where nobody gets left behind — aim for 30 miles by month three.",
@@ -257,14 +316,22 @@
         }
       ],
       "tagline" : "Explore miles of road or gravel under your own power.",
+      "tags" : [
+        "seasonal"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.90000000000000002,
+        "competitive" : 0.29999999999999999,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.40000000000000002,
         "outdoor" : 1,
+        "patience" : 0.40000000000000002,
+        "screens" : 0.20000000000000001,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.40000000000000002,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.5
       }
     },
     {
@@ -278,10 +345,14 @@
         "sports"
       ],
       "name" : "Swimming",
+      "needs" : [
+        "gymPool",
+        "water"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Go during lap swim at a local pool, rest as much as you need, and count your lengths.",
+          "detail" : "Go during lap swim at a local pool (day passes are often $5–15), rest as much as you need, and count your lengths.",
           "title" : "Swim a 30-minute session"
         },
         {
@@ -289,19 +360,27 @@
           "title" : "Fix your stroke"
         },
         {
-          "detail" : "Follow a simple beginner plan three times a week, or join a masters group for coaching and company.",
-          "title" : "Swim 1,000 meters without stopping"
+          "detail" : "Follow a simple beginner plan three times a week, or join a U.S. Masters Swimming group for coaching and company.",
+          "title" : "Swim 1,000 meters nonstop"
         }
       ],
       "tagline" : "Full-body, low-impact laps with a meditative rhythm.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.90000000000000002,
+        "competitive" : 0.20000000000000001,
         "creative" : 0,
         "handsOn" : 0.10000000000000001,
         "outdoor" : 0.29999999999999999,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.5,
         "social" : 0.20000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -317,6 +396,10 @@
         "music"
       ],
       "name" : "Salsa Dancing",
+      "needs" : [
+        "studios",
+        "venues"
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -333,14 +416,22 @@
         }
       ],
       "tagline" : "Partner dancing with great music and a social night out built in.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.80000000000000004,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.20000000000000001,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0,
+        "selfTaught" : 0.20000000000000001,
         "social" : 0.94999999999999996,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.29999999999999999
       }
     },
     {
@@ -354,14 +445,18 @@
         "sports"
       ],
       "name" : "Archery",
+      "needs" : [
+        "courts",
+        "trailsParks"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Indoor ranges rent equipment and run one-hour beginner sessions for about $30.",
+          "detail" : "Indoor ranges rent equipment and run one-hour beginner sessions, typically around $30–50.",
           "title" : "Book an intro lesson at a range"
         },
         {
-          "detail" : "Shoot weekly on rental gear and work on a consistent stance and anchor before buying a bow ($150–300).",
+          "detail" : "Shoot weekly on rental gear and nail a consistent stance and anchor before buying a recurve ($150–300).",
           "title" : "Practice form weekly"
         },
         {
@@ -370,14 +465,22 @@
         }
       ],
       "tagline" : "Focus, form and the satisfaction of hitting the center.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.40000000000000002,
+        "competitive" : 0.5,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.59999999999999998,
         "outdoor" : 0.5,
+        "patience" : 0.59999999999999998,
+        "screens" : 0,
+        "selfTaught" : 0.29999999999999999,
         "social" : 0.29999999999999999,
-        "structured" : 0.80000000000000004
+        "structured" : 0.80000000000000004,
+        "thrill" : 0.20000000000000001
       }
     },
     {
@@ -391,30 +494,42 @@
         "sports"
       ],
       "name" : "Skateboarding",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "A $70–120 complete from a skate shop beats a toy-store board. Add a helmet and wrist guards.",
+          "detail" : "A $80–130 complete from a skate shop beats a toy-store board. Add a helmet and wrist guards.",
           "title" : "Get a real board and pads"
         },
         {
           "detail" : "Spend 20 minutes a day in a smooth parking lot until riding feels boring — then you're ready for tricks.",
-          "title" : "Practice pushing, turning and stopping"
+          "title" : "Practice pushing, turning, stopping"
         },
         {
           "detail" : "Go during quiet morning hours, watch the etiquette, and make the ollie your month-three goal.",
-          "title" : "Land an ollie and visit a skatepark"
+          "title" : "Land an ollie at a skatepark"
         }
       ],
       "tagline" : "Learn to roll, carve and eventually pop your first ollie.",
+      "tags" : [
+        "highImpact",
+        "seasonal"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.80000000000000004,
+        "competitive" : 0.20000000000000001,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.5,
         "outdoor" : 0.90000000000000002,
+        "patience" : 0.69999999999999996,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.5,
-        "structured" : 0.29999999999999999
+        "structured" : 0.29999999999999999,
+        "thrill" : 0.80000000000000004
       }
     },
     {
@@ -428,6 +543,9 @@
         "sports"
       ],
       "name" : "Rec Sports League",
+      "needs" : [
+        "courts"
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -444,14 +562,322 @@
         }
       ],
       "tagline" : "Casual adult teams — kickball, soccer, volleyball and more.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.80000000000000004,
+        "competitive" : 0.59999999999999998,
         "creative" : 0,
         "handsOn" : 0.20000000000000001,
         "outdoor" : 0.80000000000000004,
+        "patience" : 0.20000000000000001,
+        "screens" : 0,
+        "selfTaught" : 0.5,
         "social" : 1,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.29999999999999999
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🎾",
+      "goals" : [
+        "challenge",
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "sports"
+      ],
+      "name" : "Padel",
+      "needs" : [
+        "courts"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "US padel clubs passed 1,000 courts in 2026 and most run intro clinics with racket rental; court time splits four ways.",
+          "title" : "Book a beginner clinic"
+        },
+        {
+          "detail" : "Join open matches at your level through your club's booking app. A beginner racket runs about $60–120 once you're hooked.",
+          "title" : "Play twice a week, learn the walls"
+        },
+        {
+          "detail" : "Americano nights rotate partners every game — the fastest way to find regular doubles partners at your level.",
+          "title" : "Play an americano or league"
+        }
+      ],
+      "tagline" : "Tennis meets squash: fast, social doubles inside a glass-walled court.",
+      "tags" : [
+
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.80000000000000004,
+        "competitive" : 0.59999999999999998,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0.5,
+        "patience" : 0.40000000000000002,
+        "screens" : 0,
+        "selfTaught" : 0.40000000000000002,
+        "social" : 0.84999999999999998,
+        "structured" : 0.5,
+        "thrill" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "👟",
+      "goals" : [
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "sports",
+        "nature"
+      ],
+      "name" : "Run Club",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Running shops, cafés and breweries host free weekly runs; search Strava clubs, or try parkrun's free timed Saturday 5K.",
+          "title" : "Show up to a free group run"
+        },
+        {
+          "detail" : "Most run shops do a free gait check; good shoes run $120–160. Go to the same run every week so faces become friends.",
+          "title" : "Get fitted and pick one club"
+        },
+        {
+          "detail" : "Pick a race your club is already doing and train with them — finishing together is the best part.",
+          "title" : "Run a 5K or 10K with the club"
+        }
+      ],
+      "tagline" : "Free weekly group runs for every pace — with coffee after.",
+      "tags" : [
+        "highImpact",
+        "scheduled"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.90000000000000002,
+        "competitive" : 0.20000000000000001,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0.69999999999999996,
+        "patience" : 0.29999999999999999,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.80000000000000004,
+        "social" : 0.90000000000000002,
+        "structured" : 0.5,
+        "thrill" : 0.20000000000000001
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🥏",
+      "goals" : [
+        "relax",
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "nature",
+        "sports"
+      ],
+      "name" : "Disc Golf",
+      "needs" : [
+        "trailsParks"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Find a nearby course in the free UDisc app — most park courses cost nothing. A 3-disc starter set is about $20–30.",
+          "title" : "Play a free park course"
+        },
+        {
+          "detail" : "Throw lightweight beginner discs (not pro drivers), focus on putting, and log rounds in UDisc to watch your score drop.",
+          "title" : "Learn a backhand, track rounds"
+        },
+        {
+          "detail" : "Many courses run casual random-partner doubles nights for a few dollars — great for tips and new friends.",
+          "title" : "Join a weekly doubles league"
+        }
+      ],
+      "tagline" : "Frisbee meets golf on free courses in your local park.",
+      "tags" : [
+        "familyFriendly",
+        "seasonal"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.5,
+        "competitive" : 0.40000000000000002,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.40000000000000002,
+        "outdoor" : 1,
+        "patience" : 0.5,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.80000000000000004,
+        "social" : 0.5,
+        "structured" : 0.5,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🎒",
+      "goals" : [
+        "relax",
+        "challenge",
+        "getFit"
+      ],
+      "interests" : [
+        "nature",
+        "sports"
+      ],
+      "name" : "Rucking",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Put 10–15 lb (wrapped books or water bottles) high in a sturdy backpack and walk a familiar 2-mile loop.",
+          "title" : "Do a 30-minute loaded walk"
+        },
+        {
+          "detail" : "Add about 5 lb every couple of weeks and ruck 2–3 times a week. A dedicated ruck plate and pack can come later.",
+          "title" : "Add weight slowly"
+        },
+        {
+          "detail" : "Find a local rucking club on social media or Meetup, or sign up for a GORUCK-style event as a 3-month goal.",
+          "title" : "Do a group ruck or event"
+        }
+      ],
+      "tagline" : "Walk with a weighted pack — simple strength and cardio in one.",
+      "tags" : [
+
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.80000000000000004,
+        "competitive" : 0.20000000000000001,
+        "creative" : 0,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0.90000000000000002,
+        "patience" : 0.20000000000000001,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
+        "social" : 0.5,
+        "structured" : 0.40000000000000002,
+        "thrill" : 0.20000000000000001
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🏄",
+      "goals" : [
+        "relax",
+        "getFit"
+      ],
+      "interests" : [
+        "nature",
+        "sports"
+      ],
+      "name" : "Paddleboarding",
+      "needs" : [
+        "water"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Lakes and beaches with rental shacks are perfect. Start kneeling on a calm morning, wear the leash and a life vest.",
+          "title" : "Rent a board for an hour"
+        },
+        {
+          "detail" : "A one-hour lesson covers stance, strokes and falling safely. Practice turns and paddling straight every week.",
+          "title" : "Take a lesson, then paddle weekly"
+        },
+        {
+          "detail" : "An inflatable board ($300–600) fits in a closet; or join group paddles and SUP yoga to keep going.",
+          "title" : "Buy an inflatable or join a group"
+        }
+      ],
+      "tagline" : "Stand up and glide across calm water — a full-body balance workout.",
+      "tags" : [
+        "familyFriendly",
+        "seasonal"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.59999999999999998,
+        "competitive" : 0.10000000000000001,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.20000000000000001,
+        "outdoor" : 1,
+        "patience" : 0.20000000000000001,
+        "screens" : 0,
+        "selfTaught" : 0.59999999999999998,
+        "social" : 0.40000000000000002,
+        "structured" : 0.29999999999999999,
+        "thrill" : 0.40000000000000002
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🌊",
+      "goals" : [
+        "relax",
+        "challenge",
+        "getFit"
+      ],
+      "interests" : [
+        "nature",
+        "sports"
+      ],
+      "name" : "Wild Swimming",
+      "needs" : [
+        "water"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Go with a buddy, stay parallel to shore, and get in slowly — cold water steals your breath for the first minute.",
+          "title" : "Swim at a lifeguarded beach"
+        },
+        {
+          "detail" : "A tow float ($20–35) and bright cap make you visible; add a wetsuit if your water stays below about 65°F.",
+          "title" : "Get a tow float and a bright cap"
+        },
+        {
+          "detail" : "Open-water swim groups meet at dawn on weekends — swim with them, then aim for a 1-mile event.",
+          "title" : "Join an open-water group"
+        }
+      ],
+      "tagline" : "Swim in lakes, rivers and the sea — calm, cold and exhilarating.",
+      "tags" : [
+        "seasonal"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.80000000000000004,
+        "competitive" : 0.10000000000000001,
+        "creative" : 0,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 1,
+        "patience" : 0.40000000000000002,
+        "screens" : 0,
+        "selfTaught" : 0.40000000000000002,
+        "social" : 0.5,
+        "structured" : 0.29999999999999999,
+        "thrill" : 0.69999999999999996
       }
     },
     {
@@ -465,10 +891,13 @@
         "nature"
       ],
       "name" : "Hiking",
+      "needs" : [
+        "trailsParks"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Pick a well-rated easy trail nearby, bring water and a snack, and tell someone where you're going.",
+          "detail" : "Pick a well-rated easy trail on AllTrails, download the map offline, bring water, and tell someone where you're going.",
           "title" : "Do a 3–5 mile marked trail"
         },
         {
@@ -476,19 +905,27 @@
           "title" : "Get proper shoes and a daypack"
         },
         {
-          "detail" : "Choose a signature hike in your region as a goal, or join a hiking club's group outing.",
-          "title" : "Complete a 10-mile or summit hike"
+          "detail" : "Choose a signature hike in your region as a goal, or join a hiking club or Meetup group outing.",
+          "title" : "Do a 10-mile or summit hike"
         }
       ],
       "tagline" : "Walk somewhere beautiful and let your head clear.",
+      "tags" : [
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.59999999999999998,
+        "competitive" : 0,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.10000000000000001,
         "outdoor" : 1,
+        "patience" : 0.20000000000000001,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.40000000000000002,
-        "structured" : 0.29999999999999999
+        "structured" : 0.29999999999999999,
+        "thrill" : 0.20000000000000001
       }
     },
     {
@@ -503,6 +940,9 @@
         "sports"
       ],
       "name" : "Kayaking",
+      "needs" : [
+        "water"
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -515,18 +955,27 @@
         },
         {
           "detail" : "Plan a half-day trip, or join a paddling club for group outings and boats before you buy your own.",
-          "title" : "Paddle a longer route or join a club"
+          "title" : "Paddle a longer route or club"
         }
       ],
       "tagline" : "Paddle calm lakes and rivers at water level.",
+      "tags" : [
+        "familyFriendly",
+        "seasonal"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.59999999999999998,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.29999999999999999,
         "outdoor" : 1,
+        "patience" : 0.29999999999999999,
+        "screens" : 0,
+        "selfTaught" : 0.40000000000000002,
         "social" : 0.40000000000000002,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0.40000000000000002
       }
     },
     {
@@ -541,6 +990,9 @@
         "animals"
       ],
       "name" : "Birdwatching",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -548,7 +1000,7 @@
           "title" : "Install Merlin and take a walk"
         },
         {
-          "detail" : "Basic 8x42 binoculars (~$100) change everything. Log sightings in eBird and learn your 20 most common birds.",
+          "detail" : "Basic 8x42 binoculars (~$100–150) change everything. Log sightings in eBird and learn your 20 most common birds.",
           "title" : "Get binoculars and keep a list"
         },
         {
@@ -557,14 +1009,23 @@
         }
       ],
       "tagline" : "Learn to spot and name the birds that are already around you.",
+      "tags" : [
+        "portable",
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.20000000000000001,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.10000000000000001,
         "handsOn" : 0,
         "outdoor" : 0.90000000000000002,
+        "patience" : 0.59999999999999998,
+        "screens" : 0.20000000000000001,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.20000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -579,6 +1040,9 @@
         "food"
       ],
       "name" : "Container Gardening",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -586,23 +1050,31 @@
           "title" : "Pot three easy herbs"
         },
         {
-          "detail" : "Learn your growing zone and sun hours, then add tomatoes, lettuce or peppers in bigger pots.",
+          "detail" : "Look up your USDA zone and sun hours, then add tomatoes, lettuce or peppers in bigger pots.",
           "title" : "Plan a small container garden"
         },
         {
-          "detail" : "Aim for one homegrown meal by month three, and swap seeds and cuttings with a local gardening group.",
+          "detail" : "Aim for one homegrown meal by month three, and swap seeds and cuttings at a library seed swap or garden club.",
           "title" : "Cook something you grew"
         }
       ],
       "tagline" : "Grow herbs, vegetables and flowers in pots — even on a balcony.",
+      "tags" : [
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.29999999999999999,
+        "competitive" : 0,
         "creative" : 0.40000000000000002,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0.59999999999999998,
+        "patience" : 0.40000000000000002,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.10000000000000001,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0
       }
     },
     {
@@ -617,14 +1089,17 @@
         "food"
       ],
       "name" : "Foraging",
+      "needs" : [
+        "trailsParks"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Start with easy, no-lookalike plants in your area (blackberries, dandelion) using a regional field guide.",
+          "detail" : "Start with easy, no-lookalike plants (blackberries, dandelion) using a regional field guide; check park rules first.",
           "title" : "Learn three foolproof plants"
         },
         {
-          "detail" : "Naturalists and mushroom societies run walks — the safest way to learn. Never eat anything you're not certain of.",
+          "detail" : "Mushroom societies and naturalists run walks. Apps like iNaturalist help ID, but never eat anything on an app's word.",
           "title" : "Go on a guided foraging walk"
         },
         {
@@ -633,14 +1108,22 @@
         }
       ],
       "tagline" : "Find wild edibles on walks — mushrooms, berries and greens.",
+      "tags" : [
+        "seasonal"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.40000000000000002,
+        "competitive" : 0,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.40000000000000002,
         "outdoor" : 1,
+        "patience" : 0.69999999999999996,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.40000000000000002,
         "social" : 0.29999999999999999,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.29999999999999999
       }
     },
     {
@@ -655,15 +1138,18 @@
         "nature"
       ],
       "name" : "Stargazing",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Use a free sky app on a clear night to find Orion, the Big Dipper, Cassiopeia and more.",
+          "detail" : "Use a free sky app like Stellarium on a clear night to find Orion, the Big Dipper, Cassiopeia and more.",
           "title" : "Learn five constellations"
         },
         {
           "detail" : "Ordinary binoculars show lunar craters and Jupiter's moons. Learn to read a monthly sky chart.",
-          "title" : "Point binoculars at the Moon and planets"
+          "title" : "Aim binoculars at Moon and planets"
         },
         {
           "detail" : "Astronomy clubs host free public nights where you can look through big telescopes before buying one.",
@@ -671,14 +1157,22 @@
         }
       ],
       "tagline" : "Find planets, galaxies and constellations from your backyard.",
+      "tags" : [
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.29999999999999999,
         "outdoor" : 0.80000000000000004,
+        "patience" : 0.5,
+        "screens" : 0.20000000000000001,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.20000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -693,6 +1187,9 @@
         "sports"
       ],
       "name" : "Fly Fishing",
+      "needs" : [
+        "water"
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -700,23 +1197,31 @@
           "title" : "Take a casting lesson"
         },
         {
-          "detail" : "A beginner rod and reel ($150–250) plus a fishing license. Practice casting 15 minutes a day.",
+          "detail" : "A beginner rod-and-reel outfit ($150–250) plus a state fishing license. Practice casting 15 minutes a day.",
           "title" : "Get a starter setup and license"
         },
         {
           "detail" : "A half-day guided trip on an easy river teaches you to read water — and you'll likely land a trout.",
-          "title" : "Catch your first fish on a guided trip"
+          "title" : "Catch a fish on a guided trip"
         }
       ],
       "tagline" : "An elegant, absorbing way to fish rivers and streams.",
+      "tags" : [
+        "seasonal"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.40000000000000002,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.20000000000000001,
         "handsOn" : 0.69999999999999996,
         "outdoor" : 1,
+        "patience" : 0.80000000000000004,
+        "screens" : 0,
+        "selfTaught" : 0.40000000000000002,
         "social" : 0.20000000000000001,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.20000000000000001
       }
     },
     {
@@ -731,6 +1236,9 @@
         "games"
       ],
       "name" : "Geocaching",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -747,14 +1255,23 @@
         }
       ],
       "tagline" : "A real-world treasure hunt using GPS and hidden containers.",
+      "tags" : [
+        "portable",
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.40000000000000002,
+        "competitive" : 0.20000000000000001,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.29999999999999999,
         "outdoor" : 0.90000000000000002,
+        "patience" : 0.20000000000000001,
+        "screens" : 0.40000000000000002,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.29999999999999999,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0.20000000000000001
       }
     },
     {
@@ -770,6 +1287,9 @@
         "art"
       ],
       "name" : "Bonsai",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -786,14 +1306,22 @@
         }
       ],
       "tagline" : "Shape living miniature trees over seasons and years.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0,
         "creative" : 0.69999999999999996,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0.40000000000000002,
+        "patience" : 0.94999999999999996,
+        "screens" : 0,
+        "selfTaught" : 0.59999999999999998,
         "social" : 0.10000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -808,15 +1336,18 @@
         "nature"
       ],
       "name" : "Beekeeping",
+      "needs" : [
+
+      ],
       "space" : 2,
       "steps" : [
         {
           "detail" : "Go to a meeting or open-hive day — many pair new keepers with mentors and run winter courses.",
-          "title" : "Visit a local beekeepers' association"
+          "title" : "Visit a beekeepers' association"
         },
         {
-          "detail" : "Learn hive biology, confirm zoning rules, and order a hive, suit and bees ($500–800) for spring.",
-          "title" : "Take a course and check local rules"
+          "detail" : "Learn hive biology, confirm zoning rules, and order a hive, suit and bees ($600–900) in winter for spring.",
+          "title" : "Take a course, check local rules"
         },
         {
           "detail" : "Install bees in spring with your mentor nearby and inspect weekly; first honey usually comes in year two.",
@@ -824,14 +1355,22 @@
         }
       ],
       "tagline" : "Keep a hive, help pollinators and harvest your own honey.",
+      "tags" : [
+        "seasonal"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.40000000000000002,
+        "competitive" : 0,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 1,
+        "patience" : 0.80000000000000004,
+        "screens" : 0,
+        "selfTaught" : 0.29999999999999999,
         "social" : 0.29999999999999999,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.40000000000000002
       }
     },
     {
@@ -847,6 +1386,9 @@
         "nature"
       ],
       "name" : "Aquascaping",
+      "needs" : [
+
+      ],
       "space" : 1,
       "steps" : [
         {
@@ -863,14 +1405,71 @@
         }
       ],
       "tagline" : "Design planted underwater landscapes in a fish tank.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.80000000000000004,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.10000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🧫",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "science",
+        "food"
+      ],
+      "name" : "Mushroom Growing",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "An oyster mushroom grow kit ($20–35) just needs misting and fruits in about 1–2 weeks.",
+          "title" : "Grow a countertop kit"
+        },
+        {
+          "detail" : "Buy grain spawn and pasteurize straw or hardwood pellets in a drilled bucket — learn sterile habits and fresh air needs.",
+          "title" : "Do a straw or sawdust bucket"
+        },
+        {
+          "detail" : "Local clubs (many affiliated with NAMA) run forays and grow workshops; share your first harvest at a meeting.",
+          "title" : "Join a mycological society"
+        }
+      ],
+      "tagline" : "Grow oyster and lion's mane mushrooms on your kitchen counter.",
+      "tags" : [
+        "familyFriendly"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "competitive" : 0,
+        "creative" : 0.29999999999999999,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
+        "social" : 0.10000000000000001,
+        "structured" : 0.69999999999999996,
+        "thrill" : 0
       }
     },
     {
@@ -885,10 +1484,13 @@
         "food"
       ],
       "name" : "Sourdough Baking",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Mix flour and water in a jar and feed it daily for 7–10 days until it doubles reliably.",
+          "detail" : "Mix flour and water in a jar and feed it daily for 7–10 days until it doubles reliably — or ask a local baker for some.",
           "title" : "Start a starter"
         },
         {
@@ -901,14 +1503,23 @@
         }
       ],
       "tagline" : "Bake crackly, chewy bread from wild yeast you keep alive.",
+      "tags" : [
+        "messy",
+        "familyFriendly"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.20000000000000001,
+        "competitive" : 0,
         "creative" : 0.5,
         "handsOn" : 0.90000000000000002,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.10000000000000001,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0
       }
     },
     {
@@ -923,6 +1534,9 @@
         "science"
       ],
       "name" : "Fermentation",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -939,14 +1553,22 @@
         }
       ],
       "tagline" : "Make kimchi, sauerkraut, kombucha and hot sauce.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0,
         "creative" : 0.5,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.40000000000000002,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.10000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -961,14 +1583,17 @@
         "food"
       ],
       "name" : "Cooking World Cuisines",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
           "detail" : "Choose a cuisine you love eating, find a trusted recipe, and shop a specialty grocery for ingredients.",
-          "title" : "Pick a cuisine and cook one dish"
+          "title" : "Pick a cuisine, cook one dish"
         },
         {
-          "detail" : "Cook from one good cookbook for a month and learn its core techniques and staples.",
+          "detail" : "Cook from one good cookbook (borrow it free on Libby) for a month and learn its core techniques and staples.",
           "title" : "Master five dishes and the pantry"
         },
         {
@@ -977,14 +1602,22 @@
         }
       ],
       "tagline" : "Cook your way around the world, one cuisine at a time.",
+      "tags" : [
+        "familyFriendly"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.20000000000000001,
+        "competitive" : 0,
         "creative" : 0.69999999999999996,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.40000000000000002,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0
       }
     },
     {
@@ -1000,30 +1633,41 @@
         "science"
       ],
       "name" : "Home Coffee",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "A $20 pour-over cone and fresh beans from a local roaster beat most café drip.",
-          "title" : "Buy fresh beans and try a pour-over"
+          "detail" : "A $20–30 pour-over cone and fresh beans from a local roaster beat most café drip.",
+          "title" : "Buy fresh beans, try a pour-over"
         },
         {
-          "detail" : "A decent grinder ($100–150) and scale let you experiment with ratio, grind and temperature.",
-          "title" : "Get a burr grinder and weigh everything"
+          "detail" : "A decent burr grinder ($100–170) and a $15 scale let you experiment with ratio, grind and temperature.",
+          "title" : "Get a burr grinder and a scale"
         },
         {
-          "detail" : "Cup three origins together, then decide whether to go deeper into espresso or roasting.",
+          "detail" : "Cup three origins together, then decide whether to go deeper into espresso or home roasting.",
           "title" : "Taste side by side"
         }
       ],
       "tagline" : "Dial in pour-overs and espresso like a café.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.29999999999999999,
         "handsOn" : 0.69999999999999996,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.10000000000000001,
-        "structured" : 0.80000000000000004
+        "structured" : 0.80000000000000004,
+        "thrill" : 0
       }
     },
     {
@@ -1039,10 +1683,13 @@
         "science"
       ],
       "name" : "Homebrewing",
+      "needs" : [
+
+      ],
       "space" : 1,
       "steps" : [
         {
-          "detail" : "A 1-gallon kit (~$50) fits on a stovetop and teaches sanitation and fermentation.",
+          "detail" : "A 1-gallon kit (~$50–70) fits on a stovetop and teaches sanitation and fermentation.",
           "title" : "Brew a one-gallon kit"
         },
         {
@@ -1055,14 +1702,22 @@
         }
       ],
       "tagline" : "Brew your own beer or cider from scratch.",
+      "tags" : [
+        "messy"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.20000000000000001,
+        "competitive" : 0.20000000000000001,
         "creative" : 0.5,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.29999999999999999,
-        "structured" : 0.80000000000000004
+        "structured" : 0.80000000000000004,
+        "thrill" : 0
       }
     },
     {
@@ -1076,10 +1731,13 @@
         "art"
       ],
       "name" : "Watercolor Painting",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "A student pan set, two brushes and real watercolor paper cost about $30. Follow one beginner tutorial.",
+          "detail" : "A student pan set, two brushes and 100% cotton watercolor paper cost about $30–40. Follow one beginner tutorial.",
           "title" : "Paint with a starter set"
         },
         {
@@ -1092,14 +1750,23 @@
         }
       ],
       "tagline" : "Loose, luminous paintings with just water and pigment.",
+      "tags" : [
+        "messy",
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 1,
         "handsOn" : 0.59999999999999998,
         "outdoor" : 0.20000000000000001,
+        "patience" : 0.69999999999999996,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.10000000000000001,
-        "structured" : 0.29999999999999999
+        "structured" : 0.29999999999999999,
+        "thrill" : 0
       }
     },
     {
@@ -1114,6 +1781,9 @@
         "art"
       ],
       "name" : "Urban Sketching",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1125,19 +1795,27 @@
           "title" : "Learn basic perspective"
         },
         {
-          "detail" : "Urban Sketchers groups meet worldwide to draw together and share sketchbooks — free and welcoming.",
+          "detail" : "Urban Sketchers chapters meet worldwide to draw together and share sketchbooks — free and welcoming.",
           "title" : "Join an Urban Sketchers meetup"
         }
       ],
       "tagline" : "Draw the world around you, on location, in a pocket sketchbook.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.20000000000000001,
+        "competitive" : 0,
         "creative" : 0.90000000000000002,
         "handsOn" : 0.5,
         "outdoor" : 0.69999999999999996,
+        "patience" : 0.59999999999999998,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.40000000000000002,
-        "structured" : 0.20000000000000001
+        "structured" : 0.20000000000000001,
+        "thrill" : 0
       }
     },
     {
@@ -1153,14 +1831,18 @@
         "art"
       ],
       "name" : "Pottery",
+      "needs" : [
+        "studios",
+        "makerspace"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Studios run taster sessions for about $40–60 — you'll get your hands in clay right away.",
+          "detail" : "Studios run taster sessions, usually about $50–75 — you'll get your hands in clay right away.",
           "title" : "Take a one-night wheel class"
         },
         {
-          "detail" : "Courses include clay, glazes, firing and studio time ($250–400). Expect a lot of collapsed pots at first.",
+          "detail" : "Courses include clay, glazes, firing and studio time ($300–450). Expect a lot of collapsed pots at first.",
           "title" : "Sign up for a 6–8 week course"
         },
         {
@@ -1169,14 +1851,23 @@
         }
       ],
       "tagline" : "Throw bowls and mugs on the wheel and glaze them yourself.",
+      "tags" : [
+        "messy",
+        "scheduled"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.29999999999999999,
+        "competitive" : 0,
         "creative" : 0.80000000000000004,
         "handsOn" : 1,
         "outdoor" : 0,
+        "patience" : 0.80000000000000004,
+        "screens" : 0,
+        "selfTaught" : 0.29999999999999999,
         "social" : 0.5,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -1192,14 +1883,17 @@
         "words"
       ],
       "name" : "Calligraphy",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "One brush pen (~$5) and printer paper: learn thin upstrokes and thick downstrokes.",
+          "detail" : "One brush pen (~$5) and smooth printer paper: learn thin upstrokes and thick downstrokes.",
           "title" : "Practice drills with a brush pen"
         },
         {
-          "detail" : "Follow practice sheets for a lowercase alphabet in one style, 15 minutes a day.",
+          "detail" : "Follow free practice sheets for a lowercase alphabet in one style, 15 minutes a day.",
           "title" : "Work through a full alphabet"
         },
         {
@@ -1208,14 +1902,22 @@
         }
       ],
       "tagline" : "Turn handwriting into art with brush pens or a dip nib.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.80000000000000004,
         "handsOn" : 0.69999999999999996,
         "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.10000000000000001,
-        "structured" : 0.80000000000000004
+        "structured" : 0.80000000000000004,
+        "thrill" : 0
       }
     },
     {
@@ -1230,14 +1932,17 @@
         "tech"
       ],
       "name" : "Photography",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Use your phone's manual mode and take one considered photo every day for a week.",
+          "detail" : "Use your phone's Pro or manual mode and take one considered photo every day; edit in a free app like Snapseed.",
           "title" : "Shoot one deliberate photo a day"
         },
         {
-          "detail" : "Understand aperture, shutter speed and ISO; if you're hooked, a used mirrorless camera runs $300–500.",
+          "detail" : "Understand aperture, shutter speed and ISO; if you're hooked, a used mirrorless camera with a kit lens runs about $350–600.",
           "title" : "Learn the exposure triangle"
         },
         {
@@ -1246,14 +1951,122 @@
         }
       ],
       "tagline" : "Learn to see light and composition — with your phone or a camera.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.29999999999999999,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.90000000000000002,
         "handsOn" : 0.40000000000000002,
         "outdoor" : 0.69999999999999996,
+        "patience" : 0.59999999999999998,
+        "screens" : 0.40000000000000002,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.29999999999999999,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🎞️",
+      "goals" : [
+        "relax",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "art"
+      ],
+      "name" : "Film Photography",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Grab a reusable film camera (like Kodak's Ektar H35) or a thrifted point-and-shoot, plus a roll of color film (~$10–15).",
+          "title" : "Shoot one roll this week"
+        },
+        {
+          "detail" : "Labs develop and scan a roll for roughly $15–25. Then pick up a used manual SLR ($100–250) to learn aperture and shutter.",
+          "title" : "Develop, scan, learn exposure"
+        },
+        {
+          "detail" : "Shoot a themed project, try home-developing black-and-white, and join a film photo walk or lab meetup.",
+          "title" : "Shoot a five-roll series"
+        }
+      ],
+      "tagline" : "Shoot 36 frames at a time and wait for the magic to come back.",
+      "tags" : [
+        "portable"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.29999999999999999,
+        "competitive" : 0,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.59999999999999998,
+        "outdoor" : 0.69999999999999996,
+        "patience" : 0.59999999999999998,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.69999999999999996,
+        "social" : 0.29999999999999999,
+        "structured" : 0.5,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🚁",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "art",
+        "nature"
+      ],
+      "name" : "Drone Photography",
+      "needs" : [
+        "trailsParks"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Every US recreational flyer must pass the free online TRUST test (about 30 minutes); practice on a cheap indoor drone.",
+          "title" : "Pass the free FAA TRUST test"
+        },
+        {
+          "detail" : "Recreational drones under 250 g need no FAA registration (heavier ones: $5 for 3 years). Check airspace in a B4UFLY app first.",
+          "title" : "Fly a sub-250 g camera drone"
+        },
+        {
+          "detail" : "Plan golden-hour flights over legal spots, edit a 10-photo or 60-second video set, and share it in a local drone group.",
+          "title" : "Shoot and edit an aerial series"
+        }
+      ],
+      "tagline" : "Capture landscapes and cities from above with a small camera drone.",
+      "tags" : [
+        "portable",
+        "seasonal"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "competitive" : 0.10000000000000001,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.40000000000000002,
+        "outdoor" : 0.80000000000000004,
+        "patience" : 0.5,
+        "screens" : 0.59999999999999998,
+        "selfTaught" : 0.80000000000000004,
+        "social" : 0.20000000000000001,
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.40000000000000002
       }
     },
     {
@@ -1268,30 +2081,41 @@
         "tech"
       ],
       "name" : "Digital Illustration",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Try a free app like Krita (or Procreate on an iPad) and copy a simple illustration you like.",
+          "detail" : "Try free Krita on a computer, or Procreate ($12.99 one-time) on an iPad, and copy a simple illustration you like.",
           "title" : "Draw with what you have"
         },
         {
-          "detail" : "Follow a beginner course on shapes, values and color. A pen tablet starts around $60.",
-          "title" : "Learn fundamentals with a course"
+          "detail" : "Follow a free beginner course on shapes, values and color. A basic pen tablet starts around $40–70.",
+          "title" : "Learn the fundamentals"
         },
         {
-          "detail" : "Take three illustrations start to finish and post them, or join a weekly drawing challenge.",
+          "detail" : "Take three illustrations start to finish and post them, or join a monthly drawing-prompt challenge.",
           "title" : "Finish three polished pieces"
         }
       ],
       "tagline" : "Draw and paint on a tablet with unlimited undo.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.10000000000000001,
         "creative" : 1,
         "handsOn" : 0.29999999999999999,
         "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 0.90000000000000002,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.10000000000000001,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0
       }
     },
     {
@@ -1306,10 +2130,13 @@
         "crafts"
       ],
       "name" : "Linocut Printmaking",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "A starter kit with lino, cutters, ink and a roller is about $30. Carve a bold, simple shape.",
+          "detail" : "A starter kit with lino, cutters, ink and a brayer is about $30–40. Carve a bold, simple shape.",
           "title" : "Carve a simple block"
         },
         {
@@ -1322,14 +2149,122 @@
         }
       ],
       "tagline" : "Carve designs into blocks and print them by hand.",
+      "tags" : [
+        "messy"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0,
         "creative" : 0.90000000000000002,
         "handsOn" : 0.90000000000000002,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.20000000000000001,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🪢",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "art",
+        "crafts"
+      ],
+      "name" : "Rug Tufting",
+      "needs" : [
+        "studios",
+        "makerspace"
+      ],
+      "space" : 1,
+      "steps" : [
+        {
+          "detail" : "Tufting studios and some makerspaces run 2–3 hour beginner sessions where you design and tuft a small rug or mirror.",
+          "title" : "Book a tufting studio session"
+        },
+        {
+          "detail" : "A cut/loop tufting gun starts around $60–110; add a wooden frame, primary tufting cloth and acrylic yarn.",
+          "title" : "Build a frame, get a gun"
+        },
+        {
+          "detail" : "Shear, glue and back your own design — then make a custom rug as a gift.",
+          "title" : "Finish and back a 2x3 ft rug"
+        }
+      ],
+      "tagline" : "Shoot yarn into cloth with a tufting gun to make bold, fluffy rugs.",
+      "tags" : [
+        "loud",
+        "messy"
+      ],
+      "time" : 1,
+      "traits" : {
+        "active" : 0.29999999999999999,
+        "competitive" : 0,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 1,
+        "outdoor" : 0,
+        "patience" : 0.40000000000000002,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.59999999999999998,
+        "social" : 0.20000000000000001,
+        "structured" : 0.5,
+        "thrill" : 0.20000000000000001
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🧥",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "art",
+        "crafts"
+      ],
+      "name" : "Thrift Flipping",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Pick a piece with good fabric and a bad fit or finish — crop it, dye it, or repaint a frame or lamp.",
+          "title" : "Flip one $10 thrift find"
+        },
+        {
+          "detail" : "Learn to hem, take in a side seam and swap buttons by hand or on a basic machine; add fabric paint or patches.",
+          "title" : "Learn three alterations"
+        },
+        {
+          "detail" : "List five pieces on Depop, Poshmark or eBay, or bring them to a local clothing swap or market.",
+          "title" : "Sell or swap your flips"
+        }
+      ],
+      "tagline" : "Turn thrift-store finds into clothes and decor you love — or sell.",
+      "tags" : [
+
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.20000000000000001,
+        "competitive" : 0.10000000000000001,
+        "creative" : 0.80000000000000004,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0.20000000000000001,
+        "patience" : 0.40000000000000002,
+        "screens" : 0.29999999999999999,
+        "selfTaught" : 0.90000000000000002,
+        "social" : 0.29999999999999999,
+        "structured" : 0.40000000000000002,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -1343,14 +2278,17 @@
         "crafts"
       ],
       "name" : "Knitting",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Medium-weight yarn and size 8 needles (~$15) plus a beginner video is all you need.",
+          "detail" : "Worsted-weight yarn and US 8 needles (~$15) plus a beginner video is all you need.",
           "title" : "Cast on and knit a square"
         },
         {
-          "detail" : "Learn purling and ribbing, then finish your first wearable project.",
+          "detail" : "Learn purling and ribbing, then finish your first wearable project from a free Ravelry pattern.",
           "title" : "Knit a scarf or hat"
         },
         {
@@ -1359,14 +2297,70 @@
         }
       ],
       "tagline" : "Make cozy things with two needles and a ball of yarn.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.90000000000000002,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.29999999999999999,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🪝",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "crafts"
+      ],
+      "name" : "Crochet",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A 5 mm hook and a skein of worsted acrylic (~$10) plus a beginner video: learn chain, single and double crochet.",
+          "title" : "Crochet a granny square"
+        },
+        {
+          "detail" : "Follow a free beginner pattern on Ravelry or YouTube and learn to read pattern abbreviations.",
+          "title" : "Make a hat or tote bag"
+        },
+        {
+          "detail" : "Crochet a small stuffed animal, then bring it to a yarn-shop or library craft night.",
+          "title" : "Make an amigurumi, join a group"
+        }
+      ],
+      "tagline" : "Hook yarn into blankets, bags and tiny amigurumi animals.",
+      "tags" : [
+        "portable"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "competitive" : 0,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.90000000000000002,
+        "social" : 0.29999999999999999,
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -1381,14 +2375,17 @@
         "crafts"
       ],
       "name" : "Woodworking",
+      "needs" : [
+        "makerspace"
+      ],
       "space" : 2,
       "steps" : [
         {
           "detail" : "Makerspaces and community colleges run intro classes with safety training and tool access.",
-          "title" : "Take an intro class at a makerspace"
+          "title" : "Take a makerspace intro class"
         },
         {
-          "detail" : "Start with a simple project — measure twice, cut once, finish with oil.",
+          "detail" : "Start with a simple project — measure twice, cut once, finish with food-safe oil.",
           "title" : "Build a box or cutting board"
         },
         {
@@ -1397,14 +2394,23 @@
         }
       ],
       "tagline" : "Build furniture and useful objects with your own hands.",
+      "tags" : [
+        "loud",
+        "messy"
+      ],
       "time" : 2,
       "traits" : {
         "active" : 0.5,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 1,
         "outdoor" : 0.10000000000000001,
+        "patience" : 0.80000000000000004,
+        "screens" : 0,
+        "selfTaught" : 0.40000000000000002,
         "social" : 0.20000000000000001,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.40000000000000002
       }
     },
     {
@@ -1418,15 +2424,18 @@
         "crafts"
       ],
       "name" : "Leathercraft",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "A beginner kit with pre-cut leather and tools runs $40–60 and teaches saddle stitching.",
+          "detail" : "A beginner kit with pre-cut leather and tools runs $40–70 and teaches saddle stitching.",
           "title" : "Make a card wallet from a kit"
         },
         {
           "detail" : "Get a few tools and veg-tan leather; practice burnishing edges and cutting your own patterns.",
-          "title" : "Learn edge finishing and patterns"
+          "title" : "Learn edges and patterns"
         },
         {
           "detail" : "Design and make a belt, watch strap or small bag from scratch — a great gift.",
@@ -1434,14 +2443,22 @@
         }
       ],
       "tagline" : "Hand-stitch wallets, belts and bags that last for decades.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 1,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.10000000000000001,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -1456,10 +2473,13 @@
         "art"
       ],
       "name" : "Sewing",
+      "needs" : [
+
+      ],
       "space" : 1,
       "steps" : [
         {
-          "detail" : "Borrow or buy a basic machine and hem trousers, replace a button or take in a shirt.",
+          "detail" : "Borrow or buy a basic machine ($100–200) and hem trousers, replace a button or take in a shirt.",
           "title" : "Fix something you own"
         },
         {
@@ -1472,14 +2492,22 @@
         }
       ],
       "tagline" : "Make and alter your own clothes, exactly how you like them.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0,
         "creative" : 0.80000000000000004,
         "handsOn" : 0.90000000000000002,
         "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 0,
+        "selfTaught" : 0.59999999999999998,
         "social" : 0.20000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -1494,6 +2522,9 @@
         "art"
       ],
       "name" : "Embroidery",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1510,14 +2541,22 @@
         }
       ],
       "tagline" : "Paint with thread — patches, hoops and custom clothes.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.90000000000000002,
         "handsOn" : 0.90000000000000002,
         "outdoor" : 0,
+        "patience" : 0.40000000000000002,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.10000000000000001,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0
       }
     },
     {
@@ -1532,6 +2571,9 @@
         "words"
       ],
       "name" : "Bookbinding",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1548,14 +2590,22 @@
         }
       ],
       "tagline" : "Hand-make journals and books that open flat.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.90000000000000002,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.10000000000000001,
-        "structured" : 0.80000000000000004
+        "structured" : 0.80000000000000004,
+        "thrill" : 0
       }
     },
     {
@@ -1571,15 +2621,18 @@
         "art"
       ],
       "name" : "Miniature Painting",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "A starter set with minis, paints and a brush is $30–50. Prime, base coat and wash.",
+          "detail" : "A starter set with minis, paints and a brush is $30–60. Prime, base coat and wash.",
           "title" : "Paint one starter mini"
         },
         {
           "detail" : "Paint a small squad, practicing one technique each: drybrushing, layering, edge highlights.",
-          "title" : "Learn layering and highlighting"
+          "title" : "Learn layering and highlights"
         },
         {
           "detail" : "Finish one mini with a detailed base, or bring a painted team to a local game night.",
@@ -1587,14 +2640,22 @@
         }
       ],
       "tagline" : "Paint tiny fantasy figures in astonishing detail.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.20000000000000001,
         "creative" : 0.80000000000000004,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.29999999999999999,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0
       }
     },
     {
@@ -1609,6 +2670,9 @@
         "art"
       ],
       "name" : "Origami",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1617,7 +2681,7 @@
         },
         {
           "detail" : "A pack of origami paper (~$10) and a beginner book; learn to read folding notation.",
-          "title" : "Get origami paper and learn diagrams"
+          "title" : "Get paper and learn diagrams"
         },
         {
           "detail" : "Take on a modular or complex model like a kusudama or dragon, and gift a few.",
@@ -1625,14 +2689,121 @@
         }
       ],
       "tagline" : "Fold a single square of paper into almost anything.",
+      "tags" : [
+        "portable",
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0,
-        "structured" : 0.90000000000000002
+        "structured" : 0.90000000000000002,
+        "thrill" : 0
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🕯️",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "crafts"
+      ],
+      "name" : "Candle Making",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "A soy-wax starter kit ($25–40) with wicks, fragrance and tins makes 4–6 candles in an evening.",
+          "title" : "Pour candles from a kit"
+        },
+        {
+          "detail" : "Test wick sizes, fragrance load (about 6–10%) and a 1–2 week cure; thrifted jars make great vessels.",
+          "title" : "Dial in wicks and scent"
+        },
+        {
+          "detail" : "Make a batch for friends or a craft market; label with safety warnings and burn-test every design.",
+          "title" : "Host a pour night or sell"
+        }
+      ],
+      "tagline" : "Pour soy-wax candles with your own scents and vessels.",
+      "tags" : [
+        "messy"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "competitive" : 0,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.90000000000000002,
+        "outdoor" : 0,
+        "patience" : 0.29999999999999999,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
+        "social" : 0.20000000000000001,
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🧱",
+      "goals" : [
+        "relax",
+        "makeThings"
+      ],
+      "interests" : [
+        "crafts",
+        "games",
+        "art"
+      ],
+      "name" : "Lego Building",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Pick a set from LEGO's 18+ range — flowers and small display sets are often $20–60 — and build it in an evening.",
+          "title" : "Build one adult set"
+        },
+        {
+          "detail" : "Rebrickable shows fan-designed builds you can make from sets you own; try designing in free BrickLink Studio.",
+          "title" : "Build alternates from your parts"
+        },
+        {
+          "detail" : "Adult fan groups (LUGs) meet monthly and exhibit at shows — bring an original build of your own.",
+          "title" : "Join a LEGO fan group"
+        }
+      ],
+      "tagline" : "Build adult LEGO sets as a mindful, screen-free way to unwind.",
+      "tags" : [
+        "familyFriendly"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "competitive" : 0,
+        "creative" : 0.5,
+        "handsOn" : 0.80000000000000004,
+        "outdoor" : 0,
+        "patience" : 0.20000000000000001,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
+        "social" : 0.20000000000000001,
+        "structured" : 0.90000000000000002,
+        "thrill" : 0
       }
     },
     {
@@ -1647,14 +2818,17 @@
         "music"
       ],
       "name" : "Guitar",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Borrow or buy a beginner acoustic (~$150) and learn G, C, D and Em — they cover hundreds of songs.",
+          "detail" : "Borrow or buy a beginner acoustic ($150–250) and learn G, C, D and Em — they cover hundreds of songs.",
           "title" : "Learn four chords"
         },
         {
-          "detail" : "Follow a structured beginner course (many are free) for chord changes and strumming patterns.",
+          "detail" : "Follow a free structured course like JustinGuitar for chord changes and strumming patterns.",
           "title" : "Practice 15 minutes a day"
         },
         {
@@ -1663,14 +2837,22 @@
         }
       ],
       "tagline" : "Strum songs you love within weeks.",
+      "tags" : [
+        "loud"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.10000000000000001,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.69999999999999996,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.80000000000000004,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.29999999999999999,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -1685,10 +2867,13 @@
         "music"
       ],
       "name" : "Piano",
+      "needs" : [
+
+      ],
       "space" : 1,
       "steps" : [
         {
-          "detail" : "A used 61-key keyboard ($80–150) plus a learning app gets you playing simple melodies.",
+          "detail" : "A used 61-key keyboard ($80–150) plus a learning app (most have a free trial) gets you playing simple melodies.",
           "title" : "Try an app on a keyboard"
         },
         {
@@ -1701,14 +2886,22 @@
         }
       ],
       "tagline" : "Learn chords, melodies and the foundations of all music.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.69999999999999996,
         "outdoor" : 0,
+        "patience" : 0.84999999999999998,
+        "screens" : 0.20000000000000001,
+        "selfTaught" : 0.59999999999999998,
         "social" : 0.20000000000000001,
-        "structured" : 0.80000000000000004
+        "structured" : 0.80000000000000004,
+        "thrill" : 0
       }
     },
     {
@@ -1724,11 +2917,15 @@
         "performance"
       ],
       "name" : "Choir Singing",
+      "needs" : [
+        "communityCenter",
+        "venues"
+      ],
       "space" : 0,
       "steps" : [
         {
           "detail" : "Many community choirs welcome anyone. Go to an open rehearsal — they'll place you in a section.",
-          "title" : "Find a no-audition community choir"
+          "title" : "Find a no-audition choir"
         },
         {
           "detail" : "Practice with rehearsal tracks during the week and learn basic breathing and posture.",
@@ -1740,14 +2937,22 @@
         }
       ],
       "tagline" : "Sing with others — no solo pressure, one big shared sound.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.20000000000000001,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.10000000000000001,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.20000000000000001,
         "social" : 0.94999999999999996,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -1762,30 +2967,41 @@
         "tech"
       ],
       "name" : "DJing",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Try free DJ software on your laptop and learn to beatmatch two tracks.",
+          "detail" : "Try free DJ software (Mixxx, Serato DJ Lite or rekordbox) on your laptop and learn to beatmatch two tracks.",
           "title" : "Mix in free software"
         },
         {
-          "detail" : "A beginner two-channel controller ($150–250) and a library of tracks sorted by energy and tempo.",
-          "title" : "Get a controller and build a crate"
+          "detail" : "A beginner two-channel controller ($150–300) and tracks bought on Bandcamp or Beatport, sorted by energy and tempo.",
+          "title" : "Get a controller, build a crate"
         },
         {
-          "detail" : "Record a mix, then play for friends or at a local open-decks night.",
+          "detail" : "Record a mix and post it to SoundCloud or Mixcloud, then play for friends or a local open-decks night.",
           "title" : "Play a 30-minute set for people"
         }
       ],
       "tagline" : "Blend tracks together and read a room.",
+      "tags" : [
+        "loud"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.29999999999999999,
+        "competitive" : 0.20000000000000001,
         "creative" : 0.69999999999999996,
         "handsOn" : 0.59999999999999998,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0.59999999999999998,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.59999999999999998,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.29999999999999999
       }
     },
     {
@@ -1800,30 +3016,89 @@
         "tech"
       ],
       "name" : "Music Production",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "GarageBand is free on your Mac — follow a beginner tutorial and make an 8-bar loop.",
-          "title" : "Make a loop in GarageBand"
+          "detail" : "BandLab is a free DAW in your browser or phone (Mac users also get GarageBand free). Follow a tutorial and make an 8-bar loop.",
+          "title" : "Make a beat in BandLab"
         },
         {
-          "detail" : "Recreate a song you love to understand its structure, then learn EQ and compression.",
-          "title" : "Learn arrangement and mixing basics"
+          "detail" : "Recreate a song you love to learn its structure, then EQ and compression. Ableton Live Lite comes free with many MIDI keyboards.",
+          "title" : "Learn arrangement and mixing"
         },
         {
-          "detail" : "Finish a 2–3 minute track and share it — finishing is the real skill.",
+          "detail" : "Finish a 2–3 minute track and post it on SoundCloud or BandLab — finishing is the real skill.",
           "title" : "Release a finished track"
         }
       ],
-      "tagline" : "Make your own tracks on a laptop.",
+      "tagline" : "Make your own tracks on a laptop or phone.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 1,
         "handsOn" : 0.40000000000000002,
         "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 0.80000000000000004,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.10000000000000001,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "💿",
+      "goals" : [
+        "relax",
+        "learn"
+      ],
+      "interests" : [
+        "music"
+      ],
+      "name" : "Vinyl Collecting",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Spend an hour in the used bins with a $20 budget and ask the staff for recommendations in a genre you love.",
+          "title" : "Dig at a record store"
+        },
+        {
+          "detail" : "A belt-drive turntable ($150–350) plus powered speakers. Catalog what you own and want in the free Discogs app.",
+          "title" : "Set up a turntable"
+        },
+        {
+          "detail" : "Hit a local record fair or Record Store Day, and trade or swap duplicates with other collectors.",
+          "title" : "Go to a record fair or RSD"
+        }
+      ],
+      "tagline" : "Dig through crates and build a record collection you can hold.",
+      "tags" : [
+
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.10000000000000001,
+        "competitive" : 0,
+        "creative" : 0.20000000000000001,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0,
+        "patience" : 0.40000000000000002,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.90000000000000002,
+        "social" : 0.40000000000000002,
+        "structured" : 0.40000000000000002,
+        "thrill" : 0
       }
     },
     {
@@ -1837,6 +3112,10 @@
         "performance"
       ],
       "name" : "Improv Comedy",
+      "needs" : [
+        "venues",
+        "studios"
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1844,7 +3123,7 @@
           "title" : "Take a drop-in workshop"
         },
         {
-          "detail" : "A 6–8 week course ($200–350) teaches yes-and, listening and building scenes.",
+          "detail" : "A 6–8 week course ($250–400) teaches yes-and, listening and building scenes.",
           "title" : "Sign up for a Level 1 course"
         },
         {
@@ -1853,14 +3132,22 @@
         }
       ],
       "tagline" : "Make up scenes on the spot — and get braver everywhere.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.5,
+        "competitive" : 0,
         "creative" : 0.90000000000000002,
         "handsOn" : 0,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0,
+        "selfTaught" : 0.10000000000000001,
         "social" : 1,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0.59999999999999998
       }
     },
     {
@@ -1874,10 +3161,14 @@
         "performance"
       ],
       "name" : "Community Theater",
+      "needs" : [
+        "venues",
+        "communityCenter"
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Crew is always needed and is the easiest way in.",
+          "detail" : "Crew is always needed and is the easiest way in — ushering counts too.",
           "title" : "See a show and ask to volunteer"
         },
         {
@@ -1890,14 +3181,22 @@
         }
       ],
       "tagline" : "Act, build sets or run lights for local productions.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0.40000000000000002,
+        "competitive" : 0.20000000000000001,
         "creative" : 0.80000000000000004,
         "handsOn" : 0.29999999999999999,
         "outdoor" : 0,
+        "patience" : 0.40000000000000002,
+        "screens" : 0,
+        "selfTaught" : 0.10000000000000001,
         "social" : 1,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0.5
       }
     },
     {
@@ -1912,6 +3211,9 @@
         "performance"
       ],
       "name" : "Card Magic",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1928,14 +3230,74 @@
         }
       ],
       "tagline" : "Learn sleight of hand and amaze people up close.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.59999999999999998,
         "outdoor" : 0,
+        "patience" : 0.80000000000000004,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.5,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.29999999999999999
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "🤠",
+      "goals" : [
+        "relax",
+        "meetPeople",
+        "getFit"
+      ],
+      "interests" : [
+        "performance",
+        "music"
+      ],
+      "name" : "Line Dancing",
+      "needs" : [
+        "venues",
+        "studios",
+        "communityCenter"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Country bars, dance studios and community centers run cheap or free lessons before open dancing.",
+          "title" : "Go to a beginner lesson night"
+        },
+        {
+          "detail" : "Learn the classics your local spot plays most; drill the steps with YouTube breakdowns at home.",
+          "title" : "Learn five floor-fillers"
+        },
+        {
+          "detail" : "Join in on every song you know for a whole night — regulars love teaching newcomers.",
+          "title" : "Dance a full night"
+        }
+      ],
+      "tagline" : "Country-bar line dances — no partner needed, all ages welcome.",
+      "tags" : [
+        "scheduled"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0.69999999999999996,
+        "competitive" : 0,
+        "creative" : 0.40000000000000002,
+        "handsOn" : 0,
+        "outdoor" : 0,
+        "patience" : 0.29999999999999999,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.40000000000000002,
+        "social" : 0.90000000000000002,
+        "structured" : 0.80000000000000004,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -1949,6 +3311,9 @@
         "words"
       ],
       "name" : "Creative Writing",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1957,7 +3322,7 @@
         },
         {
           "detail" : "Read short stories in your genre, then write and revise one 2,000-word story.",
-          "title" : "Read like a writer, then draft a story"
+          "title" : "Read like a writer, then draft"
         },
         {
           "detail" : "Join a critique group, or submit to a small magazine or contest.",
@@ -1965,14 +3330,71 @@
         }
       ],
       "tagline" : "Write short stories, essays or poetry.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.10000000000000001,
         "creative" : 1,
         "handsOn" : 0.10000000000000001,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0.59999999999999998,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.10000000000000001,
-        "structured" : 0.29999999999999999
+        "structured" : 0.29999999999999999,
+        "thrill" : 0
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "📓",
+      "goals" : [
+        "relax",
+        "learn"
+      ],
+      "interests" : [
+        "words",
+        "art"
+      ],
+      "name" : "Journaling",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Any notebook and pen. Answer one prompt a day — what happened, what you felt, what's next.",
+          "title" : "Write ten minutes a day"
+        },
+        {
+          "detail" : "Try a bullet journal for planning, a gratitude list, or a junk journal with tickets and collage.",
+          "title" : "Find your format"
+        },
+        {
+          "detail" : "Look back at your first entries, then join a journaling meetup or online community to swap ideas.",
+          "title" : "Keep a 90-day streak"
+        }
+      ],
+      "tagline" : "A notebook and ten minutes a day to think, plan and remember.",
+      "tags" : [
+        "portable"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "competitive" : 0,
+        "creative" : 0.69999999999999996,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0,
+        "patience" : 0.20000000000000001,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 1,
+        "social" : 0.10000000000000001,
+        "structured" : 0.5,
+        "thrill" : 0
       }
     },
     {
@@ -1987,6 +3409,9 @@
         "words"
       ],
       "name" : "Learning a Language",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -1994,23 +3419,31 @@
           "title" : "Do 15 minutes a day"
         },
         {
-          "detail" : "Work through a structured course and watch easy shows or videos in the language.",
+          "detail" : "Work through a structured course and watch easy shows or YouTube channels made for learners.",
           "title" : "Add a course and easy listening"
         },
         {
-          "detail" : "Book a tutor session or go to a language exchange and speak for 20 minutes.",
+          "detail" : "Book a tutor on italki or Preply, or go to a language exchange, and speak for 20 minutes.",
           "title" : "Have a real conversation"
         }
       ],
       "tagline" : "Pick up a new language and a new way of seeing.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.29999999999999999,
         "handsOn" : 0.10000000000000001,
         "outdoor" : 0,
+        "patience" : 0.84999999999999998,
+        "screens" : 0.59999999999999998,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.5,
-        "structured" : 0.80000000000000004
+        "structured" : 0.80000000000000004,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -2025,11 +3458,14 @@
         "words"
       ],
       "name" : "Book Club",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Libraries and bookstores host free monthly clubs — find the next pick and get a copy.",
-          "title" : "Find a club at a library or bookstore"
+          "detail" : "Libraries and bookstores host free monthly clubs — borrow the next pick free on Libby.",
+          "title" : "Find a library or bookstore club"
         },
         {
           "detail" : "Jot a few notes on what you liked and didn't, and go to the meeting.",
@@ -2037,18 +3473,26 @@
         },
         {
           "detail" : "After three meetings, suggest a book — or start a club with friends around a theme you love.",
-          "title" : "Pick a book, or start your own club"
+          "title" : "Pick a book, or start a club"
         }
       ],
       "tagline" : "Read more and talk about it with interesting people.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.29999999999999999,
         "handsOn" : 0,
         "outdoor" : 0,
+        "patience" : 0.10000000000000001,
+        "screens" : 0,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.80000000000000004,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0
       }
     },
     {
@@ -2064,30 +3508,91 @@
         "tech"
       ],
       "name" : "Podcasting",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Use your phone or a USB mic and record yourself, or with a friend, on a topic you care about.",
+          "detail" : "Use your phone or a USB mic (~$50–100) and record yourself, or with a friend, on a topic you care about.",
           "title" : "Record a 10-minute pilot"
         },
         {
-          "detail" : "Edit in a free tool like GarageBand, settle on a format, and record three episodes.",
-          "title" : "Learn basic editing and pick a format"
+          "detail" : "Edit in free Audacity or GarageBand, settle on a format, and record three episodes.",
+          "title" : "Learn editing, pick a format"
         },
         {
-          "detail" : "Upload to a free host that sends episodes to Apple Podcasts and Spotify, and share them.",
-          "title" : "Publish your first three episodes"
+          "detail" : "Host free on Spotify for Creators, which feeds Apple Podcasts and other apps; post a video version to YouTube too.",
+          "title" : "Publish three episodes"
         }
       ],
       "tagline" : "Talk about what you love and publish it to the world.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.80000000000000004,
         "handsOn" : 0.29999999999999999,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0.80000000000000004,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.5,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "❓",
+      "goals" : [
+        "challenge",
+        "meetPeople",
+        "learn"
+      ],
+      "interests" : [
+        "games",
+        "words"
+      ],
+      "name" : "Pub Trivia",
+      "needs" : [
+        "venues"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Bars and breweries run free weekly trivia; ask to join a short-handed team if you go solo.",
+          "title" : "Go to a quiz night"
+        },
+        {
+          "detail" : "Recruit people who know different things (sports, pop culture, science) and play the same night weekly.",
+          "title" : "Form a regular team of 4–6"
+        },
+        {
+          "detail" : "Use free Sporcle quizzes on geography and flags, then aim for a top-three finish by month three.",
+          "title" : "Study your weak categories"
+        }
+      ],
+      "tagline" : "Weekly team quiz nights at a bar — bragging rights and snacks.",
+      "tags" : [
+        "scheduled"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "competitive" : 0.69999999999999996,
+        "creative" : 0.20000000000000001,
+        "handsOn" : 0,
+        "outdoor" : 0,
+        "patience" : 0.29999999999999999,
+        "screens" : 0,
+        "selfTaught" : 0.80000000000000004,
+        "social" : 0.94999999999999996,
+        "structured" : 0.5,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -2101,6 +3606,9 @@
         "games"
       ],
       "name" : "Chess",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -2109,22 +3617,30 @@
         },
         {
           "detail" : "Solve 10 tactics puzzles a day and learn one opening each for white and black.",
-          "title" : "Do daily puzzles and learn openings"
+          "title" : "Do daily puzzles, learn openings"
         },
         {
-          "detail" : "Clubs and cafés host casual nights — play over the board and watch your rating climb.",
+          "detail" : "Clubs, cafés and parks host casual nights — play over the board and watch your rating climb.",
           "title" : "Go to a chess club night"
         }
       ],
       "tagline" : "Endless strategy on 64 squares.",
+      "tags" : [
+        "portable"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.80000000000000004,
         "creative" : 0.10000000000000001,
         "handsOn" : 0,
         "outdoor" : 0,
+        "patience" : 0.84999999999999998,
+        "screens" : 0.69999999999999996,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.40000000000000002,
-        "structured" : 0.90000000000000002
+        "structured" : 0.90000000000000002,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -2139,6 +3655,10 @@
         "games"
       ],
       "name" : "Board Game Nights",
+      "needs" : [
+        "gameCafe",
+        "communityCenter"
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -2155,14 +3675,72 @@
         }
       ],
       "tagline" : "Modern tabletop games with friends — strategy, co-op and party.",
+      "tags" : [
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.5,
         "creative" : 0.20000000000000001,
         "handsOn" : 0.20000000000000001,
         "outdoor" : 0,
+        "patience" : 0.20000000000000001,
+        "screens" : 0,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.90000000000000002,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🀄",
+      "goals" : [
+        "relax",
+        "challenge",
+        "meetPeople"
+      ],
+      "interests" : [
+        "games"
+      ],
+      "name" : "Mahjong",
+      "needs" : [
+        "gameCafe",
+        "communityCenter"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Libraries, community centers and bars now run beginner nights. Pick a style: American, Hong Kong or Riichi.",
+          "title" : "Take a beginner lesson"
+        },
+        {
+          "detail" : "American mahjong uses a new National Mah Jongg League card each year ($14–15); a tile set runs $50 to several hundred.",
+          "title" : "Get the card or a set"
+        },
+        {
+          "detail" : "Find a regular club or start a four-player table with friends; practice Riichi free in apps between games.",
+          "title" : "Join a weekly table"
+        }
+      ],
+      "tagline" : "The tile game behind a boom in social clubs and lesson nights.",
+      "tags" : [
+        "scheduled"
+      ],
+      "time" : 0,
+      "traits" : {
+        "active" : 0,
+        "competitive" : 0.5,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.20000000000000001,
+        "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.40000000000000002,
+        "social" : 0.90000000000000002,
+        "structured" : 0.80000000000000004,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -2177,14 +3755,17 @@
         "words"
       ],
       "name" : "Tabletop Roleplaying",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Game stores and online groups run beginner one-shots with ready-made characters.",
+          "detail" : "Game stores, libraries and online groups run beginner one-shots with ready-made characters.",
           "title" : "Play a one-shot"
         },
         {
-          "detail" : "Join a weekly or biweekly group and build your own character with the free basic rules.",
+          "detail" : "Join a weekly or biweekly group and build a character with the free 2024 D&D rules on D&D Beyond.",
           "title" : "Join a campaign"
         },
         {
@@ -2193,14 +3774,22 @@
         }
       ],
       "tagline" : "Collaborative storytelling games like Dungeons & Dragons.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.90000000000000002,
         "handsOn" : 0.10000000000000001,
         "outdoor" : 0,
+        "patience" : 0.40000000000000002,
+        "screens" : 0.29999999999999999,
+        "selfTaught" : 0.59999999999999998,
         "social" : 0.90000000000000002,
-        "structured" : 0.40000000000000002
+        "structured" : 0.40000000000000002,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -2214,30 +3803,42 @@
         "games"
       ],
       "name" : "Speedcubing",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Buy a modern speedcube ($10–15) and follow a layer-by-layer beginner tutorial.",
-          "title" : "Solve it once with the beginner method"
+          "detail" : "Buy a magnetic speedcube ($10–20) and follow a layer-by-layer beginner tutorial.",
+          "title" : "Solve it once, beginner method"
         },
         {
-          "detail" : "Memorize the beginner method and time yourself every day.",
+          "detail" : "Memorize the beginner method and time yourself every day with a free timer like csTimer.",
           "title" : "Solve it without notes"
         },
         {
-          "detail" : "Learn the basic CFOP steps, aim for sub-60 seconds, and look up a local competition.",
+          "detail" : "Learn the basic CFOP steps, aim for sub-60 seconds, and find a WCA competition near you.",
           "title" : "Get under one minute"
         }
       ],
       "tagline" : "Solve a Rubik's Cube — then do it faster and faster.",
+      "tags" : [
+        "portable",
+        "familyFriendly"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.69999999999999996,
         "creative" : 0,
         "handsOn" : 0.5,
         "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 0.10000000000000001,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.20000000000000001,
-        "structured" : 1
+        "structured" : 1,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -2253,10 +3854,13 @@
         "science"
       ],
       "name" : "Electronics & Arduino",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "An Arduino starter kit (~$40) and its first tutorial: wire an LED and make it blink.",
+          "detail" : "Try it free in the Wokwi browser simulator, then get an Arduino-compatible starter kit (~$40–60) and wire a real one.",
           "title" : "Blink an LED"
         },
         {
@@ -2269,14 +3873,22 @@
         }
       ],
       "tagline" : "Build blinking, beeping, sensing gadgets.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.5,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.59999999999999998,
+        "screens" : 0.5,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.10000000000000001,
-        "structured" : 0.69999999999999996
+        "structured" : 0.69999999999999996,
+        "thrill" : 0.10000000000000001
       }
     },
     {
@@ -2292,10 +3904,13 @@
         "games"
       ],
       "name" : "Game Development",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Install a free engine (Godot is friendly) and make a tiny game following a tutorial.",
+          "detail" : "Install the free Godot engine and make a tiny game following its official step-by-step tutorial.",
           "title" : "Follow a beginner tutorial"
         },
         {
@@ -2303,19 +3918,27 @@
           "title" : "Clone a classic"
         },
         {
-          "detail" : "Join an online game jam and finish a small game in a weekend.",
+          "detail" : "Join an online jam on itch.io and finish a small game in a weekend.",
           "title" : "Ship a game in a game jam"
         }
       ],
       "tagline" : "Make your own video games.",
+      "tags" : [
+
+      ],
       "time" : 2,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.10000000000000001,
         "creative" : 0.90000000000000002,
         "handsOn" : 0.10000000000000001,
         "outdoor" : 0,
+        "patience" : 0.80000000000000004,
+        "screens" : 1,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.10000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -2330,30 +3953,41 @@
         "crafts"
       ],
       "name" : "3D Printing",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Many offer printing — download a model from a site like Printables and print it.",
-          "title" : "Print something at a library or makerspace"
+          "detail" : "Many offer printing — download a model from Printables or MakerWorld and print it.",
+          "title" : "Print at a library or makerspace"
         },
         {
-          "detail" : "A reliable beginner printer is $200–350; learn slicer settings and calibration.",
-          "title" : "Get a printer and learn slicing"
+          "detail" : "Auto-calibrating beginner printers now start around $220–400; learn slicer settings and filament types.",
+          "title" : "Get a printer, learn slicing"
         },
         {
-          "detail" : "Learn basic CAD (Tinkercad is free) and print something that solves a real problem at home.",
+          "detail" : "Learn basic CAD in free Tinkercad or Onshape and print something that solves a real problem at home.",
           "title" : "Design your own part"
         }
       ],
       "tagline" : "Design and print real objects at home.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.69999999999999996,
         "handsOn" : 0.69999999999999996,
         "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 0.59999999999999998,
+        "selfTaught" : 0.80000000000000004,
         "social" : 0.10000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -2368,6 +4002,9 @@
         "crafts"
       ],
       "name" : "Mechanical Keyboards",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
@@ -2384,14 +4021,22 @@
         }
       ],
       "tagline" : "Build a keyboard that sounds and feels exactly how you like.",
+      "tags" : [
+
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0,
+        "competitive" : 0,
         "creative" : 0.59999999999999998,
         "handsOn" : 0.80000000000000004,
         "outdoor" : 0,
+        "patience" : 0.40000000000000002,
+        "screens" : 0.29999999999999999,
+        "selfTaught" : 0.90000000000000002,
         "social" : 0.10000000000000001,
-        "structured" : 0.59999999999999998
+        "structured" : 0.59999999999999998,
+        "thrill" : 0
       }
     },
     {
@@ -2407,30 +4052,140 @@
         "science"
       ],
       "name" : "Ham Radio",
+      "needs" : [
+
+      ],
       "space" : 0,
       "steps" : [
         {
-          "detail" : "Use a free online web SDR or a cheap receiver to hear hams before getting licensed.",
+          "detail" : "Tune a free online WebSDR receiver in your browser to hear hams talking before you get licensed.",
           "title" : "Listen in first"
         },
         {
-          "detail" : "Use a free practice-exam site to prepare for the entry-level license test.",
-          "title" : "Study for your license"
+          "detail" : "Use free HamStudy.org practice tests for the 35-question entry-level exam.",
+          "title" : "Study for the Technician exam"
         },
         {
-          "detail" : "Take the exam at a local club, get a handheld radio, and check in to a local net.",
-          "title" : "Get licensed and make a contact"
+          "detail" : "Test with a local club (~$15) plus the FCC's $35 fee, get a handheld radio, and check in to a local net.",
+          "title" : "Get licensed, make a contact"
         }
       ],
       "tagline" : "Talk across town or across the world on amateur radio.",
+      "tags" : [
+
+      ],
       "time" : 1,
       "traits" : {
         "active" : 0,
+        "competitive" : 0.29999999999999999,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.59999999999999998,
         "outdoor" : 0.29999999999999999,
+        "patience" : 0.69999999999999996,
+        "screens" : 0.29999999999999999,
+        "selfTaught" : 0.69999999999999996,
         "social" : 0.40000000000000002,
-        "structured" : 0.90000000000000002
+        "structured" : 0.90000000000000002,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 1,
+      "emoji" : "🖥️",
+      "goals" : [
+        "challenge",
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "science"
+      ],
+      "name" : "Home Lab",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Memory prices spiked in 2026, so reuse a spare laptop or mini PC: install Ubuntu Server or Debian and log in over SSH.",
+          "title" : "Turn an old PC into a server"
+        },
+        {
+          "detail" : "Learn Docker, then run Pi-hole for network ad-blocking and Immich or Jellyfin for photos and media.",
+          "title" : "Self-host your first apps"
+        },
+        {
+          "detail" : "Set up 3-2-1 backups and remote access with Tailscale's free personal plan, then share your setup on r/homelab.",
+          "title" : "Add backups and remote access"
+        }
+      ],
+      "tagline" : "Run your own servers at home: photo backup, ad-blocking, media.",
+      "tags" : [
+
+      ],
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "competitive" : 0,
+        "creative" : 0.40000000000000002,
+        "handsOn" : 0.5,
+        "outdoor" : 0,
+        "patience" : 0.69999999999999996,
+        "screens" : 1,
+        "selfTaught" : 0.80000000000000004,
+        "social" : 0.20000000000000001,
+        "structured" : 0.80000000000000004,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 0,
+      "emoji" : "✂️",
+      "goals" : [
+        "makeThings",
+        "learn"
+      ],
+      "interests" : [
+        "tech",
+        "art"
+      ],
+      "name" : "Video Editing",
+      "needs" : [
+
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Shoot 10 short clips on your phone and cut them to music in a free editor like iMovie or DaVinci Resolve.",
+          "title" : "Edit a 60-second video"
+        },
+        {
+          "detail" : "Follow a free DaVinci Resolve beginner course: J/L cuts, clean audio, captions and a basic color grade.",
+          "title" : "Learn cuts, audio and color"
+        },
+        {
+          "detail" : "Upload a themed series to YouTube or Shorts on a schedule and study the retention graphs.",
+          "title" : "Publish a five-video series"
+        }
+      ],
+      "tagline" : "Cut phone clips into stories for YouTube, TikTok or friends.",
+      "tags" : [
+
+      ],
+      "time" : 1,
+      "traits" : {
+        "active" : 0,
+        "competitive" : 0.10000000000000001,
+        "creative" : 0.90000000000000002,
+        "handsOn" : 0.10000000000000001,
+        "outdoor" : 0,
+        "patience" : 0.5,
+        "screens" : 1,
+        "selfTaught" : 0.90000000000000002,
+        "social" : 0.20000000000000001,
+        "structured" : 0.5,
+        "thrill" : 0
       }
     },
     {
@@ -2444,11 +4199,14 @@
         "animals"
       ],
       "name" : "Shelter Volunteering",
+      "needs" : [
+        "communityCenter"
+      ],
       "space" : 0,
       "steps" : [
         {
           "detail" : "Most shelters require a short orientation — sign up online.",
-          "title" : "Sign up for a volunteer orientation"
+          "title" : "Sign up for an orientation"
         },
         {
           "detail" : "Pick one regular two-hour slot walking dogs or socializing cats.",
@@ -2460,14 +4218,73 @@
         }
       ],
       "tagline" : "Walk dogs, socialize cats and help animals get adopted.",
+      "tags" : [
+        "scheduled"
+      ],
       "time" : 0,
       "traits" : {
         "active" : 0.40000000000000002,
+        "competitive" : 0,
         "creative" : 0.10000000000000001,
         "handsOn" : 0.59999999999999998,
         "outdoor" : 0.40000000000000002,
+        "patience" : 0.20000000000000001,
+        "screens" : 0,
+        "selfTaught" : 0.29999999999999999,
         "social" : 0.59999999999999998,
-        "structured" : 0.5
+        "structured" : 0.5,
+        "thrill" : 0.10000000000000001
+      }
+    },
+    {
+      "cost" : 2,
+      "emoji" : "🐕",
+      "goals" : [
+        "challenge",
+        "getFit",
+        "learn"
+      ],
+      "interests" : [
+        "animals",
+        "sports"
+      ],
+      "name" : "Dog Agility",
+      "needs" : [
+        "studios",
+        "communityCenter"
+      ],
+      "space" : 0,
+      "steps" : [
+        {
+          "detail" : "Spend 10 minutes a day on recalls, sit-stays and treat-based focus games; mixed breeds welcome.",
+          "title" : "Practice focus games at home"
+        },
+        {
+          "detail" : "Dog-training clubs run 6-week agility foundations courses on jumps, tunnels and handling.",
+          "title" : "Take a foundations class"
+        },
+        {
+          "detail" : "Enter a club fun match, then look at AKC or USDAA trials — AKC lets mixed breeds compete too.",
+          "title" : "Run a fun match"
+        }
+      ],
+      "tagline" : "Run an obstacle course with your dog as your teammate.",
+      "tags" : [
+        "scheduled"
+      ],
+      "time" : 1,
+      "traits" : {
+        "active" : 0.69999999999999996,
+        "competitive" : 0.5,
+        "creative" : 0.10000000000000001,
+        "handsOn" : 0.29999999999999999,
+        "outdoor" : 0.59999999999999998,
+        "patience" : 0.69999999999999996,
+        "screens" : 0,
+        "selfTaught" : 0.29999999999999999,
+        "social" : 0.59999999999999998,
+        "structured" : 0.80000000000000004,
+        "thrill" : 0.29999999999999999
       }
     }
   ],
@@ -2533,6 +4350,68 @@
       "label" : "Performing"
     }
   ],
+  "places" : [
+    {
+      "emoji" : "🥾",
+      "id" : "trailsParks",
+      "label" : "Trails, parks or open land",
+      "short" : "trails or parks"
+    },
+    {
+      "emoji" : "🌊",
+      "id" : "water",
+      "label" : "A coast, lake or river",
+      "short" : "open water"
+    },
+    {
+      "emoji" : "🏋️",
+      "id" : "gymPool",
+      "label" : "Gyms, pools or rec centers",
+      "short" : "a gym or pool"
+    },
+    {
+      "emoji" : "🧗",
+      "id" : "climbing",
+      "label" : "A climbing gym",
+      "short" : "a climbing gym"
+    },
+    {
+      "emoji" : "🩰",
+      "id" : "studios",
+      "label" : "Studios or classes (dance, art, martial arts)",
+      "short" : "studios or classes"
+    },
+    {
+      "emoji" : "📚",
+      "id" : "makerspace",
+      "label" : "A library or makerspace",
+      "short" : "a library or makerspace"
+    },
+    {
+      "emoji" : "🎤",
+      "id" : "venues",
+      "label" : "Music venues, theaters or open mics",
+      "short" : "music or theater venues"
+    },
+    {
+      "emoji" : "🏟️",
+      "id" : "courts",
+      "label" : "Sports courts or fields",
+      "short" : "courts or fields"
+    },
+    {
+      "emoji" : "🎲",
+      "id" : "gameCafe",
+      "label" : "Game stores or board-game cafés",
+      "short" : "a game store or café"
+    },
+    {
+      "emoji" : "🤝",
+      "id" : "communityCenter",
+      "label" : "A community center or volunteer groups",
+      "short" : "a community center"
+    }
+  ],
   "questions" : [
     {
       "hint" : "Pick the dot closest to you.",
@@ -2541,6 +4420,7 @@
       "left" : "On my own",
       "prompt" : "When you recharge, you'd rather be…",
       "right" : "Around people",
+      "section" : "You",
       "trait" : "social"
     },
     {
@@ -2550,6 +4430,7 @@
       "left" : "Indoors",
       "prompt" : "Where do you feel best?",
       "right" : "Outside",
+      "section" : "You",
       "trait" : "outdoor"
     },
     {
@@ -2559,6 +4440,7 @@
       "left" : "Calm and still",
       "prompt" : "How much do you want to move?",
       "right" : "Moving and sweaty",
+      "section" : "You",
       "trait" : "active"
     },
     {
@@ -2568,6 +4450,7 @@
       "left" : "My head",
       "prompt" : "What do you like to work with?",
       "right" : "My hands",
+      "section" : "You",
       "trait" : "handsOn"
     },
     {
@@ -2577,6 +4460,7 @@
       "left" : "Mastering a skill",
       "prompt" : "What feels more rewarding?",
       "right" : "Making or expressing something",
+      "section" : "You",
       "trait" : "creative"
     },
     {
@@ -2586,41 +4470,509 @@
       "left" : "Freeform, no rules",
       "prompt" : "How do you like to learn?",
       "right" : "Clear steps and levels",
+      "section" : "You",
       "trait" : "structured"
     },
     {
-      "hint" : "Pick up to 2.",
+      "hint" : "Pick the dot closest to you.",
       "id" : 6,
-      "kind" : "goals",
+      "kind" : "scale",
+      "left" : "No pressure, please",
+      "prompt" : "How do you feel about competing?",
+      "right" : "I love a good contest",
+      "section" : "You",
+      "trait" : "competitive"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 7,
+      "kind" : "scale",
+      "left" : "Keep it safe",
+      "prompt" : "How about a bit of risk?",
+      "right" : "Bring on the adrenaline",
+      "section" : "You",
+      "trait" : "thrill"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 8,
+      "kind" : "scale",
+      "left" : "Quick wins",
+      "prompt" : "Quick wins or a long game?",
+      "right" : "Years to master",
+      "section" : "You",
+      "trait" : "patience"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 9,
+      "kind" : "scale",
+      "left" : "Get me off screens",
+      "prompt" : "Screens in your hobby?",
+      "right" : "Screens are great",
+      "section" : "You",
+      "trait" : "screens"
+    },
+    {
+      "hint" : "Pick the dot closest to you.",
+      "id" : 10,
+      "kind" : "scale",
+      "left" : "With a teacher or class",
+      "prompt" : "How do you pick things up best?",
+      "right" : "Teaching myself",
+      "section" : "You",
+      "trait" : "selfTaught"
+    },
+    {
+      "hint" : "Pick up to 2.",
+      "id" : 11,
+      "key" : "goals",
+      "kind" : "multi",
       "max" : 2,
-      "prompt" : "What do you want out of a hobby?"
+      "options" : [
+        {
+          "emoji" : "🌿",
+          "id" : "relax",
+          "label" : "Unwind"
+        },
+        {
+          "emoji" : "🔥",
+          "id" : "challenge",
+          "label" : "A challenge"
+        },
+        {
+          "emoji" : "👋",
+          "id" : "meetPeople",
+          "label" : "Meet people"
+        },
+        {
+          "emoji" : "🛠️",
+          "id" : "makeThings",
+          "label" : "Make things"
+        },
+        {
+          "emoji" : "💪",
+          "id" : "getFit",
+          "label" : "Get fit"
+        },
+        {
+          "emoji" : "🧠",
+          "id" : "learn",
+          "label" : "Learn something"
+        }
+      ],
+      "prompt" : "What do you want out of a hobby?",
+      "section" : "You"
     },
     {
       "hint" : "Pick up to 3.",
-      "id" : 7,
-      "kind" : "interests",
+      "id" : 12,
+      "key" : "interests",
+      "kind" : "multi",
       "max" : 3,
-      "prompt" : "Which of these pull at you?"
+      "options" : [
+        {
+          "emoji" : "🌲",
+          "id" : "nature",
+          "label" : "Nature"
+        },
+        {
+          "emoji" : "🍜",
+          "id" : "food",
+          "label" : "Food & drink"
+        },
+        {
+          "emoji" : "🎵",
+          "id" : "music",
+          "label" : "Music"
+        },
+        {
+          "emoji" : "🎨",
+          "id" : "art",
+          "label" : "Art"
+        },
+        {
+          "emoji" : "🧵",
+          "id" : "crafts",
+          "label" : "Crafts"
+        },
+        {
+          "emoji" : "📝",
+          "id" : "words",
+          "label" : "Words & languages"
+        },
+        {
+          "emoji" : "🎲",
+          "id" : "games",
+          "label" : "Games & puzzles"
+        },
+        {
+          "emoji" : "💻",
+          "id" : "tech",
+          "label" : "Tech"
+        },
+        {
+          "emoji" : "🔬",
+          "id" : "science",
+          "label" : "Science"
+        },
+        {
+          "emoji" : "🏅",
+          "id" : "sports",
+          "label" : "Sports"
+        },
+        {
+          "emoji" : "🐾",
+          "id" : "animals",
+          "label" : "Animals"
+        },
+        {
+          "emoji" : "🎭",
+          "id" : "performance",
+          "label" : "Performing"
+        }
+      ],
+      "prompt" : "Which of these pull at you?",
+      "section" : "You"
+    },
+    {
+      "hint" : "Roughly — nothing leaves your device.",
+      "id" : 13,
+      "key" : "setting",
+      "kind" : "single",
+      "options" : [
+        "A big city",
+        "A suburb",
+        "A small town",
+        "The countryside"
+      ],
+      "prompt" : "Where do you live?",
+      "section" : "Where you live"
+    },
+    {
+      "hint" : "Pick the closest.",
+      "id" : 14,
+      "key" : "climate",
+      "kind" : "single",
+      "options" : [
+        "Snowy winters",
+        "Hot most of the year",
+        "Mild most of the year",
+        "Rainy a lot"
+      ],
+      "prompt" : "What's the weather like there?",
+      "section" : "Where you live"
+    },
+    {
+      "hint" : "Pick everything within easy reach.",
+      "id" : 15,
+      "key" : "nearby",
+      "kind" : "multi",
+      "options" : [
+        {
+          "emoji" : "🥾",
+          "id" : "trailsParks",
+          "label" : "Trails, parks or open land"
+        },
+        {
+          "emoji" : "🌊",
+          "id" : "water",
+          "label" : "A coast, lake or river"
+        },
+        {
+          "emoji" : "🏋️",
+          "id" : "gymPool",
+          "label" : "Gyms, pools or rec centers"
+        },
+        {
+          "emoji" : "🧗",
+          "id" : "climbing",
+          "label" : "A climbing gym"
+        },
+        {
+          "emoji" : "🩰",
+          "id" : "studios",
+          "label" : "Studios or classes (dance, art, martial arts)"
+        },
+        {
+          "emoji" : "📚",
+          "id" : "makerspace",
+          "label" : "A library or makerspace"
+        },
+        {
+          "emoji" : "🎤",
+          "id" : "venues",
+          "label" : "Music venues, theaters or open mics"
+        },
+        {
+          "emoji" : "🏟️",
+          "id" : "courts",
+          "label" : "Sports courts or fields"
+        },
+        {
+          "emoji" : "🎲",
+          "id" : "gameCafe",
+          "label" : "Game stores or board-game cafés"
+        },
+        {
+          "emoji" : "🤝",
+          "id" : "communityCenter",
+          "label" : "A community center or volunteer groups"
+        }
+      ],
+      "prompt" : "What's near you?",
+      "section" : "Where you live"
+    },
+    {
+      "hint" : "Friends, neighbors, local scene — pick up to 3.",
+      "id" : 16,
+      "key" : "community",
+      "kind" : "multi",
+      "max" : 3,
+      "options" : [
+        {
+          "emoji" : "🌲",
+          "id" : "nature",
+          "label" : "Nature"
+        },
+        {
+          "emoji" : "🍜",
+          "id" : "food",
+          "label" : "Food & drink"
+        },
+        {
+          "emoji" : "🎵",
+          "id" : "music",
+          "label" : "Music"
+        },
+        {
+          "emoji" : "🎨",
+          "id" : "art",
+          "label" : "Art"
+        },
+        {
+          "emoji" : "🧵",
+          "id" : "crafts",
+          "label" : "Crafts"
+        },
+        {
+          "emoji" : "📝",
+          "id" : "words",
+          "label" : "Words & languages"
+        },
+        {
+          "emoji" : "🎲",
+          "id" : "games",
+          "label" : "Games & puzzles"
+        },
+        {
+          "emoji" : "💻",
+          "id" : "tech",
+          "label" : "Tech"
+        },
+        {
+          "emoji" : "🔬",
+          "id" : "science",
+          "label" : "Science"
+        },
+        {
+          "emoji" : "🏅",
+          "id" : "sports",
+          "label" : "Sports"
+        },
+        {
+          "emoji" : "🐾",
+          "id" : "animals",
+          "label" : "Animals"
+        },
+        {
+          "emoji" : "🎭",
+          "id" : "performance",
+          "label" : "Performing"
+        }
+      ],
+      "prompt" : "What's your community into?",
+      "section" : "Where you live"
+    },
+    {
+      "hint" : "Pick the closest.",
+      "id" : 17,
+      "key" : "company",
+      "kind" : "single",
+      "options" : [
+        "On my own",
+        "With a partner",
+        "With my kids or family",
+        "With friends",
+        "With new people"
+      ],
+      "prompt" : "Who would you do it with?",
+      "section" : "Your life"
+    },
+    {
+      "hint" : "Pick the closest.",
+      "id" : 18,
+      "key" : "schedule",
+      "kind" : "single",
+      "options" : [
+        "Weekday evenings",
+        "Weekends",
+        "It changes week to week"
+      ],
+      "prompt" : "When are you usually free?",
+      "section" : "Your life"
     },
     {
       "hint" : "Rough startup cost, not ongoing.",
-      "id" : 8,
-      "kind" : "budget",
-      "prompt" : "What can you spend to get started?"
+      "id" : 19,
+      "key" : "budget",
+      "kind" : "single",
+      "options" : [
+        "Under $20",
+        "Under $100",
+        "Under $500",
+        "$500 or more"
+      ],
+      "prompt" : "What can you spend to get started?",
+      "section" : "Your life"
     },
     {
       "hint" : "Be honest — a hobby you keep beats one you drop.",
-      "id" : 9,
-      "kind" : "time",
-      "prompt" : "How much time can you give it?"
+      "id" : 20,
+      "key" : "time",
+      "kind" : "single",
+      "options" : [
+        "1–2 hours a week",
+        "3–5 hours a week",
+        "6+ hours a week"
+      ],
+      "prompt" : "How much time can you give it?",
+      "section" : "Your life"
     },
     {
       "hint" : "For gear and doing it at home.",
-      "id" : 10,
-      "kind" : "space",
-      "prompt" : "How much space do you have at home?"
+      "id" : 21,
+      "key" : "space",
+      "kind" : "single",
+      "options" : [
+        "A desk or a corner",
+        "A spare room or a big table",
+        "A garage, yard or workshop"
+      ],
+      "prompt" : "How much space do you have at home?",
+      "section" : "Your life"
+    },
+    {
+      "hint" : "Think neighbors, roommates, kids asleep.",
+      "id" : 22,
+      "key" : "noise",
+      "kind" : "single",
+      "options" : [
+        "Noise is fine",
+        "A little noise is OK",
+        "It has to be quiet"
+      ],
+      "prompt" : "Can you make noise at home?",
+      "section" : "Your life"
+    },
+    {
+      "hint" : "Clay, paint, sawdust, flour…",
+      "id" : 23,
+      "key" : "mess",
+      "kind" : "single",
+      "options" : [
+        "Mess is fine",
+        "A little mess is OK",
+        "Keep it tidy"
+      ],
+      "prompt" : "How do you feel about mess at home?",
+      "section" : "Your life"
+    },
+    {
+      "hint" : "Totally optional — it just steers away from high-impact picks.",
+      "id" : 24,
+      "key" : "body",
+      "kind" : "single",
+      "options" : [
+        "No limits",
+        "I'd prefer low-impact"
+      ],
+      "prompt" : "Anything to go easy on physically?",
+      "section" : "Your life"
+    },
+    {
+      "hint" : "Some hobbies come with you; some don't.",
+      "id" : 25,
+      "key" : "travel",
+      "kind" : "single",
+      "options" : [
+        "Rarely",
+        "Often — I'm on the move"
+      ],
+      "prompt" : "How often are you traveling or away?",
+      "section" : "Your life"
     }
   ],
+  "singles" : {
+    "body" : [
+      "No limits",
+      "I'd prefer low-impact"
+    ],
+    "budget" : [
+      "Under $20",
+      "Under $100",
+      "Under $500",
+      "$500 or more"
+    ],
+    "climate" : [
+      "Snowy winters",
+      "Hot most of the year",
+      "Mild most of the year",
+      "Rainy a lot"
+    ],
+    "company" : [
+      "On my own",
+      "With a partner",
+      "With my kids or family",
+      "With friends",
+      "With new people"
+    ],
+    "mess" : [
+      "Mess is fine",
+      "A little mess is OK",
+      "Keep it tidy"
+    ],
+    "noise" : [
+      "Noise is fine",
+      "A little noise is OK",
+      "It has to be quiet"
+    ],
+    "schedule" : [
+      "Weekday evenings",
+      "Weekends",
+      "It changes week to week"
+    ],
+    "setting" : [
+      "A big city",
+      "A suburb",
+      "A small town",
+      "The countryside"
+    ],
+    "space" : [
+      "A desk or a corner",
+      "A spare room or a big table",
+      "A garage, yard or workshop"
+    ],
+    "time" : [
+      "1–2 hours a week",
+      "3–5 hours a week",
+      "6+ hours a week"
+    ],
+    "travel" : [
+      "Rarely",
+      "Often — I'm on the move"
+    ]
+  },
   "spaces" : [
     "A desk or a corner",
     "A spare room or a big table",
@@ -2642,6 +4994,11 @@
     "active",
     "handsOn",
     "creative",
-    "structured"
+    "structured",
+    "competitive",
+    "thrill",
+    "patience",
+    "screens",
+    "selfTaught"
   ]
 }

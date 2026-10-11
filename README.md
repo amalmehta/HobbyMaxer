@@ -1,20 +1,20 @@
 # Hobby Maxer
 
-A Mac app and website that figure out which hobbies fit you — and give you a 3-step plan to start one.
+A Mac app and website that figure out which hobbies fit you — where you live, how you live — give you a 3-step plan to start one, and track how it goes.
 
 **[Try it on the web →](https://amalmehta.github.io/HobbyMaxer/)**
 
 ![Your matches and a 3-step entry plan](docs/images/results.png)
 
-| Welcome | Quick questions | Pick what pulls at you |
+| My hobbies, tracked over time | 26 questions, incl. where you live | Welcome back |
 |---|---|---|
-| ![Welcome](docs/images/welcome.png) | ![Scale question](docs/images/quiz-scale.png) | ![Interests question](docs/images/quiz-interests.png) |
+| ![My hobbies](docs/images/my-hobbies.png) | ![What's near you question](docs/images/quiz-nearby.png) | ![Welcome back](docs/images/welcome.png) |
 
 ### On the web
 
 | Desktop | Phone |
 |---|---|
-| ![Website results](docs/images/website-results.png) | <img src="docs/images/website-phone.jpg" alt="Website on a phone" width="260"> |
+| ![Website results](docs/images/website-results.jpg) | <img src="docs/images/website-phone.jpg" alt="Website on a phone" width="260"> |
 
 Shared links preview like this in Messages, Slack and WhatsApp:
 
@@ -24,14 +24,16 @@ Shared links preview like this in Messages, Slack and WhatsApp:
 
 ```mermaid
 flowchart LR
-    Q["11 questions"] --> T["6 traits<br/>solo↔social · indoor↔outdoor<br/>calm↔active · head↔hands<br/>skill↔expression · freeform↔structured"]
-    Q --> G["Goals + interests"]
-    Q --> L["Budget · time · space"]
-    C[("64 hobbies")] --> S{"Score each hobby"}
+    Q["26 questions"] --> T["11 traits<br/>social · outdoor · active · hands-on<br/>creative · structured · competitive<br/>thrill · patience · screens · self-taught"]
+    Q --> G["Goals + interests<br/>+ what your community likes"]
+    Q --> W["Where you live<br/>setting · climate · what's nearby"]
+    Q --> L["Your life<br/>budget · time · space · noise<br/>mess · schedule · company · body"]
+    C[("86 hobbies")] --> S{"Score each hobby"}
     T --> S
-    G --> S
+    G -- "small boosts" --> S
+    W -- "missing places shrink the score" --> S
     L -- "over a limit shrinks the score" --> S
-    S --> R["Top 6, kept varied"] --> P["Why it fits +<br/>3-step entry plan"]
+    S --> R["Top 6, kept varied"] --> P["Why it fits + 3-step plan"] --> H[("Saved: history,<br/>status, steps done")]
 ```
 
 ## Links

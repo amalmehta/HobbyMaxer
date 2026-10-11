@@ -140,7 +140,28 @@ Repo cleanup (asked and answered 2026-10-10):
   Live URLs and previews unchanged (new pages checked byte-identical to the old ones).
 - Git history left alone (~88 MB of old images stay in it), as chosen.
 
+Saving, tracking, location questions, refreshed catalog (asked and answered 2026-10-10):
+- Both Mac app and website save: last answers, every quiz run (date + matches), statuses
+  (Interested / Trying it / Not for me) and plan steps ticked. Mac: Application Support JSON;
+  website: localStorage. Same JSON shape on both. "Not for me" now persists and is left out of
+  future matches. My hobbies view shows everything suggested, counts and match trend, past quizzes.
+- 26 questions (user asked for at least 25): 11 trait scales (added competitive, thrill,
+  patience, screens, self-taught), goals, interests; where you live (setting, climate, what's
+  nearby, what the community is into); your life (company, schedule, budget, time, space, noise,
+  mess, physical limits, travel). Structured and offline — no location leaves the device.
+- Scoring: community interests and company/travel give small boosts; hobbies need places
+  (e.g. a climbing gym) and are marked down when you don't have one — more so in small towns and
+  the countryside; climate, fixed schedules, noise, mess and low-impact needs mark down too, each
+  with a visible caveat.
+- Catalog: all 64 plans refreshed for 2026 (e.g. GarageBand → BandLab; current prices, apps),
+  22 new hobbies (padel, run club, disc golf, crochet, rug tufting, mahjong, film photography…)
+  → 86. Names of the original 64 kept so links and previews keep working. Researched by a helper
+  agent; several step prices are estimates (noted in its report).
+- Link format 2 carries the new answers; format-1 links still open with defaults.
+
 Proposals (not done — say the word):
+- Sync history between the Mac app and browsers (needs accounts or a server), or export/import the history file.
+- Reminders for plan steps ("By month 3") via Calendar/Reminders on the Mac.
 - Save/export a plan (PDF, Reminders or Calendar events for the 3 steps).
 - Remember answers and past results between launches.
 - Optional Claude API mode for free-text, more personal suggestions.
@@ -152,6 +173,7 @@ CHANGELOG:
 
 - 2026-10-01 — created
 - 2026-10-01 — built v1 Mac app (SwiftUI): 11-question quiz, 64-hobby catalog with 3-step plans, matcher, feedback tab, tests, README + docs; pushed to private GitHub repo HobbyMaxer
+- 2026-10-10 — saving + My hobbies (history, statuses, plan progress) on Mac and web; 26-question quiz with location/community/life questions; catalog refreshed and expanded to 86
 - 2026-10-10 — preview pages and badged cards built at deploy instead of committed (7,763 → 230 tracked files)
 - 2026-10-02 — preview server for exact % built (og/, Vercel), not yet live
 - 2026-10-02 — preview images get a "~80%" match badge (rounded to 5%)

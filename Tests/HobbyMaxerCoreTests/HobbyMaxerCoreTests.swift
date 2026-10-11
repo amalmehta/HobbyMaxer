@@ -50,7 +50,7 @@ final class MatcherTests: XCTestCase {
                         goals: [.makeThings, .relax], interests: [.crafts, .art], budget: .free)
         let top = Matcher.rank(p).map(\.hobby)
         XCTAssert(top.prefix(4).allSatisfy { $0.interests.contains(.crafts) || $0.interests.contains(.art) }, "\(top.map(\.name))")
-        XCTAssert(top.allSatisfy { $0.traits.active <= 0.3 })
+        XCTAssert(top.allSatisfy { $0.traits[.active] <= 0.3 })
     }
 
     func testBudgetAndSpaceLimitsPushHobbiesDown() {
@@ -58,7 +58,9 @@ final class MatcherTests: XCTestCase {
                         budget: .free, time: .light, space: .desk)
         let woodworking = Catalog.all.first { $0.name == "Woodworking" }!
         let match = Matcher.score(woodworking, for: p)
-        XCTAssertEqual(match.caveats.count, 3)
+        XCTAssert(match.caveats.contains { $0.hasPrefix("Startup cost") })
+        XCTAssert(match.caveats.contains { $0.hasPrefix("Usually takes") })
+        XCTAssert(match.caveats.contains { $0.hasPrefix("Needs a garage") })
         XCTAssertFalse(Matcher.rank(p).contains { $0.hobby.name == "Woodworking" })
     }
 
@@ -96,8 +98,11 @@ final class MatcherTests: XCTestCase {
         p.time = .moderate
         p.space = .desk
         let url = ResultLink.url(for: p, selected: "Knitting", dismissed: ["Bonsai"])
+        let knitting = Catalog.all.first { $0.name == "Knitting" }!
+        let percent = Matcher.score(knitting, for: p).percent
         // Same link the website produces for these answers (checked in website/tests/share.test.mjs).
-        XCTAssertEqual(url.absoluteString, "https://amalmehta.github.io/HobbyMaxer/h/knitting/79/?r=1-131432-010-9-j&x=bonsai")
+        XCTAssertEqual(url.absoluteString,
+                       "https://amalmehta.github.io/HobbyMaxer/h/knitting/\(percent)/?r=2-13143222222-010-9-j-12011100-0-0&x=bonsai")
         XCTAssertEqual(ResultLink.slug("Electronics & Arduino"), "electronics-and-arduino")
         XCTAssertEqual(ResultLink.slug("3D Printing"), "3d-printing")
         XCTAssertEqual(Set(Catalog.all.map { ResultLink.slug($0.name) }).count, Catalog.all.count)
@@ -135,6 +140,59 @@ final class MatcherTests: XCTestCase {
         XCTAssertEqual(opened?.dismissed, ["Bonsai"])
     }
 
+    /// Links from before the location and life questions still open, with defaults for the new answers.
+    func testFormatOneLinksStillOpen() throws {
+        let opened = try XCTUnwrap(ResultLink.decode("https://amalmehta.github.io/HobbyMaxer/h/knitting/79/?r=1-431001-110-3-1c&x=bonsai"))
+        XCTAssertEqual(opened.profile.scale(.social), 4)
+        XCTAssertEqual(opened.profile.scale(.competitive), 2)
+        XCTAssertEqual(opened.profile.nearby, [])
+        XCTAssertEqual(opened.profile.setting, .suburb)
+        XCTAssertEqual(opened.selected, "Knitting")
+        XCTAssertEqual(opened.dismissed, ["Bonsai"])
+    }
+
+    func testQuizHasAtLeast25QuestionsAndCoversEveryAnswer() {
+        XCTAssertGreaterThanOrEqual(Quiz.questions.count, 25)
+        var traits = Set<Trait>(), singles = Set<SingleKey>(), multis = Set<MultiKey>()
+        for q in Quiz.questions {
+            switch q.kind {
+            case let .scale(t, _, _): traits.insert(t)
+            case let .single(k): singles.insert(k)
+            case let .multi(k, _): multis.insert(k)
+            }
+        }
+        XCTAssertEqual(traits, Set(Trait.allCases))
+        XCTAssertEqual(singles, Set(SingleKey.allCases))
+        XCTAssertEqual(multis, Set(MultiKey.allCases))
+    }
+
+    func testLifeAnswersSteerResults() {
+        let base = profile([.handsOn: 3], interests: [.music])
+        let loud = Catalog.all.filter { $0.tags.contains(.loud) }
+        let rough = Catalog.all.filter { $0.tags.contains(.highImpact) }
+        XCTAssertFalse(loud.isEmpty)
+        XCTAssertFalse(rough.isEmpty)
+
+        var quiet = base; quiet.noise = .quiet
+        for h in loud {
+            XCTAssertLessThan(Matcher.score(h, for: quiet).score, Matcher.score(h, for: base).score, h.name)
+            XCTAssert(Matcher.score(h, for: quiet).caveats.contains("Can be loud at home"))
+        }
+        var gentle = base; gentle.body = .lowImpact
+        for h in rough { XCTAssertLessThan(Matcher.score(h, for: gentle).score, Matcher.score(h, for: base).score, h.name) }
+
+        // A hobby that needs a place: having it nearby beats living rurally without it.
+        let needy = Catalog.all.first { !$0.needs.isEmpty }!
+        var near = base; near.nearby = [needy.needs[0]]; near.setting = .rural
+        var far = base; far.nearby = [needy.needs[0] == .water ? .studios : .water]; far.setting = .rural
+        XCTAssertGreaterThan(Matcher.score(needy, for: near).score, Matcher.score(needy, for: far).score)
+        XCTAssert(Matcher.score(needy, for: near).reasons.contains { $0.hasPrefix("You have") })
+
+        // What your community is into gives a small push.
+        var local = base; local.community = Set(needy.interests.prefix(1))
+        XCTAssertGreaterThanOrEqual(Matcher.score(needy, for: local).score, Matcher.score(needy, for: base).score)
+    }
+
     /// Different people should see different hobbies: most of the catalog should be reachable.
     func testMostHobbiesShowUpForSomeone() {
         var rng = SystemRandomNumberGenerator()
@@ -147,9 +205,64 @@ final class MatcherTests: XCTestCase {
             p.budget = Cost.allCases.randomElement(using: &rng)!
             p.time = TimeNeed.allCases.randomElement(using: &rng)!
             p.space = Space.allCases.randomElement(using: &rng)!
+            p.community = Set(Interest.allCases.shuffled(using: &rng).prefix(Int.random(in: 0...3, using: &rng)))
+            p.nearby = Set(Place.allCases.shuffled(using: &rng).prefix(Int.random(in: 0...5, using: &rng)))
+            for key in [SingleKey.setting, .climate, .company, .schedule, .noise, .mess, .body, .travel] {
+                p[single: key] = Int.random(in: 0..<key.options.count, using: &rng)
+            }
             Matcher.rank(p).forEach { seen.insert($0.id) }
         }
         let unseen = Catalog.all.map(\.name).filter { !seen.contains($0) }
         XCTAssertLessThanOrEqual(unseen.count, Catalog.all.count / 10, "Never recommended: \(unseen)")
+    }
+}
+
+final class HistoryTests: XCTestCase {
+    func testRunsStatusesAndStepsSurviveAReload() throws {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("hm-\(UUID().uuidString)/history.json")
+        defer { try? FileManager.default.removeItem(at: url.deletingLastPathComponent()) }
+
+        XCTAssertEqual(History.load(from: url), History(), "no file yet means empty history")
+
+        var p = Profile()
+        p.scales = [.social: 0, .handsOn: 4, .creative: 4]
+        p.nearby = [.studios]
+        p.climate = .snowy
+        var h = History()
+        h.record(p, matches: Matcher.rank(p), at: Date(timeIntervalSince1970: 1_790_000_000))
+        p.scales[.social] = 4
+        h.record(p, matches: Matcher.rank(p), at: Date(timeIntervalSince1970: 1_790_100_000))
+        let first = h.runs[0].matches[0].name
+        h.toggleStep(0, for: first)
+        h.setStatus(.notForMe, for: h.runs[1].matches[0].name)
+        try h.save(to: url)
+
+        let back = History.load(from: url)
+        XCTAssertEqual(back, h)
+        XCTAssertEqual(back.lastProfile, p, "last answers come back exactly")
+        XCTAssertEqual(back.statuses[first], .trying, "ticking a step marks it as trying")
+        XCTAssertTrue(back.stepDone(0, for: first))
+        XCTAssertEqual(back.notForMe, [h.runs[1].matches[0].name])
+
+        let summary = try XCTUnwrap(back.summaries().first { $0.name == first })
+        XCTAssertEqual(summary.stepsDone, 1)
+        XCTAssertEqual(summary.firstSeen, Date(timeIntervalSince1970: 1_790_000_000))
+        XCTAssertEqual(Set(back.summaries().map(\.name)).count, back.summaries().count, "no duplicates")
+    }
+
+    func testUntickingClearsProgressAndRunsAreCapped() {
+        var h = History()
+        h.toggleStep(2, for: "Chess")
+        h.toggleStep(2, for: "Chess")
+        XCTAssertNil(h.steps["Chess"])
+        for _ in 0..<(History.maxRuns + 5) { h.record(Profile(), matches: []) }
+        XCTAssertEqual(h.runs.count, History.maxRuns)
+    }
+
+    func testCorruptFileStartsFresh() throws {
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("hm-bad-\(UUID().uuidString).json")
+        defer { try? FileManager.default.removeItem(at: url) }
+        try Data("{not json".utf8).write(to: url)
+        XCTAssertEqual(History.load(from: url), History())
     }
 }

@@ -23,20 +23,65 @@ public enum ResultLink {
     }
 
     public static func query(for profile: Profile, selected: String?, dismissed: Set<String>) -> String {
-        let code = [
-            "1",
-            Trait.allCases.map { String(profile.scale($0)) }.joined(),
-            "\(profile.budget.rawValue)\(profile.time.rawValue)\(profile.space.rawValue)",
-            mask(Goal.allCases.map { profile.goals.contains($0) }),
-            mask(Interest.allCases.map { profile.interests.contains($0) }),
-        ].joined(separator: "-")
-        var parts = ["r=\(code)"]
+        var parts = ["r=\(code(for: profile))"]
         if let selected { parts.append("h=\(slug(selected))") }
         if !dismissed.isEmpty {
             let ordered = Catalog.all.map(\.name).filter(dismissed.contains)
             parts.append("x=" + ordered.map(slug).joined(separator: ","))
         }
         return parts.joined(separator: "&")
+    }
+
+    /// The answers as a compact versioned code (format 2):
+    /// 2-<11 trait scales>-<budget time space>-<goals>-<interests>-<setting climate company schedule noise mess body travel>-<nearby>-<community>
+    /// Masks are base-36 bitmasks in the enums' case order. Also used to store answers in history.
+    public static func code(for profile: Profile) -> String {
+        [
+            "2",
+            Trait.allCases.map { String(profile.scale($0)) }.joined(),
+            "\(profile.budget.rawValue)\(profile.time.rawValue)\(profile.space.rawValue)",
+            mask(Goal.allCases.map { profile.goals.contains($0) }),
+            mask(Interest.allCases.map { profile.interests.contains($0) }),
+            [profile.setting.rawValue, profile.climate.rawValue, profile.company.rawValue, profile.schedule.rawValue,
+             profile.noise.rawValue, profile.mess.rawValue, profile.body.rawValue, profile.travel.rawValue]
+                .map(String.init).joined(),
+            mask(Place.allCases.map { profile.nearby.contains($0) }),
+            mask(Interest.allCases.map { profile.community.contains($0) }),
+        ].joined(separator: "-")
+    }
+
+    /// Reads an answers code (format 1 or 2). Format 1 (6 traits, no life/location answers) fills the rest with defaults.
+    public static func profile(fromCode code: String) -> Profile? {
+        var profile = Profile()
+        func digits(_ s: Substring) -> [Int] { s.map { Int(String($0))! } }
+        if let m = code.wholeMatch(of: #/1-([0-4]{6})-([0-3])([0-2])([0-2])-([0-9a-z]{1,4})-([0-9a-z]{1,4})/#) {
+            for (trait, v) in zip(Trait.allCases, digits(m.1)) { profile.scales[trait] = v }
+            profile.budget = Cost(rawValue: Int(m.2)!)!
+            profile.time = TimeNeed(rawValue: Int(m.3)!)!
+            profile.space = Space(rawValue: Int(m.4)!)!
+            profile.goals = Set(unmask(String(m.5), Goal.allCases).prefix(2))
+            profile.interests = Set(unmask(String(m.6), Interest.allCases).prefix(3))
+            return profile
+        }
+        guard let m = code.wholeMatch(of: #/2-([0-4]{11})-([0-3])([0-2])([0-2])-([0-9a-z]{1,4})-([0-9a-z]{1,4})-([0-3])([0-3])([0-4])([0-2])([0-2])([0-2])([0-1])([0-1])-([0-9a-z]{1,4})-([0-9a-z]{1,4})/#)
+        else { return nil }
+        for (trait, v) in zip(Trait.allCases, digits(m.1)) { profile.scales[trait] = v }
+        profile.budget = Cost(rawValue: Int(m.2)!)!
+        profile.time = TimeNeed(rawValue: Int(m.3)!)!
+        profile.space = Space(rawValue: Int(m.4)!)!
+        profile.goals = Set(unmask(String(m.5), Goal.allCases).prefix(2))
+        profile.interests = Set(unmask(String(m.6), Interest.allCases).prefix(3))
+        profile.setting = Setting(rawValue: Int(m.7)!)!
+        profile.climate = Climate(rawValue: Int(m.8)!)!
+        profile.company = Company(rawValue: Int(m.9)!)!
+        profile.schedule = Schedule(rawValue: Int(m.10)!)!
+        profile.noise = Noise(rawValue: Int(m.11)!)!
+        profile.mess = Mess(rawValue: Int(m.12)!)!
+        profile.body = Body(rawValue: Int(m.13)!)!
+        profile.travel = Travel(rawValue: Int(m.14)!)!
+        profile.nearby = Set(unmask(String(m.15), Place.allCases))
+        profile.community = Set(unmask(String(m.16), Interest.allCases).prefix(3))
+        return profile
     }
 
     /// Link that opens these results in the Mac app.
@@ -52,17 +97,7 @@ public enum ResultLink {
               let items = URLComponents(string: "?" + query)?.queryItems else { return nil }
         func value(_ name: String) -> String? { items.first { $0.name == name }?.value }
 
-        guard let code = value("r"),
-              let m = code.wholeMatch(of: #/1-([0-4]{6})-([0-3])([0-2])([0-2])-([0-9a-z]{1,4})-([0-9a-z]{1,4})/#)
-        else { return nil }
-
-        var profile = Profile()
-        for (trait, digit) in zip(Trait.allCases, m.1) { profile.scales[trait] = Int(String(digit))! }
-        profile.budget = Cost(rawValue: Int(m.2)!)!
-        profile.time = TimeNeed(rawValue: Int(m.3)!)!
-        profile.space = Space(rawValue: Int(m.4)!)!
-        profile.goals = Set(unmask(String(m.5), Goal.allCases).prefix(2))
-        profile.interests = Set(unmask(String(m.6), Interest.allCases).prefix(3))
+        guard let code = value("r"), let profile = profile(fromCode: code) else { return nil }
 
         let bySlug = Dictionary(uniqueKeysWithValues: Catalog.all.map { (slug($0.name), $0.name) })
         let dismissed = (value("x") ?? "").split(separator: ",").compactMap { bySlug[String($0)] }
